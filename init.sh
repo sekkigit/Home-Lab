@@ -261,5 +261,5 @@ echo
 
 banner "ssh $USER@$IP : $USERPASS"
 
-#sudo docker-compose -f /home/$USER/docker/docker-compose.yml up -d
+# sudo docker-compose -f /home/$USER/docker/docker-compose.yml up -d
 # Need to run this when installation is finished
