@@ -1,6 +1,6 @@
 # Home Lab installation bash
 
-This is a bash script for an ubuntu server that automatically installs all the software needed for my "Home lab" server.
+This is a bash script for an ubuntu server that automatically installs all the software needed for my "Home Lab" server.
 
 This script will:
    - Create an admin user for the server
