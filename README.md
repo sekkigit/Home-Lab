@@ -1,4 +1,4 @@
-# home_lab_installation_bash
+# Home Lab installation bash
 
 This is a bash script for an ubuntu server that automatically installs all the software needed for my "Home lab" server.
 
