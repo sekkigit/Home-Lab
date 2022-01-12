@@ -18,6 +18,6 @@ This script will:
    - Display basic info about server software
 
 You need to run this command when installation is finished.
-# sudo docker-compose -f /home/$USER/docker/docker-compose.yml up -d
+# sudo docker-compose -f /home/"user name"/docker/docker-compose.yml up -d
 (This command will run Nginx: 1.15.12-alpine, WordPress: php7.4-fpm-alpine, and Msql: 8.0 in Docker)
 Edit /home/$USER/.env fore safety.
