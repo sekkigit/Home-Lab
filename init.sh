@@ -2,7 +2,7 @@
 
 USER="user"
 USERPASS="pass"
-USERROLL="admin"
+USERROLE="admin"
 USERGROUP="usergr"
 KEY="ENTER KEY.PUB"
 MREZA=$(ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//")
@@ -31,7 +31,7 @@ echo
 echo
 
 banner2 "C R E A T E  A D M I N"
-useradd -p $(openssl passwd $USERPASS) $USER -m -c "$USERROLL" -G sudo -s /bin/bash
+useradd -p $(openssl passwd $USERPASS) $USER -m -c "$USERROLE" -G sudo -s /bin/bash
 echo
 echo "CREATED USER:$USER"
 
@@ -49,7 +49,7 @@ echo
 banner2 "U P D A T E  O S"
 apt update && apt upgrade -y
 echo
-echo "ALL UP TO DAIT"
+echo "ALL UP TO DATE"
 
 echo
 echo
