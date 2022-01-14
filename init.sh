@@ -1,13 +1,6 @@
 #!/bin/bash
 
-USER="user"
-USERPASS="pass"
-USERROLL="admin"
-USERGROUP="usergr"
-KEY="ENTER KEY.PUB"
-MREZA=$(ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//")
-IP=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
-PUBIP=$(curl ifconfig.me)
+source .var
 
 banner()
 {
@@ -214,7 +207,7 @@ echo
 
 banner2 "C O N F I G  U F W"
 ufw app update plexmediaserver 
-ufw allow 662/tcp
+ufw allow $PORTSSH/tcp
 ufw allow 9090/tcp
 ufw allow 80
 ufw allow 443
@@ -229,7 +222,7 @@ echo "
      - COCKPIT        :9090
      - HTTP           :80
      - HTTPS          :443
-     - SSH            :662"
+     - SSH            :$PORTSSH"
 
 echo
 echo
@@ -270,7 +263,7 @@ echo "
      - $PUBIP"
 echo
 
-banner "ssh -p 662 $USER@$IP : $USERPASS"
+banner "ssh -p $PORTSSH $USER@$IP : $USERPASS"
 
 # Need to run this as a new user when installation is finished
 # docker-compose -f /home/$USER/docker/docker-compose.yml up -d --force-recreate
