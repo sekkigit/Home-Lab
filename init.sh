@@ -30,10 +30,10 @@ banner "S T A R T "
 echo
 echo
 
-banner2 "C R E A T E  A D M I N"
+banner2 "C R E A T E  U S E R"
 useradd -p $(openssl passwd $USERPASS) $USER -m -c "$USERROLL" -G sudo -s /bin/bash
 echo
-echo "CREATED USER:$USER"
+echo "$USER"
 
 echo
 echo
@@ -105,12 +105,12 @@ echo
 echo
 
 banner2 "L O C K  S S H"
-bash /home/$USER/lock_ssh.sh
+bash lock_ssh.sh
 
 echo
 echo
 
-sleep 1s
+sleep 2s
 
 banner2 "C O C K P I T"
 apt install cockpit -y
@@ -235,6 +235,7 @@ echo
 echo
 
 banner2 "D O C K E R  P S"
+docker-compose -f /home/$USER/docker/docker-compose.yml up -d
 docker ps
 
 echo
@@ -271,5 +272,5 @@ echo
 
 banner "ssh -p 662 $USER@$IP : $USERPASS"
 
-# Need to run this when installation is finished
-#sudo docker-compose -f /home/$USER/docker/docker-compose.yml up -d
+# Need to run this as a new user when installation is finished
+# docker-compose -f /home/$USER/docker/docker-compose.yml up -d
