@@ -34,7 +34,7 @@ echo
 banner2 "L A P T O P  L I D  O F F"
 systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 echo
-echo "SLEEP IS OFF"
+echo "HIBERNATE-SLEEP IS OFF"
 
 echo
 echo
@@ -53,7 +53,6 @@ mkdir /home/$USER/{.ssh,fileserver,}
 mkdir /home/$USER/fileserver/{public_files,plexmedia}
 mkdir /home/$USER/fileserver/plexmedia/{movies,series,cartoons,anime,photos,homevideo}
 echo "
-    CREATED DIR:
      - .ssh
      - fileserver
      - public_files
@@ -63,7 +62,7 @@ echo "
 echo
 echo
 
-banner2 "M E N A G E  U S E R S"
+banner2 "P O L I C Y  U P D A T E"
 groupadd --system $USERGROUP
 groupadd --system smbgroup
 groupadd --system dockergroup
@@ -80,7 +79,6 @@ chown -R $USER:docker /home/$USER
 chown -R plex: /home/$USER/fileserver/plexmedia
 chown -R smbuser:smbgroup /home/$USER/fileserver/plexmedia
 echo "
-    CREATED USERS:
      - $USER
      - Samba
      - Docker
@@ -92,7 +90,7 @@ echo
 banner2 "S S H  K E Y"
 echo "$KEY" >> /home/$USER/.ssh/authorized_keys
 echo
-echo "YOUR SSH KEY IS ENTERED"
+echo "SSH KEY FROM $SSHUSER ADDED"
 
 echo
 echo
@@ -117,33 +115,6 @@ network:
 EOF
 
 netplan apply && service cockpit start
-
-echo
-echo
-
-banner2 "P L E X"
-curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -
-echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
-
-apt update && echo y | apt install plexmediaserver -y
-
-service plexmediaserver start
-cat <<EOF > /etc/ufw/applications.d/plexmediaserver
-[plexmediaserver]
-title=Plex Media Server (Standard)
-description=The Plex Media Server
-ports=32400/tcp|3005/tcp|5353/udp|8324/tcp|32410:32414/udp
-
-[plexmediaserver-dlna]
-title=Plex Media Server (DLNA)
-description=The Plex Media Server (additional DLNA capability only)
-ports=1900/udp|32469/tcp
-
-[plexmediaserver-all]
-title=Plex Media Server (Standard + DLNA)
-description=The Plex Media Server (with additional DLNA capability)
-ports=32400/tcp|3005/tcp|5353/udp|8324/tcp|32410:32414/udp|1900/udp|32469/tcp
-EOF
 
 echo
 echo
@@ -187,6 +158,33 @@ EOF
 echo
 echo
 
+banner2 "P L E X"
+curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -
+echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
+
+apt update && echo y | apt install plexmediaserver -y
+
+service plexmediaserver start
+cat <<EOF > /etc/ufw/applications.d/plexmediaserver
+[plexmediaserver]
+title=Plex Media Server (Standard)
+description=The Plex Media Server
+ports=32400/tcp|3005/tcp|5353/udp|8324/tcp|32410:32414/udp
+
+[plexmediaserver-dlna]
+title=Plex Media Server (DLNA)
+description=The Plex Media Server (additional DLNA capability only)
+ports=1900/udp|32469/tcp
+
+[plexmediaserver-all]
+title=Plex Media Server (Standard + DLNA)
+description=The Plex Media Server (with additional DLNA capability)
+ports=32400/tcp|3005/tcp|5353/udp|8324/tcp|32410:32414/udp|1900/udp|32469/tcp
+EOF
+
+echo
+echo
+
 banner2 "D O C K E R"
 apt install docker.io -y && apt install docker-compose -y
 
@@ -199,6 +197,7 @@ git clone https://github.com/sekkigit/wordpress.git /home/$USER/docker
 
 echo "
     CREATED:
+
      - .env
      - docker-compose.yml
      - default.conf"
@@ -213,22 +212,13 @@ ufw allow 80
 ufw allow 443
 ufw allow Samba
 ufw allow plexmediaserver-all
-sudo ufw --force enable
-echo "
-    OPEN PORTS:
-
-     - SAMBA
-     - PLEX           :32400
-     - COCKPIT        :9090
-     - HTTP           :80
-     - HTTPS          :443
-     - SSH            :$PORTSSH"
+ufw --force enable
+ufw status
 
 echo
 echo
 
 banner2 "D O C K E R  P S"
-docker-compose -f /home/$USER/docker/docker-compose.yml up
 docker ps
 
 echo
@@ -265,5 +255,6 @@ echo
 
 banner "ssh -p $PORTSSH $USER@$IP : $USERPASS"
 
-# Need to run this as a new user when installation is finished
-# docker-compose -f /home/$USER/docker/docker-compose.yml up -d --force-recreate
+echo "Need to run this as a $USER
+
+docker-compose -f /home/$USER/docker/docker-compose.yml up -d"

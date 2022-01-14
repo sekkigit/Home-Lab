@@ -18,8 +18,8 @@ This script will:
    - Configure and run UFW (firewall)
    - Display basic info about server software
 
-Need to run this as a new user when installation is finished.
+You must run "docker-compose up" as a new user when the installation is finished.
 
-# docker-compose -f /home/$USER/docker/docker-compose.yml up -d --force-recreate
+$ docker-compose -f /home/$USER/docker/docker-compose.yml up -d
 
-(This command will run Nginx: 1.15.12-alpine, WordPress: php7.4-fpm-alpine, and Msql: 8.0 in Docker)
+(This will run Nginx: 1.15.12-alpine, WordPress: php7.4-fpm-alpine, and Msql: 8.0 in Docker)

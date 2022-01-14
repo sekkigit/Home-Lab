@@ -1,6 +1,7 @@
 #EDIT THIS .var file
 
-
+#Curent user 
+SSHUSER="my_linux_user"
 #Username
 USER="user"
 
@@ -26,7 +27,7 @@ IP=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
 PUBIP=$(curl ifconfig.me)
 
 #SSH port
-PORTSSH="622"
+PORTSSH="22"
 
 #Lock SSH
 FILE="/etc/ssh/sshd_config"
