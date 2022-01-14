@@ -195,7 +195,7 @@ echo
 
 banner2 "C L O N E  G I T"
 # Create docker-compose config
-git clone https://github.com/sekkigit/webserver.git /home/$USER/docker
+git clone https://github.com/sekkigit/wordpress.git /home/$USER/docker
 
 echo "
     CREATED:
@@ -228,9 +228,7 @@ echo
 echo
 
 banner2 "D O C K E R  P S"
-docker-compose -f /home/$USER/docker/docker-compose.yml up -d
-docker-compose -f /home/$USER/docker/docker-compose.yml down
-docker-compose -f /home/$USER/docker/docker-compose.yml up -d --force-recreate
+docker-compose -f /home/$USER/docker/docker-compose.yml up
 docker ps
 
 echo
