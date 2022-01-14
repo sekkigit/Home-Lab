@@ -8,7 +8,8 @@ This script will:
    - Update and upgrade ubuntu
    - Create directories that are needed for all the software
    - Menage users in ubuntu
-   - Insert your ssh key
+   - Insert your SSH key
+   - Lock SSH
    - Install Cockpit
    - Install Plex media server
    - Install Samba (file server)
