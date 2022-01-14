@@ -2,12 +2,12 @@
 
 USER="user"
 USERPASS="pass"
-USERROLE="admin"
+USERROLL="admin"
 USERGROUP="usergr"
 KEY="ENTER KEY.PUB"
 MREZA=$(ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//")
 IP=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
-
+PUBIP=$(curl ifconfig.me)
 
 banner()
 {
@@ -31,7 +31,7 @@ echo
 echo
 
 banner2 "C R E A T E  A D M I N"
-useradd -p $(openssl passwd $USERPASS) $USER -m -c "$USERROLE" -G sudo -s /bin/bash
+useradd -p $(openssl passwd $USERPASS) $USER -m -c "$USERROLL" -G sudo -s /bin/bash
 echo
 echo "CREATED USER:$USER"
 
@@ -49,7 +49,7 @@ echo
 banner2 "U P D A T E  O S"
 apt update && apt upgrade -y
 echo
-echo "ALL UP TO DATE"
+echo "ALL UP TO DAIT"
 
 echo
 echo
@@ -99,7 +99,13 @@ echo
 banner2 "S S H  K E Y"
 echo "$KEY" >> /home/$USER/.ssh/authorized_keys
 echo
-echo "YOUR key IS ENTERED"
+echo "YOUR SSH KEY IS ENTERED"
+
+echo
+echo
+
+banner2 "L O C K  S S H"
+bash /home/$USER/lock_ssh.sh
 
 echo
 echo
@@ -208,25 +214,22 @@ echo
 
 banner2 "C O N F I G  U F W"
 ufw app update plexmediaserver 
+ufw allow 662/tcp
 ufw allow 9090/tcp
-ufw allow 3306/tcp
-ufw allow 9000/tcp
 ufw allow 80
 ufw allow 443
-ufw allow OpenSSH
-ufw allow plexmediaserver-all
 ufw allow Samba
+ufw allow plexmediaserver-all
 sudo ufw --force enable
 echo "
     OPEN PORTS:
+
      - SAMBA
-     - DOCKER
-     - PLEX     :32400
-     - COCKPIT  :9090
-     - HTTP     :443
-     - HTTPS    :80
-     - DB       :3306
-     - WP       :9000"
+     - PLEX           :32400
+     - COCKPIT        :9090
+     - HTTP           :80
+     - HTTPS          :443
+     - SSH            :662"
 
 echo
 echo
@@ -240,6 +243,7 @@ echo
 banner2 "I N S T A L L E D"
 echo "
     SERVICES:
+
      - PLEX
      - SAMBA
      - DOCKER
@@ -251,15 +255,21 @@ echo
 banner2 "C H E K  S T A T U S"
 echo "
   OPEN IN WEB:
+
      - $IP:80         :Website
      - $IP:9090       :Cockpit
      - $IP:32400/web  :Plex
 
     OPEN IN EXPLORER:
-     - \\\$IP          :Samba"
+
+     - $IP            :Samba
+     
+    PUBLIC IP:
+
+     - $PUBIP"
 echo
 
-banner "ssh $USER@$IP : $USERPASS"
+banner "ssh -p 662 $USER@$IP : $USERPASS"
 
-# sudo docker-compose -f /home/$USER/docker/docker-compose.yml up -d
 # Need to run this when installation is finished
+#sudo docker-compose -f /home/$USER/docker/docker-compose.yml up -d
