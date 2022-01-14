@@ -12,8 +12,8 @@ edit_sshd_config(){
   echo "'${PARAM[1]} no' was added to ${FILE}."
   echo "${PARAM[2]} yes" >> ${FILE}
   echo "'${PARAM[2]} yes' was added to ${FILE}."
-  echo "${PARAM[3]} 662" >> ${FILE}
-  echo "'${PARAM[3]} 662' was added to ${FILE}."
+  echo "${PARAM[3]} $PORTSSH" >> ${FILE}
+  echo "'${PARAM[3]} $PORTSSH' was added to ${FILE}."
   echo "${PARAM[4]} no" >> ${FILE}
   echo "'${PARAM[4]} no' was added to ${FILE}"
 }
