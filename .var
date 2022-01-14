@@ -1,0 +1,36 @@
+#EDIT THIS .var file
+
+
+#Username
+USER="user"
+
+#Password for new user
+USERPASS="pass"
+
+#Roll for new user
+USERROLL="admin"
+
+#Group for new user
+USERGROUP="usergr"
+
+#Public Key - cat /home/"USER"/.ssh/id_rsa.pub
+KEY="ENTER KEY.PUB"
+
+#Network adapter
+MREZA=$(ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//")
+
+#Network IP
+IP=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
+
+#Public IP
+PUBIP=$(curl ifconfig.me)
+
+#SSH port
+PORTSSH="622"
+
+#Lock SSH
+FILE="/etc/ssh/sshd_config"
+PARAM[1]="PermitRootLogin "
+PARAM[2]="PubkeyAuthentication"
+PARAM[3]="Port "
+PARAM[4]="PasswordAuthentication"
