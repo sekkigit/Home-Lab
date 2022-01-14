@@ -3,7 +3,7 @@
 SSHD="/etc/ssh/sshd_config"
 PARAM[1]="PermitRootLogin "
 PARAM[2]="PubkeyAuthentication"
-PARAM[3]="AuthorizedKeysSSHD"
+PARAM[3]="Port "
 PARAM[4]="PasswordAuthentication"
 
 edit_sshd_config(){
@@ -16,8 +16,8 @@ edit_sshd_config(){
   /usr/bin/echo "'${PARAM[1]} no' was added to ${SSHD}."
   /usr/bin/echo "${PARAM[2]} yes" >> ${SSHD}
   /usr/bin/echo "'${PARAM[2]} yes' was added to ${SSHD}."
-  /usr/bin/echo "${PARAM[3]} .ssh/authorized_keys" >> ${SSHD}
-  /usr/bin/echo "'${PARAM[3]} .ssh/authorized_keys' was added to ${SSHD}."
+  /usr/bin/echo "${PARAM[3]} 662" >> ${SSHD}
+  /usr/bin/echo "'${PARAM[3]} 662' was added to ${SSHD}."
   /usr/bin/echo "${PARAM[4]} no" >> ${SSHD}
   /usr/bin/echo "'${PARAM[4]} no' was added to ${SSHD}"
 }
