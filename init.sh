@@ -235,7 +235,7 @@ echo
 echo
 
 banner2 "D O C K E R  P S"
-docker-compose -f /home/$USER/docker/docker-compose.yml up -d
+docker-compose -f /home/$USER/docker/docker-compose.yml up -d --force-recreate
 docker ps
 
 echo
@@ -273,4 +273,4 @@ echo
 banner "ssh -p 662 $USER@$IP : $USERPASS"
 
 # Need to run this as a new user when installation is finished
-# docker-compose -f /home/$USER/docker/docker-compose.yml up -d
+# docker-compose -f /home/$USER/docker/docker-compose.yml up -d --force-recreate
