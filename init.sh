@@ -219,6 +219,7 @@ echo
 echo
 
 banner2 "D O C K E R  P S"
+docker-compose -f /home/$USER/docker/docker-compose.yml up -d
 docker ps
 
 echo
@@ -255,8 +256,8 @@ echo
 
 banner "ssh -p $PORTSSH $USER@$IP : $USERPASS"
 
-echo
-echo "Need to run this as a $USER
------------------------------------------------------------------
-| docker-compose -f /home/$USER/docker/docker-compose.yml up -d |
------------------------------------------------------------------"
+#echo
+#echo "Need to run this as a $USER
+#----------------------------------------------------------------
+#| docker-compose -f /home/$USER/docker/docker-compose.yml up -d |
+#----------------------------------------------------------------"
