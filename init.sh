@@ -208,7 +208,7 @@ banner2 "C O N F I G  U F W"
 ufw default reject incoming
 ufw default allow outgoing
 ufw app update plexmediaserver 
-ufw allow limit $PORTSSH/tcp
+ufw limit $PORTSSH/tcp
 ufw allow 9090/tcp
 ufw allow 80
 ufw allow 443
@@ -224,6 +224,7 @@ banner2 "F A I L 2 B A N"
 apt install fail2ban -y
 systemctl enable fail2ban
 systemctl start fail2ban
+echo
 echo "Fail2Ban STARTED"
 
 echo
