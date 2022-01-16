@@ -96,7 +96,7 @@ echo
 banner2 "S S H  K E Y"
 echo "$KEY" >> /home/$USER/.ssh/authorized_keys
 echo
-echo "SSH KEY FROM $SSHUSER ADDED"
+echo "SSH KEY FROM "$SSHUSER" ADDED"
 
 echo
 echo
@@ -175,17 +175,17 @@ echo y | apt install plexmediaserver -y
 
 service plexmediaserver start
 cat <<EOF > /etc/ufw/applications.d/plexmediaserver
-[$PLEXserver]
+[plexmediaserver]
 title=Plex Media Server (Standard)
 description=The Plex Media Server
 ports=32400/tcp|3005/tcp|5353/udp|8324/tcp|32410:32414/udp
 
-[$PLEXserver-dlna]
+[plexmediaserver-dlna]
 title=Plex Media Server (DLNA)
 description=The Plex Media Server (additional DLNA capability only)
 ports=1900/udp|32469/tcp
 
-[$PLEXserver-all]
+[plexmediaserver-all]
 title=Plex Media Server (Standard + DLNA)
 description=The Plex Media Server (with additional DLNA capability)
 ports=32400/tcp|3005/tcp|5353/udp|8324/tcp|32410:32414/udp|1900/udp|32469/tcp
@@ -214,9 +214,9 @@ echo
 echo
 
 banner2 " U F W  C O N F I G"
+ufw app update plexmediaserver
 ufw default reject incoming
 ufw default allow outgoing
-ufw app update plexmediaserver
 ufw limit $PORTSSH/tcp
 ufw allow 9090/tcp
 ufw allow 80
