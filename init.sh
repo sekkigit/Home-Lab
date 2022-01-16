@@ -1,6 +1,10 @@
 #!/bin/bash
 
-#
+# Scrip installs all the software needed for my "Home Lab" server:
+# Cockpit, Samba, Plex, Fail2Ban, Docker, and Docker-compose
+# The server can run a web-based graphical interface,
+# website hosting, file server, stream videos, photos, and audio. 
+# Website hosting runs on Nginx, WordPress, and Mysql.
 
 source .var
 
@@ -233,13 +237,6 @@ echo "Fail2Ban STARTED"
 
 echo
 echo
-banner2 "C L E A N  U P  P A C K A G E"
-apt autoclean
-apt autoremove
-apt clean
-
-echo
-echo
 
 banner2 "D O C K E R - C O M P O S E  U P"
 docker-compose -f /home/$USER/docker/docker-compose.yml up -d
@@ -247,23 +244,10 @@ docker ps
 
 echo
 echo
-
-banner2 "C R E A T E  L O G  F I L E"
-cat <<EOF > log
-__________________________________________
-CREATED:
-
-     - $USER          :User
-     - $USERPASS      :User pass
-     - $PORTSSH       :SSH port
-     - $SSHUSER       :SSH user
-     - $IP:80         :Website
-     - $IP:9090       :Cockpit
-     - $IP:32400/web  :Plex
-     - $IP            :Samba
-     - $PUBIP"        :Public IP
-------------------------------------------
-EOF
+banner2 "C L E A N  U P  P A C K A G E"
+apt autoclean
+apt autoremove
+apt clean
 
 echo
 echo
@@ -300,3 +284,21 @@ echo "
 echo
 
 banner "ssh -p $PORTSSH $USER@$IP : $USERPASS"
+
+cat <<EOF > log
+___________________________________________________
+CREATED:
+
+     - $USER:User
+     - $USERPASS:User pass
+     - $PORTSSH:SSH port
+     - $SSHUSER:SSH user
+     - $IP:80:Website
+     - $IP:9090:Cockpit
+     - $IP:32400/web:Plex
+     - $IP:Samba
+     - $PUBIP:Public IP
+
+  ssh -p $PORTSSH $USER@$IP : $USERPASS
+---------------------------------------------------
+EOF
