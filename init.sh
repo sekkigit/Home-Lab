@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#
+
 source .var
 
 banner()
@@ -26,7 +28,7 @@ echo
 banner2 "C R E A T E  U S E R"
 useradd -p $(openssl passwd $USERPASS) $USER -m -c "$USERROLL" -G sudo -s /bin/bash
 echo
-echo "$USER"
+echo "        $USER"
 
 echo
 echo
@@ -34,7 +36,7 @@ echo
 banner2 "L A P T O P  L I D  O F F"
 systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 echo
-echo "HIBERNATE-SLEEP IS OFF"
+echo "HIBERNATE/SLEEP/SUSPEND IS OFF"
 
 echo
 echo
@@ -49,14 +51,14 @@ echo
 
 
 banner2 "C R E A T E D  D I R"
-mkdir /home/$USER/{.ssh,fileserver,}
-mkdir /home/$USER/fileserver/{public_files,plexmedia}
-mkdir /home/$USER/fileserver/plexmedia/{movies,series,cartoons,anime,photos,homevideo}
+mkdir /home/$USER/{.ssh,$SAMBA,}
+mkdir /home/$USER/$SAMBA/{public_files,$PLEX}
+mkdir /home/$USER/$SAMBA/$PLEX/{movies,series,cartoons,anime,photos,homevideo}
 echo "
      - .ssh
-     - fileserver
+     - $SAMBA
      - public_files
-     - plexmedia"
+     - $PLEX"
 
 
 echo
@@ -74,10 +76,10 @@ useradd --system --no-create-home --group plexgroup -s /bin/false plex
 
 usermod -aG docker,adm $USER
 chown -R $USER:$USER /home/$USER
-chown -R smbuser:smbgroup /home/$USER/fileserver
+chown -R smbuser:smbgroup /home/$USER/$SAMBA
 chown -R $USER:docker /home/$USER
-chown -R plex: /home/$USER/fileserver/plexmedia
-chown -R smbuser:smbgroup /home/$USER/fileserver/plexmedia
+chown -R plex: /home/$USER/$SAMBA/$PLEX
+chown -R smbuser:smbgroup /home/$USER/$SAMBA/$PLEX
 echo "
      - $USER
      - Samba
@@ -103,7 +105,7 @@ echo
 
 sleep 2s
 
-banner2 "C O C K P I T"
+banner2 "C O C K P I T  S E T U P"
 apt install cockpit -y
 cat <<EOF > /etc/netplan/00-installer-config.yaml
 network:
@@ -119,8 +121,8 @@ netplan apply && service cockpit start
 echo
 echo
 
-banner2 "S A M B A"
-apt install samba -y && service smbd start
+banner2 "S A M B A  S E T U P"
+apt install samba -y
 
 cat <<EOF > /etc/samba/smb.conf
 [global]
@@ -134,7 +136,7 @@ EOF
 
 cat <<EOF > /etc/samba/shares.conf
 [Public Files]
-path = home/$USER/fileserver/public_files
+path = home/$USER/$SAMBA/public_files
 force user = smbuser
 create mask = 0664
 force create mode = 0664
@@ -144,7 +146,7 @@ public = yes
 writable = yes
 
 [Plex]
-path = home/$USER/fileserver/plexmedia
+path = home/$USER/$SAMBA/$PLEX
 force user = smbuser
 force group = smbgroup
 create mask = 0664
@@ -155,28 +157,30 @@ public = yes
 writable = yes
 EOF
 
+service smbd start
+
 echo
 echo
 
-banner2 "P L E X"
+banner2 "P L E X  S E T U P"
 curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -
-echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
+echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/$PLEXserver.list
 
 apt update && echo y | apt install plexmediaserver -y
 
 service plexmediaserver start
 cat <<EOF > /etc/ufw/applications.d/plexmediaserver
-[plexmediaserver]
+[$PLEXserver]
 title=Plex Media Server (Standard)
 description=The Plex Media Server
 ports=32400/tcp|3005/tcp|5353/udp|8324/tcp|32410:32414/udp
 
-[plexmediaserver-dlna]
+[$PLEXserver-dlna]
 title=Plex Media Server (DLNA)
 description=The Plex Media Server (additional DLNA capability only)
 ports=1900/udp|32469/tcp
 
-[plexmediaserver-all]
+[$PLEXserver-all]
 title=Plex Media Server (Standard + DLNA)
 description=The Plex Media Server (with additional DLNA capability)
 ports=32400/tcp|3005/tcp|5353/udp|8324/tcp|32410:32414/udp|1900/udp|32469/tcp
@@ -185,13 +189,13 @@ EOF
 echo
 echo
 
-banner2 "D O C K E R"
+banner2 "D O C K E R  S E T U P"
 apt install docker.io -y && apt install docker-compose -y
 
 echo
 echo
 
-banner2 "C L O N E  G I T"
+banner2 "C L O N E  W E B S I T E  C O N F I G"
 # Create docker-compose config
 git clone https://github.com/sekkigit/wordpress.git /home/$USER/docker
 
@@ -204,10 +208,10 @@ echo "
 echo
 echo
 
-banner2 "C O N F I G  U F W"
+banner2 " U F W  C O N F I G"
 ufw default reject incoming
 ufw default allow outgoing
-ufw app update plexmediaserver 
+ufw app update plexmediaserver
 ufw limit $PORTSSH/tcp
 ufw allow 9090/tcp
 ufw allow 80
@@ -237,9 +241,29 @@ apt clean
 echo
 echo
 
-banner2 "D O C K E R  P S"
+banner2 "D O C K E R - C O M P O S E  U P"
 docker-compose -f /home/$USER/docker/docker-compose.yml up -d
 docker ps
+
+echo
+echo
+
+banner2 "C R E A T E  L O G  F I L E"
+cat <<EOF > log
+__________________________________________
+CREATED:
+
+     - $USER          :User
+     - $USERPASS      :User pass
+     - $PORTSSH       :SSH port
+     - $SSHUSER       :SSH user
+     - $IP:80         :Website
+     - $IP:9090       :Cockpit
+     - $IP:32400/web  :Plex
+     - $IP            :Samba
+     - $PUBIP"        :Public IP
+------------------------------------------
+EOF
 
 echo
 echo

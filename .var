@@ -15,6 +15,10 @@ USERROLL="admin"
 #Group for new user
 USERGROUP="usergr"
 
+#Folders
+SAMBA="fileserver"
+PLEX="plexmedia"
+
 #Public Key - cat /home/"USER"/.ssh/id_rsa.pub
 KEY="ENTER KEY.PUB"
 
