@@ -81,11 +81,11 @@ useradd --system --no-create-home --group plexgroup -s /bin/false plex
 usermod -aG docker,adm $USER
 
 chown -R $USER:$USER /home/$USER
-chown -R smbuser:smbgroup /home/$USER/$SAMBA
 chown -R plex: /home/$USER/$SAMBA/$PLEX
 chown -R $USER:docker /home/$USER
 
-chmod -R g+w smbuser:smbgroup /home/$USER/$SAMBA
+chown -R smbuser:smbgroup /home/$USER/$SAMBA
+chmod -R g+w /home/$USER/$SAMBA
 echo "
      - $USER
      - Samba
