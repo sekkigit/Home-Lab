@@ -229,6 +229,13 @@ echo "Fail2Ban STARTED"
 
 echo
 echo
+banner2 "C L E A N  U P  P A C K A G E"
+apt autoclean
+apt autoremove
+apt clean
+
+echo
+echo
 
 banner2 "D O C K E R  P S"
 docker-compose -f /home/$USER/docker/docker-compose.yml up -d

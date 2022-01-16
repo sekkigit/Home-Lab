@@ -12,6 +12,7 @@ This script will:
    - Menage users in ubuntu
    - Insert your SSH key
    - Lock SSH
+   - Install Fail2Ban
    - Install Cockpit
    - Install Samba (file server)
    - Install Plex media server
@@ -20,8 +21,7 @@ This script will:
    - Configure and run UFW (firewall)
    - Display basic info about server software
 
-You must run "docker-compose up" as a new user when the installation is finished.
-
-$ docker-compose -f /home/$USER/docker/docker-compose.yml up -d
-
-(This will run Nginx: 1.15.12-alpine, WordPress: php7.4-fpm-alpine, and Msql: 8.0 in Docker)
+Docker-compose will run: 
+   - Nginx: 1.15.12-alpine
+   - WordPress: php7.4-fpm-alpine
+   - Msql: 8.0 in Docker
