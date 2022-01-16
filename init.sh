@@ -79,11 +79,13 @@ useradd --system --no-create-home --group smbgroup -s /bin/false smbuser
 useradd --system --no-create-home --group plexgroup -s /bin/false plex
 
 usermod -aG docker,adm $USER
+
 chown -R $USER:$USER /home/$USER
 chown -R smbuser:smbgroup /home/$USER/$SAMBA
-chown -R smbuser:smbgroup /home/$USER/$SAMBA/$PLEX
 chown -R plex: /home/$USER/$SAMBA/$PLEX
 chown -R $USER:docker /home/$USER
+
+chmod -R g+w smbuser:smbgroup /home/$USER/$SAMBA
 echo "
      - $USER
      - Samba
@@ -141,7 +143,7 @@ EOF
 cat <<EOF > /etc/samba/shares.conf
 [Public Files]
 path = home/$USER/$SAMBA/public_files
-orce user = smbuser
+force user = smbuser
 force group = smbgroup
 create mask = 0664
 force create mode = 0664
