@@ -141,7 +141,8 @@ EOF
 cat <<EOF > /etc/samba/shares.conf
 [Public Files]
 path = home/$USER/$SAMBA/public_files
-force user = smbuser
+orce user = smbuser
+force group = smbgroup
 create mask = 0664
 force create mode = 0664
 directory mask = 0775
@@ -151,7 +152,7 @@ writable = yes
 
 [Plex]
 path = home/$USER/$SAMBA/$PLEX
-force user = smbuser
+orce user = smbuser
 force group = smbgroup
 create mask = 0664
 force create mode = 0664
