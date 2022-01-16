@@ -30,3 +30,10 @@ Docker-compose will run:
    - Nginx: 1.15.12-alpine
    - WordPress: php7.4-fpm-alpine
    - Msql: 8.0
+
+Command list:
+    $ git clone https://github.com/sekkigit/home_lab_installation_bash.git init
+    $ cd init/
+    $ sudo nano .var
+    $ sudo bash init.sh
+    $ cat log
