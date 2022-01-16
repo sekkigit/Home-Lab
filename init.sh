@@ -224,6 +224,7 @@ banner2 "F A I L 2 B A N"
 apt install fail2ban -y
 systemctl enable fail2ban
 systemctl start fail2ban
+echo "Fail2Ban STARTED"
 
 echo
 echo
@@ -242,7 +243,9 @@ echo "
      - PLEX
      - SAMBA
      - DOCKER
-     - COCKPIT"
+     - COCKPIT
+     - UFW
+     - FAIL2BAN"
 
 echo
 echo
