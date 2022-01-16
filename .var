@@ -2,6 +2,7 @@
 
 #Curent user 
 SSHUSER="my_linux_user"
+
 #Username
 USER="user"
 
