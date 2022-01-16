@@ -205,8 +205,10 @@ echo
 echo
 
 banner2 "C O N F I G  U F W"
+ufw default reject incoming
+ufw default allow outgoing
 ufw app update plexmediaserver 
-ufw allow $PORTSSH/tcp
+ufw allow limit $PORTSSH/tcp
 ufw allow 9090/tcp
 ufw allow 80
 ufw allow 443
@@ -214,6 +216,14 @@ ufw allow Samba
 ufw allow plexmediaserver-all
 ufw --force enable
 ufw status
+
+echo
+echo
+
+banner2 "F A I L 2 B A N"
+apt install fail2ban -y
+systemctl enable fail2ban
+systemctl start fail2ban
 
 echo
 echo
@@ -255,9 +265,3 @@ echo "
 echo
 
 banner "ssh -p $PORTSSH $USER@$IP : $USERPASS"
-
-#echo
-#echo "Need to run this as a $USER
-#----------------------------------------------------------------
-#| docker-compose -f /home/$USER/docker/docker-compose.yml up -d |
-#----------------------------------------------------------------"
