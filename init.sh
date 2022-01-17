@@ -111,6 +111,13 @@ echo
 
 sleep 2s
 
+banner2 "C E R T B O T  S E T U P"
+apt install certbot python-certbot-nginx -y
+echo $EMAIL | certbot --nginx -d $DOMAIN -AY2
+
+echo
+echo
+
 banner2 "C O C K P I T  S E T U P"
 apt install cockpit -y
 cat <<EOF > /etc/netplan/00-installer-config.yaml
