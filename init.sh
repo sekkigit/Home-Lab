@@ -10,18 +10,18 @@ source .var
 
 banner()
 {
-  echo "+------------------------------------------+"
+  echo "+---------------------------------------------------------+"
   printf "| %-40s |\n" "$(date)"
-  echo "|                                          |"
+  echo "|                                                         |"
   printf "|$(tput bold) %-40s $(tput sgr0)|\n" "$@"
-  echo "+------------------------------------------+"
+  echo "+---------------------------------------------------------+"
 }
 
 banner2()
 {
-  echo "+------------------------------------------+"
+  echo "+---------------------------------------------------------+"
   printf "|$(tput bold) %-40s $(tput sgr0)|\n" "$@"
-  echo "+------------------------------------------+"
+  echo "+---------------------------------------------------------+"
 }
 
 banner "S T A R T "
@@ -110,13 +110,6 @@ echo
 echo
 
 sleep 2s
-
-banner2 "C E R T B O T  S E T U P"
-apt install certbot python-certbot-nginx -y
-echo $EMAIL | certbot --nginx -d $DOMAIN -AY2
-
-echo
-echo
 
 banner2 "C O C K P I T  S E T U P"
 apt install cockpit -y
@@ -224,7 +217,6 @@ echo
 echo
 
 banner2 " U F W  C O N F I G"
-ufw app update plexmediaserver
 ufw default reject incoming
 ufw default allow outgoing
 ufw limit $PORTSSH/tcp
@@ -232,6 +224,7 @@ ufw allow 9090/tcp
 ufw allow 80
 ufw allow 443
 ufw allow Samba
+ufw app update plexmediaserver
 ufw allow plexmediaserver-all
 ufw --force enable
 ufw status
@@ -257,6 +250,7 @@ docker ps
 
 echo
 echo
+
 banner2 "C L E A N  U P  P A C K A G E"
 apt autoclean
 apt autoremove
@@ -269,10 +263,10 @@ banner2 "I N S T A L L E D"
 echo "
     SERVICES:
 
-     - PLEX
-     - SAMBA
-     - DOCKER
      - COCKPIT
+     - DOCKER
+     - SAMBA
+     - PLEX
      - UFW
      - FAIL2BAN"
 
@@ -283,9 +277,9 @@ banner2 "C H E K  S T A T U S"
 echo "
   OPEN IN WEB:
 
-     - $IP:80         :Website
      - $IP:9090       :Cockpit
      - $IP:32400/web  :Plex
+     - $IP:80         :Website
 
     OPEN IN EXPLORER:
 
@@ -299,13 +293,13 @@ echo
 banner "ssh -p $PORTSSH $USER@$IP : $USERPASS"
 
 cat <<EOF > log
-___________________________________________________
+_________________________________________________________________
 CREATED:
 
      - $USER:User
      - $USERPASS:User pass
-     - $PORTSSH:SSH port
      - $SSHUSER:SSH user
+     - $PORTSSH:SSH port
      - $IP:80:Website
      - $IP:9090:Cockpit
      - $IP:32400/web:Plex
@@ -313,5 +307,5 @@ CREATED:
      - $PUBIP:Public IP
 
   ssh -p $PORTSSH $USER@$IP : $USERPASS
----------------------------------------------------
+-----------------------------------------------------------------
 EOF

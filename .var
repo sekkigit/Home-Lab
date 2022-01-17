@@ -3,11 +3,6 @@
 #Curent user 
 SSHUSER="my_linux_user"
 
-#Domain name for your website
-DOMAIN="mydomain.xyz"
-
-EMAIL="web-admin@mail.com"
-
 #Username
 USER="user"
 
