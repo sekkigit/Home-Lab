@@ -3,7 +3,7 @@
 source .var
 
 cat <<EOF > log.txt
-_________________________________________________________________
+_________________________________________________________________________
 CREATED:
   
   USER INFO:
@@ -12,23 +12,20 @@ CREATED:
   
   OPEN IN WEB:
 
-     - $IP:9090       :Cockpit
-     - $IP:32400/web  :Plex
-     - $IP:80         :Website
+     - Cockpit:   $IP:9090       
+     - Plex:      $IP:32400/web
+     - Website:   $IP:80
+     - Public IP: $PUBIP
 
-    OPEN IN EXPLORER:
+  OPEN IN EXPLORER:
 
-     - $IP            :Samba
-     
-    PUBLIC IP:
-
-     - $PUBIP
+     - Samba:     $IP
     
-    SSH:
+  SSH:
 
-     - $SSHUSER:SSH user
-     - $PORTSSH:SSH port
+     - SSH user:  $SSHUSER
+     - SSH port:  $PORTSSH
 
-  ssh -p $PORTSSH $USER@$IP
------------------------------------------------------------------
+CONNECT TO ===> ssh -p $PORTSSH $USER@$IP
+-------------------------------------------------------------------------
 EOF
