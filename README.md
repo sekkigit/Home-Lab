@@ -6,7 +6,8 @@ Bash script for an ubuntu server. It installs all the software needed for my "Ho
 
 Clone this repository, after cloning you need to edit ".var" (configure variables), and then you need to start "init.sh" (bash script).
 
-Enter your SSH key in ".var".
+Enter your SSH key in ".var". 
+   - cat .ssh/id_rsa.pub
 
 # This script will:
 
