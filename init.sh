@@ -172,7 +172,7 @@ apt clean
 echo
 echo
 
-banner2 "I N S T A L L E D"
+banner2 "    I N S T A L L E D"
 echo "
     SERVICES:
 
@@ -189,4 +189,4 @@ echo
 banner2 "C H E K  S T A T U S"
 bash log.sh
 cat log.txt
-banner "READY"
+banner "    READY"
