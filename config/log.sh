@@ -7,8 +7,8 @@ _________________________________________________________________________
 CREATED:
   
   USER INFO:
-     - $USER
-     - $USERPASS
+     - Username:  $USER
+     - Userpass:  $USERPASS
   
   OPEN IN WEB:
 
