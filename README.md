@@ -1,12 +1,13 @@
 # Home Lab installation bash
 
-Get Ubuntu Server 20.04 LTS : https://ubuntu.com/download/server
-
 Bash script for an ubuntu server. It installs all the software needed for my "Home Lab" server (Cockpit, Samba, Plex, Fail2Ban, Docker, and Docker-compose). The server can run a web-based graphical interface, website hosting, file server, stream videos, photos, and audio. Website hosting runs on Nginx, WordPress, and Mysql.
 
-Clone this repository, after cloning you need to edit ".var" (configure variables), and then you need to start "init.sh" (bash script).
 
-Enter your SSH key in ".var". 
+Dovnload: Ubuntu Server 20.04 LTS : https://ubuntu.com/download/server
+Clone this repository, after cloning you need to edit ".var" (configure variables), and then you need to start "init.sh" (bash script).
+Create SSH key:
+   - sudo ssh-keygen -b 4096
+Enter your SSH key in ".var":
    - cat .ssh/id_rsa.pub
 
 # This script will:
