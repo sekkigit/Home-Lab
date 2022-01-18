@@ -1,6 +1,6 @@
 # Home Lab installation bash
 
-Bash script for an ubuntu server. It installs all the software needed for my "Home Lab" server (Cockpit, Samba, Plex, Fail2Ban, Portainer, Docker, and Docker-compose). The server can run a web-based graphical interface, website hosting, file server, stream videos, photos, and audio. Website hosting runs on Nginx, Portainer, WordPress, and Mysql.
+Bash script for an ubuntu server. It installs all the software needed for my "Home Lab" server (Cockpit, Samba, Plex, Fail2Ban, Portainer, Docker, and Docker-compose). Website hosting runs on Nginx, WordPress, and Mysql.
 
 
 Dovnload: Ubuntu Server 20.04 LTS : https://ubuntu.com/download/server
