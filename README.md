@@ -9,11 +9,10 @@ Clone this repository, edit ".var", and start "init.sh".
 
 Create SSH key:
    - sudo ssh-keygen -b 4096
+   - cat .ssh/id_rsa.pub
 
 Command list:
-   #display key
-   - cat .ssh/id_rsa.pub
-   - ssh user@192.168.0.X
+   - ssh myusername@0.0.0.0
    - git clone https://github.com/sekkigit/home_lab_installation_bash.git init
    - cd init/
    - sudo nano .var
