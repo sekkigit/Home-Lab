@@ -1,10 +1,8 @@
 #!/bin/bash
 
 # Scrip installs all the software needed for my "Home Lab" server:
-# Cockpit, Samba, Plex, Fail2Ban, Docker, and Docker-compose
+# Cockpit, Samba, Plex, Fail2Ban, Portainer, Docker, and Docker-compose
 # The server can run a web-based graphical interface,
-# website hosting, file server, stream videos, photos, and audio. 
-# Website hosting runs on Nginx, WordPress, and Mysql.
 
 source .var
 
@@ -127,17 +125,17 @@ apt install docker.io -y && apt install docker-compose -y
 echo
 echo
 
-banner2 "    W E B S I T E  C O N F I G"
-git clone https://github.com/sekkigit/wordpress.git /home/$USER/docker
-
-echo "
-    CREATED:
-
-     - .env
-     - docker-compose.yml
-     - default.conf"
-echo
-echo
+#banner2 "    W E B S I T E  C O N F I G"
+#git clone https://github.com/sekkigit/wordpress.git /home/$USER/docker
+#
+#echo "
+#    CREATED:
+#
+#     - .env
+#     - docker-compose.yml
+#     - default.conf"
+#echo
+#echo
 
 banner2 "    U F W  C O N F I G"
 bash config/firewall.sh
@@ -157,8 +155,10 @@ echo "Fail2Ban STARTED"
 echo
 echo
 
-banner2 "    D O C K E R - C O M P O S E  U P"
-docker-compose -f /home/$USER/docker/docker-compose.yml up -d
+banner2 "    R U N  P O R T A I N E R"
+#docker-compose -f /home/$USER/docker/docker-compose.yml up -d
+docker volume create portainer_data
+docker run -d -p 8000:8000 -p 9000:9000 --name=portainer/portainer-ce:linux-s390x --restart=unless-stopped -v /etc/localtime:/etc/localtime:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -v portainer_data:/data portainer/portainer
 docker ps
 
 echo
