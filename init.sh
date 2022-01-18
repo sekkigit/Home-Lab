@@ -188,5 +188,5 @@ echo
 
 banner2 "C H E K  S T A T U S"
 bash config/log.sh
-cat config/log.txt
+cat log.txt
 banner "    R E A D Y ! ! !"
