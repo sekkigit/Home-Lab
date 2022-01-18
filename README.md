@@ -6,9 +6,9 @@ Bash script for an ubuntu server. It installs all the software needed for my "Ho
 
 Clone this repository, after cloning you need to edit ".var" (configure variables), and then you need to start "init.sh" (bash script).
 
-# Don't forget to enter your SSH key in ".var".
+Enter your SSH key in ".var".
 
-This script will:
+# This script will:
 
    - Create an admin user for the server
    - Turn off the laptop lid, hibernate, sleep, and suspend (in case u use a laptop for your server)
