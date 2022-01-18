@@ -15,7 +15,7 @@ Command list:
    - ssh myusername@0.0.0.0
    - git clone https://github.com/sekkigit/home_lab_installation_bash.git init
    - cd init/
-   - sudo nano config/.var
+   - sudo nano .var
    - sudo bash init.sh
 
 # This script will:
