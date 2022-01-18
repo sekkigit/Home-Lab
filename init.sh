@@ -188,5 +188,5 @@ echo
 
 banner2 "C H E K  S T A T U S"
 bash log.sh
-cat log
+cat log.txt
 banner "READY"

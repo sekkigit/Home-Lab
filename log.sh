@@ -2,11 +2,7 @@
 
 source .var
 
-echo "
-  
-echo
-
-cat <<EOF > log
+cat <<EOF > log.txt
 _________________________________________________________________
 CREATED:
   
