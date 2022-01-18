@@ -2,7 +2,7 @@
 
 source .var
 
-cat <<EOF > log.txt
+cat <<EOF > /home/$USER/log.txt
 _________________________________________________________________
 CREATED:
   

@@ -6,7 +6,7 @@
 # website hosting, file server, stream videos, photos, and audio. 
 # Website hosting runs on Nginx, WordPress, and Mysql.
 
-source .var
+source config/.var
 
 banner()
 {
@@ -55,7 +55,7 @@ echo
 
 
 banner2 "    C R E A T E D  D I R"
-bash dirtree.sh
+bash /home/$USER/config/dirtree.sh
 echo "
      - .ssh
      - $SAMBA
@@ -67,7 +67,7 @@ echo
 echo
 
 banner2 "    P O L I C Y  U P D A T E"
-bash dirpolicy.sh
+bash /home/$USER/config/dirpolicy.sh
 echo "
      - $USER
      - Samba
@@ -86,7 +86,7 @@ echo
 echo
 
 banner2 "    L O C K  S S H"
-bash lock_ssh.sh
+bash /home/$USER/config/lock_ssh.sh
 
 echo
 echo
@@ -95,7 +95,7 @@ sleep 2s
 
 banner2 "    C O C K P I T  S E T U P"
 apt install cockpit -y
-bash network.sh
+bash /home/$USER/config/network.sh
 netplan apply && service cockpit start
 
 echo
@@ -103,7 +103,7 @@ echo
 
 banner2 "    S A M B A  S E T U P"
 apt install samba -y
-bash sambaconfig.sh
+bash /home/$USER/config/sambaconfig.sh
 service smbd start
 
 echo
@@ -115,7 +115,7 @@ echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sour
 
 apt update
 echo y | apt install plexmediaserver -y
-bash plexufw.sh
+bash /home/$USER/config/plexufw.sh
 service plexmediaserver start
 
 echo
@@ -140,7 +140,7 @@ echo
 echo
 
 banner2 "    U F W  C O N F I G"
-bash firewall.sh
+bash /home/$USER/config/firewall.sh
 
 sleep 2
 
@@ -187,6 +187,6 @@ echo
 echo
 
 banner2 "C H E K  S T A T U S"
-bash log.sh
+bash /home/$USER/config/log.sh
 cat log.txt
 banner "    READY"
