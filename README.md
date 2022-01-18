@@ -4,9 +4,12 @@ Bash script for an ubuntu server. It installs all the software needed for my "Ho
 
 
 Dovnload: Ubuntu Server 20.04 LTS : https://ubuntu.com/download/server
+
 Clone this repository, after cloning you need to edit ".var" (configure variables), and then you need to start "init.sh" (bash script).
+
 Create SSH key:
    - sudo ssh-keygen -b 4096
+
 Enter your SSH key in ".var":
    - cat .ssh/id_rsa.pub
 
