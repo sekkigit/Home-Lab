@@ -6,7 +6,7 @@
 # website hosting, file server, stream videos, photos, and audio. 
 # Website hosting runs on Nginx, WordPress, and Mysql.
 
-source config/.var
+source .var
 
 banner()
 {
@@ -95,7 +95,7 @@ sleep 2s
 
 banner2 "    C O C K P I T  S E T U P"
 apt install cockpit -y
-bash ./config/network.sh
+bash config/network.sh
 netplan apply && service cockpit start
 
 echo
@@ -103,7 +103,7 @@ echo
 
 banner2 "    S A M B A  S E T U P"
 apt install samba -y
-bash ./config/sambaconfig.sh
+bash config/sambaconfig.sh
 service smbd start
 
 echo
@@ -115,7 +115,7 @@ echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sour
 
 apt update
 echo y | apt install plexmediaserver -y
-bash ./config/plexufw.sh
+bash config/plexufw.sh
 service plexmediaserver start
 
 echo
@@ -140,7 +140,7 @@ echo
 echo
 
 banner2 "    U F W  C O N F I G"
-bash ./config/firewall.sh
+bash config/firewall.sh
 
 sleep 2
 
@@ -187,6 +187,6 @@ echo
 echo
 
 banner2 "C H E K  S T A T U S"
-bash ./config/log.sh
-cat ./config/log.txt
+bash config/log.sh
+cat config/log.txt
 banner "    R E A D Y ! ! !"
