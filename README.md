@@ -5,13 +5,22 @@ Bash script for an ubuntu server. It installs all the software needed for my "Ho
 
 Dovnload: Ubuntu Server 20.04 LTS : https://ubuntu.com/download/server
 
-Clone this repository, after cloning you need to edit ".var" (configure variables), and then you need to start "init.sh" (bash script).
+Clone this repository, edit ".var", and start "init.sh".
 
 Create SSH key:
    - sudo ssh-keygen -b 4096
 
-Enter your SSH key in ".var":
+Command list:
+   #display key
    - cat .ssh/id_rsa.pub
+   - ssh user@192.168.0.X
+   - git clone https://github.com/sekkigit/home_lab_installation_bash.git init
+   - cd init/
+   - sudo nano .var
+   - sudo bash init.sh
+   - cat log
+
+Enter your client SSH key in ".var"
 
 # This script will:
 
@@ -35,10 +44,3 @@ Docker-compose will run:
    - Nginx: 1.15.12-alpine
    - WordPress: php7.4-fpm-alpine
    - Msql: 8.0
-
-Command list:
-   - git clone https://github.com/sekkigit/home_lab_installation_bash.git init
-   - cd init/
-   - sudo nano .var
-   - sudo bash init.sh
-   - cat log
