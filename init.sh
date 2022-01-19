@@ -145,7 +145,7 @@ echo
 
 banner2 "    R U N  P O R T A I N E R"
 #docker-compose -f /home/$USER/docker/docker-compose.yml up -d
-mv docker-compose.yml /home/$USER/docker
+mv docker-compose.yml /home/$USER/docker/docker-compose.yml
 docker-compose -f /home/$USER/docker/docker-compose.yml up -d
 docker ps
 
