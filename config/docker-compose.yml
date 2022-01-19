@@ -9,7 +9,13 @@ services:
       - no-new-privileges:true
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./docker.sock:/var/run/docker.sock:ro
       - ./portainer-data:/data
     ports:
       - 9000:9000
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

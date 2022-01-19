@@ -15,7 +15,6 @@ CREATED:
      - Cockpit:   $IP:9090       
      - Portainer: $IP:9000
      - Plex:      $IP:32400/web
-     - Website:   $IP:80
      - Public IP: $PUBIP
 
   OPEN IN EXPLORER:
