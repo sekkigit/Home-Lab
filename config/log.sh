@@ -26,6 +26,6 @@ CREATED:
      - SSH user:  $SSHUSER
      - SSH port:  $PORTSSH
 
-CONNECT TO ===> ssh -p $PORTSSH $USER@$IP
+CONNECT TO ==> ssh -p $PORTSSH $USER@$IP
 -------------------------------------------------------------------------
 EOF
