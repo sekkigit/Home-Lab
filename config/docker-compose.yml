@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 
 services:
   portainer:
@@ -8,8 +8,18 @@ services:
       - no-new-privileges:true
     volumes:
       - /etc/localtime:/etc/localtime
-      - ./docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock
       - ./portainer-data:/data
     ports:
       - 9000:9000
     restart: unless-stopped
+    networks:
+      - app-network
+
+volumes:
+  ./docker.sock:
+  ./portainer-data:
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Scrip installs all the software needed for my "Home Lab" server:
-# Cockpit, Samba, Plex, Fail2Ban, Portainer, Docker, and Docker-compose
-# The server can run a web-based graphical interface,
+#########################################################################
+# Scrip installs all the software needed for "Home Lab" server:         #
+# Cockpit, Samba, Plex, Fail2Ban, Portainer, Docker, and Docker-compose #
+#########################################################################
 
 source .var
 
@@ -93,7 +94,7 @@ sleep 2s
 
 banner2 "    C O C K P I T  S E T U P"
 apt install cockpit -y
-bash config/network.sh
+bash ./config/network.sh
 netplan apply && service cockpit start
 
 echo
@@ -101,7 +102,7 @@ echo
 
 banner2 "    S A M B A  S E T U P"
 apt install samba -y
-bash config/sambaconfig.sh
+bash ./config/sambaconfig.sh
 service smbd start
 
 echo
@@ -113,7 +114,7 @@ echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sour
 
 apt update
 echo y | apt install plexmediaserver -y
-bash config/plexufw.sh
+bash ./config/plexufw.sh
 service plexmediaserver start
 
 echo
@@ -126,7 +127,7 @@ echo
 echo
 
 banner2 "    U F W  C O N F I G"
-bash config/firewall.sh
+bash ./config/firewall.sh
 
 sleep 2
 
@@ -144,7 +145,7 @@ echo
 echo
 
 banner2 "    R U N  P O R T A I N E R"
-mv config/docker-compose.yml /home/$USER/docker/docker-compose.yml
+mv ./config/docker-compose.yml /home/$USER/docker/docker-compose.yml
 docker-compose -f /home/$USER/docker/docker-compose.yml up -d
 docker ps
 
@@ -174,6 +175,6 @@ echo
 echo
 
 banner2 "C H E K  S T A T U S"
-bash config/log.sh
+bash ./config/log.sh
 cat log.txt
 banner "    R E A D Y ! ! !"
