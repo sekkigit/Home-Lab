@@ -1,8 +1,13 @@
 # Home Lab installation bash
 
-Bash script for an ubuntu server. It installs all the software needed for my "Home Lab" server. 
-Cockpit, Samba, Plex, Fail2Ban, Portainer, Docker, and Docker-compose
-
+Bash script installs all the software needed for Home-Lab: 
+   - Cockpit
+   - Samba
+   - Plex
+   - Fail2Ban
+   - Docker
+   - Docker-compose
+   - Portainer
 
 Dovnload: Ubuntu Server 20.04 LTS : https://ubuntu.com/download/server
 
@@ -13,9 +18,8 @@ Create SSH key:
    - cat .ssh/id_rsa.pub
 
 Command list:
-   - ssh myusername@0.0.0.0
-   - git clone https://github.com/sekkigit/home_lab_installation_bash.git init
-   - cd init/
+   - ssh
+   - git clone https://github.com/sekkigit/home_lab_installation_bash.git init && cd init/
    - sudo nano .var
    - sudo bash init.sh
 
@@ -33,6 +37,5 @@ Command list:
    - Install Samba (file server)
    - Install Plex media server
    - Install Docker, Docker-compose and Portainer
-   - Clone git repository with docker-compose.yml, .env, and nginx.conf
    - Configure and run UFW (firewall)
-   - Display basic info about server software
+   - Display basic info about server
