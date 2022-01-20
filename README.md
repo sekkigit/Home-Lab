@@ -36,8 +36,3 @@ Command list:
    - Clone git repository with docker-compose.yml, .env, and nginx.conf
    - Configure and run UFW (firewall)
    - Display basic info about server software
-
-Docker-compose will run: 
-   - Nginx: 1.15.12-alpine
-   - WordPress: php7.4-fpm-alpine
-   - Msql: 8.0
