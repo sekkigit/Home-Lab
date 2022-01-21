@@ -26,7 +26,7 @@ Command list:
 # This script will:
 
    - Create an admin user for the server
-   - Turn off the laptop lid, hibernate, sleep, and suspend (in case u use a laptop for your server)
+   - Turn off hibernate, sleep, and suspend (in case u use a laptop for your server)
    - Update and upgrade ubuntu
    - Create directories that are needed
    - Menage users in ubuntu
