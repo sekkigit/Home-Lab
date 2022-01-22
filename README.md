@@ -1,6 +1,6 @@
-# Home Lab installation bash
+# Home Lab installation
 
-Bash script installs all the software needed for Home-Lab: 
+Script installs software: 
    - Cockpit
    - Samba
    - Plex
@@ -9,11 +9,11 @@ Bash script installs all the software needed for Home-Lab:
    - Docker-compose
    - Portainer
 
-Dovnload: Ubuntu Server 20.04 LTS : https://ubuntu.com/download/server
+Link for dovnload Ubuntu Server 20.04 LTS : https://ubuntu.com/download/server
 
 Clone this repository, edit ".var", and start "init.sh".
 
-Create SSH key:
+Create SSH key for client:
    - sudo ssh-keygen -b 4096
    - cat .ssh/id_rsa.pub
 
@@ -29,12 +29,12 @@ Command list:
    - Create swap partition
    - Update and upgrade ubuntu
    - Create an admin user for the server
-   - Create directories
+   - Create directory tree
    - Menage users
    - Insert your client SSH key
    - Lock SSH
    - Install Cockpit
-   - Install Samba (file server)
+   - Install Samba
    - Install Plex media server
    - Install Docker, Docker-compose and Portainer
    - Configure and run UFW (firewall)
