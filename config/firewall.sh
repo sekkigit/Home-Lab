@@ -8,8 +8,8 @@ ufw limit $PORTSSH/tcp
 ufw allow 80
 ufw allow 443
 ufw allow 8080
-ufw allow from $SUBNET to any port 9090/tcp
-ufw allow from $SUBNET to any port 9000/tcp
+ufw allow from $SUBNET to any port 9090
+ufw allow from $SUBNET to any port 9000
 ufw allow from $SUBNET to any port 81
 ufw allow from $SUBNET to any port Samba
 ufw app update plexmediaserver
