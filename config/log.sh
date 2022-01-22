@@ -9,8 +9,8 @@ CREATED:
   USER INFO:
      - Username:  $USER
      - Userpass:  $USERPASS
-     - Gateway:   $GATE4
      - Subnet:    $SUBNET
+     - Gateway:   $GATE4
   
   OPEN IN WEB:
 
