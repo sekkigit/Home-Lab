@@ -25,17 +25,18 @@ Command list:
 
 # This script will:
 
-   - Create an admin user for the server
    - Turn off hibernate, sleep, and suspend (in case u use a laptop for your server)
+   - Create swap partition
    - Update and upgrade ubuntu
-   - Create directories that are needed
-   - Menage users in ubuntu
-   - Insert your SSH key
+   - Create an admin user for the server
+   - Create directories
+   - Menage users
+   - Insert your client SSH key
    - Lock SSH
-   - Install Fail2Ban
    - Install Cockpit
    - Install Samba (file server)
    - Install Plex media server
    - Install Docker, Docker-compose and Portainer
    - Configure and run UFW (firewall)
+   - Install Fail2Ban
    - Display basic info about server

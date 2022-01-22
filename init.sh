@@ -132,6 +132,14 @@ apt install docker.io -y && apt install docker-compose -y
 echo
 echo
 
+banner2 "    R U N  P O R T A I N E R"
+mv ./config/docker-compose.yml /home/$USER/docker/docker-compose.yml
+docker-compose -f /home/$USER/docker/docker-compose.yml up -d
+docker ps
+
+echo
+echo
+
 banner2 "    U F W  C O N F I G"
 bash ./config/firewall.sh
 
@@ -146,14 +154,6 @@ systemctl enable fail2ban
 systemctl start fail2ban
 echo
 echo "Fail2Ban STARTED"
-
-echo
-echo
-
-banner2 "    R U N  P O R T A I N E R"
-mv ./config/docker-compose.yml /home/$USER/docker/docker-compose.yml
-docker-compose -f /home/$USER/docker/docker-compose.yml up -d
-docker ps
 
 echo
 echo
