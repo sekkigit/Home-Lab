@@ -10,7 +10,7 @@ network:
     $NETADAPT:
       dhcp4: no
       dhcp6: no
-      addresses: [IP/24]
+      addresses: [$IP/24]
       gateway4:  $GATE4
       nameservers:
               addresses: [8.8.4.4, 8.8.8.8]

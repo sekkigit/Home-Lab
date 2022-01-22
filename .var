@@ -11,7 +11,7 @@ USERROLL="admin"
 #Group for new user
 USERGROUP="usergr"
 
-#network.sh/firewall.sh
+#Network/Firewall
 #Default gateway (ruter ip)
 GATE4="192.168.0.1"
 #Client subnet
@@ -23,7 +23,7 @@ IP=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
 #Host public IP
 PUBIP=$(curl ifconfig.me)
 
-#lock_ssh.sh
+#Lock_ssh
 #Open SSH port
 PORTSSH="22"
 #Lock SSH
@@ -33,11 +33,11 @@ PARAM[2]="PubkeyAuthentication"
 PARAM[3]="Port "
 PARAM[4]="PasswordAuthentication"
 
-#dirtree.sh
+#Dirtree
 #Folders
 SAMBA="fileserver"
 PLEX="plexmedia"
 
-#swap.sh
+#Swap
 #Swap partition
 RAM="1024"

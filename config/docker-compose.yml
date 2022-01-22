@@ -16,10 +16,6 @@ services:
     networks:
       - app-network
 
-volumes:
-  ./docker.sock:
-  ./portainer-data:
-
 networks:
   app-network:
     driver: bridge
