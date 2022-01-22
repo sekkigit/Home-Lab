@@ -13,9 +13,9 @@ USERGROUP="usergr"
 
 #Network/Firewall
 #Default gateway (ruter ip)
-GATE4="192.168.0.1"
+GATE4=$(ip route | awk '/default/ {print $3; exit}')
 #Client subnet
-SUBNET="192.168.0.0/24"
+SUBNET=$(ip -o -f inet addr show | awk '/scope global/ {print $4}')
 #Host network adapter
 NETADAPT=$(ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//")
 #Host IP
