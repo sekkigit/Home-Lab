@@ -13,15 +13,15 @@ USERGROUP="usergr"
 
 #Network/Firewall
 #Default gateway (ruter ip)
-GATE4=$(ip route | awk '/default/ {print $3; exit}')
+GATE4="$(ip -o -f inet addr show | awk '/scope global/ {printf "%s ", $4}' | awk '{print $1}')"
 #Client subnet
-SUBNET=$(ip -o -f inet addr show | awk '/scope global/ {print $4}')
+SUBNET="$(ip -o -f inet addr show | awk '/scope global/ {print $4}')"
 #Host network adapter
-NETADAPT=$(ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//")
+NETADAPT="$(ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//")"
 #Host IP
-IP=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
+IP="$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')"
 #Host public IP
-PUBIP=$(curl ifconfig.me)
+PUBIP="$(curl ifconfig.me)"
 
 #Lock_ssh
 #Open SSH port
