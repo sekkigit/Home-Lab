@@ -1,49 +1,43 @@
-#REQUIRED Public Key - cat /home/"USER"/.ssh/id_rsa.pub
+#REQUIRED Public Key from client - cat /home/"USER"/.ssh/id_rsa.pub
 KEY="ENTER KEY.PUB"
-
-#Curent user 
+#Client user name
 SSHUSER="my_linux_user"
-
 #Username
 USER="user"
-
 #Password for new user
 USERPASS="pass"
-
 #Roll for new user
 USERROLL="admin"
-
 #Group for new user
 USERGROUP="usergr"
 
-RAM="1024"
-
-#Folders
-SAMBA="fileserver"
-
-PLEX="plexmedia"
-
-
+#network.sh/firewall.sh
+#Default gateway (ruter ip)
 GATE4="192.168.0.1"
-
 #Client subnet
 SUBNET="192.168.0.0/24"
-
-#SSH port
-PORTSSH="22"
-
-#Network adapter
+#Host network adapter
 NETADAPT=$(ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//")
-
-#Network IP
+#Host IP
 IP=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
-
-#Public IP
+#Host public IP
 PUBIP=$(curl ifconfig.me)
 
+#lock_ssh.sh
+#Open SSH port
+PORTSSH="22"
 #Lock SSH
 FILE="/etc/ssh/sshd_config"
 PARAM[1]="PermitRootLogin "
 PARAM[2]="PubkeyAuthentication"
 PARAM[3]="Port "
 PARAM[4]="PasswordAuthentication"
+
+#dirtree.sh
+#Folders
+SAMBA="fileserver"
+PLEX="plexmedia"
+
+#swap.sh
+#Swap partition
+RAM="1024"

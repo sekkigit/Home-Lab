@@ -28,14 +28,6 @@ banner "    S T A R T "
 echo
 echo
 
-banner2 "    C R E A T E  U S E R"
-useradd -p $(openssl passwd $USERPASS) $USER -m -c "$USERROLL" -G sudo -s /bin/bash
-echo
-echo "        $USER"
-
-echo
-echo
-
 banner2 "    L A P T O P  L I D  O F F"
 systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 echo
@@ -47,8 +39,7 @@ echo
 banner2 "    S W A P  P A R T I T I O N"
 bash ./config/swap.sh
 echo
-echo "CREATED SWAP $RAM"
-
+echo "CREATED SWAP $RAM MB"
 
 echo
 echo
@@ -57,6 +48,14 @@ banner2 "    U P D A T E  O S"
 apt update && apt upgrade -y
 echo
 echo "ALL UP TO DAIT"
+
+echo
+echo
+
+banner2 "    C R E A T E  U S E R"
+useradd -p $(openssl passwd $USERPASS) $USER -m -c "$USERROLL" -G sudo -s /bin/bash
+echo
+echo "        $USER"
 
 echo
 echo
