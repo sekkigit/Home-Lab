@@ -1,5 +1,8 @@
 #EDIT THIS .var file
 
+#REQUIRED Public Key - cat /home/"USER"/.ssh/id_rsa.pub
+KEY="ENTER KEY.PUB"
+
 #Curent user 
 SSHUSER="my_linux_user"
 
@@ -15,12 +18,21 @@ USERROLL="admin"
 #Group for new user
 USERGROUP="usergr"
 
+RAM="1024"
+
 #Folders
 SAMBA="fileserver"
+
 PLEX="plexmedia"
 
-#Public Key - cat /home/"USER"/.ssh/id_rsa.pub
-KEY="ENTER KEY.PUB"
+
+GATE4="192.168.0.1"
+
+#Client subnet
+SUBNET="192.168.0.0/24"
+
+#SSH port
+PORTSSH="22"
 
 #Network adapter
 NETADAPT=$(ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//")
@@ -30,12 +42,6 @@ IP=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
 
 #Public IP
 PUBIP=$(curl ifconfig.me)
-
-#Client subnet
-SUBNET=192.168.0.0/24
-
-#SSH port
-PORTSSH="22"
 
 #Lock SSH
 FILE="/etc/ssh/sshd_config"

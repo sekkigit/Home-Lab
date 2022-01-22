@@ -44,6 +44,15 @@ echo "HIBERNATE/SLEEP/SUSPEND IS OFF"
 echo
 echo
 
+banner2 "    S W A P  P A R T I T I O N"
+bash ./config/swap.sh
+echo
+echo "CREATED SWAP $RAM"
+
+
+echo
+echo
+
 banner2 "    U P D A T E  O S"
 apt update && apt upgrade -y
 echo
@@ -52,7 +61,6 @@ echo "ALL UP TO DAIT"
 echo
 echo
 
-
 banner2 "    C R E A T E D  D I R"
 bash ./config/dirtree.sh
 echo "
@@ -60,7 +68,6 @@ echo "
      - $SAMBA
      - public_files
      - $PLEX"
-
 
 echo
 echo
