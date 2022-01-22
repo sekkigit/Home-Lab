@@ -11,7 +11,7 @@ ufw allow 8080
 ufw allow from $SUBNET to any port 9090
 ufw allow from $SUBNET to any port 9000
 ufw allow from $SUBNET to any port 81
-ufw allow Samba
+ufw allow from $SUBNET to any app Samba
 ufw app update plexmediaserver
 ufw allow plexmediaserver-all
 ufw --force enable
