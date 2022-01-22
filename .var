@@ -34,10 +34,8 @@ PARAM[3]="Port "
 PARAM[4]="PasswordAuthentication"
 
 #Dirtree
-#Folders
 SAMBA="fileserver"
 PLEX="plexmedia"
 
 #Swap
-#Swap partition
 RAM="1024"
