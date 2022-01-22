@@ -39,7 +39,7 @@ echo
 banner2 "    S W A P  P A R T I T I O N"
 bash ./config/swap.sh
 echo
-echo "CREATED SWAP $RAM MB"
+echo "CREATED $RAM MB SWAP PARTITION"
 
 echo
 echo

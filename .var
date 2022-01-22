@@ -2,13 +2,13 @@
 KEY="ENTER KEY.PUB"
 #Client user name
 SSHUSER="my_linux_user"
-#Username
+#Host username
 USER="user"
-#Password for new user
+#Host password
 USERPASS="pass"
-#Roll for new user
+#Host roll
 USERROLL="admin"
-#Group for new user
+#Host group
 USERGROUP="usergr"
 
 #Network/Firewall
@@ -26,14 +26,14 @@ PUBIP=$(curl ifconfig.me)
 #Lock_ssh
 #Open SSH port
 PORTSSH="22"
-#Lock SSH
+#Edit sshd_confg
 FILE="/etc/ssh/sshd_config"
 PARAM[1]="PermitRootLogin "
 PARAM[2]="PubkeyAuthentication"
 PARAM[3]="Port "
 PARAM[4]="PasswordAuthentication"
 
-#Dirtree
+#Dir
 SAMBA="fileserver"
 PLEX="plexmedia"
 
