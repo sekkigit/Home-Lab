@@ -11,6 +11,9 @@ USERROLL="admin"
 #Host group
 USERGROUP="usergr"
 
+#OS version
+OSVER=$(cat /etc/*release | awk '/DISTRIB_DESCRIPTION=/ {print $2}')
+
 #Network/Firewall
 #Default gateway (ruter ip)
 GATE4=$(ip route | awk '/default/ {print $3; exit}')
@@ -23,6 +26,13 @@ IP=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
 #Host public IP
 PUBIP=$(curl ifconfig.me)
 
+#Swap
+RAM="1024"
+
+#Dir
+SAMBA="fileserver"
+PLEX="plexmedia"
+
 #Lock_ssh
 #Open SSH port
 PORTSSH="22"
@@ -32,10 +42,3 @@ PARAM[1]="PermitRootLogin "
 PARAM[2]="PubkeyAuthentication"
 PARAM[3]="Port "
 PARAM[4]="PasswordAuthentication"
-
-#Dir
-SAMBA="fileserver"
-PLEX="plexmedia"
-
-#Swap
-RAM="1024"
