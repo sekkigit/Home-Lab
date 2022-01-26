@@ -19,6 +19,7 @@ INFO:
      - Cockpit:   $IP:9090       
      - Portainer: $IP:9000
      - Plex:      $IP:32400/web
+     - SpeedTest: $IP:3000
      - Public IP: $PUBIP
 
   EXPLORER:

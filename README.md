@@ -8,6 +8,7 @@ Script installs software:
    - Docker
    - Docker-compose
    - Portainer
+   - OpenSpeedTest
 
 Link for dovnload Ubuntu Server 20.04 LTS : https://ubuntu.com/download/server
 
@@ -36,7 +37,7 @@ Command list:
    - Install Cockpit
    - Install Samba
    - Install Plex media server
-   - Install Docker, Docker-compose and Portainer
+   - Install Docker, Docker-compose, Portainer and OpenSpeedTest
    - Configure and run UFW (firewall)
    - Install Fail2Ban
    - Display basic info about server

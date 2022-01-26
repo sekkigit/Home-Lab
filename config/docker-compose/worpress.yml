@@ -22,7 +22,7 @@ services:
       - 7070:80
     environment:
       - WORDPRESS_DB_HOST=db:3306
-      - WORDPRESS_DB_USER=user
+      - WORDPRESS_DB_USER=myuser
       - WORDPRESS_DB_PASSWORD=example
       - WORDPRESS_DB_NAME=wordpress
     volumes:
