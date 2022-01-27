@@ -14,7 +14,7 @@ Script installs:
 
 # Step one
 
-Download Ubuntu Server 20.04 LTS : https://ubuntu.com/download/server
+Download and install Ubuntu Server 20.04 LTS : https://ubuntu.com/download/server
 
 # Step two
 
