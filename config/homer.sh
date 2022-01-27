@@ -49,7 +49,7 @@ colors:
 message:
   style: "is-dark"
   title: "Samba"
-  content: "This is a ip for file server: $IP"
+  content: "Open ip in file explorer for the file server: $IP"
 
 # Optional navbar
 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
