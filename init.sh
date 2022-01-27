@@ -138,7 +138,7 @@ cp ./config/docker-compose.yml /home/$USER/docker/docker-compose.yml
 #cp .var /home/$USER/docker/.env
 docker-compose -f /home/$USER/docker/docker-compose.yml up -d
 mv /home/$USER/docker/homer/config.yml /home/$USER/docker/homer/config.yml.original
-cp ./config/homer/config.yml /home/$USER/docker/homer/config.yml
+bash ./config/homer.sh
 docker ps
 
 echo

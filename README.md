@@ -7,6 +7,8 @@ Script installs software:
    - Fail2Ban
    - Docker
    - Docker-compose
+   - Homer
+   - Nginx proxy manager
    - Portainer
    - OpenSpeedTest
 
@@ -37,7 +39,7 @@ Command list:
    - Install Cockpit
    - Install Samba
    - Install Plex media server
-   - Install Docker, Docker-compose, Portainer and OpenSpeedTest
+   - Install Docker, Docker-compose, Portainer and OpenSpeedTest, Nginx-proxy-manager
    - Configure and run UFW (firewall)
    - Install Fail2Ban
    - Display basic info about server

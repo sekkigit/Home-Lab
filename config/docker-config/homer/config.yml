@@ -40,6 +40,14 @@ colors:
     link: "#3273dc"
     link-hover: "#ffdd57"
 
+# Optional message
+message:
+  #url: https://b4bz.io
+  style: "is-dark"
+  title: "Samba"
+  icon: "fa fa-grin"
+  content: "This is a ip for file server. \\192.168.0.112"
+
 # Optional navbar
 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
 links:
@@ -59,6 +67,11 @@ services:
         logo: "https://avatars.githubusercontent.com/u/5765104?s=280&v=4"
         subtitle: "Server menager"
         url: "http://192.168.0.112:9090"
+        target: "_blank"
+      - name: "Nginx"
+        logo: "https://avatars.githubusercontent.com/u/5765104?s=280&v=4"
+        subtitle: "Proxy menager"
+        url: "http://192.168.0.112:81"
         target: "_blank"
       - name: "Portainer"
         logo: "https://cdn.iconscout.com/icon/free/png-256/docker-226091.png"
