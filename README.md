@@ -7,9 +7,9 @@ Script installs:
    - Fail2Ban
    - Docker
    - Docker-compose
-   - Homer
    - Nginx proxy manager
    - Portainer
+   - Homer
    - OpenSpeedTest
 
 # Step one
@@ -26,9 +26,11 @@ Create SSH key on client:
 # Step three
 
 Enter commands on host:
-   - git clone https://github.com/sekkigit/home_lab_installation_bash.git init && cd init/
-   - sudo nano .var  (edit variables, and ENTER client SSH key)
+   - git clone https://github.com/sekkigit/Home-Lab.git init && cd init/
+   - sudo nano .var
    - sudo bash init.sh
+
+Edit .var variables, and ENTER client SSH key.
 
 # Step four
 
