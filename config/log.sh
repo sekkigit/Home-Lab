@@ -18,7 +18,7 @@ INFO:
 
      - Dashboard: $IP:9055
      - Cockpit:   $IP:9090
-     - Nginx:     $IP:81
+     - Nginx:     $IP:8181
      - Portainer: $IP:9000
      - Plex:      $IP:32400/web
      - SpeedTest: $IP:3000

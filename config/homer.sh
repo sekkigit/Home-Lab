@@ -74,7 +74,7 @@ services:
       - name: "Nginx"
         logo: "https://nginxproxymanager.com/icon.png"
         subtitle: "Proxy menager"
-        url: "http://$IP:81"
+        url: "http://$IP:8181"
         target: "_blank"
       - name: "Portainer"
         logo: "https://cdn.iconscout.com/icon/free/png-256/docker-226091.png"
