@@ -7,10 +7,9 @@ cat <<EOF > /home/$USER/docker/homer/config.yml
 # Homepage configuration
 # See https://fontawesome.com/icons for icons options
 
-title: "HomeLab"
+title: "Home-Lab"
 subtitle: "Dashboard"
-logo: "logo.png"
-# icon: "fas fa-skull-crossbones" # Optional icon
+icon: "fas fa-skull-crossbones" # Optional icon
 
 header: true
 footer: false
@@ -54,9 +53,9 @@ message:
 # Optional navbar
 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
 links:
-  - name: "My Git-Hub"
+  - name: "Home-Lab Git-Hub"
     icon: "fab fa-github"
-    url: "https://github.com/sekkigit/home_lab_installation_bash"
+    url: "https://github.com/sekkigit/Home-Lab.git"
     target: "_blank" # optional html a tag target attribute
 
 # Services
