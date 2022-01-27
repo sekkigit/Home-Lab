@@ -17,7 +17,7 @@ services:
       - app-network
   
   speedtest:
-    image: openspeedtest/latest
+    image: openspeedtest/latest:latest
     container_name: openspeedtest
     ports:
       - 3000:3000
@@ -34,6 +34,8 @@ services:
       - "443:4443"
     volumes:
       - "./nginx-proxy-manager:/config:rw"
+    networks:
+      - app-network
 
   dashbord:
     image: b4bz/homer
