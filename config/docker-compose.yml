@@ -37,7 +37,7 @@ services:
     networks:
       - app-network
 
-  dashbord:
+  dashboard:
     image: b4bz/homer
     container_name: homer
     ports:

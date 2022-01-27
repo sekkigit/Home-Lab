@@ -1,6 +1,6 @@
 # Home Lab installation
 
-Script installs software: 
+Script installs: 
    - Cockpit
    - Samba
    - Plex
@@ -12,13 +12,17 @@ Script installs software:
    - Portainer
    - OpenSpeedTest
 
+Step one
+
 Link for dovnload Ubuntu Server 20.04 LTS : https://ubuntu.com/download/server
 
-Clone this repository, edit ".var", and start "init.sh".
+Step two
 
 Create SSH key for client:
    - sudo ssh-keygen -b 4096
    - cat .ssh/id_rsa.pub
+
+Step three
 
 Command list:
    - ssh
@@ -26,7 +30,9 @@ Command list:
    - sudo nano .var
    - sudo bash init.sh
 
-Server dashbord:
+Step four
+
+Server dashboard:
    - port:9055
 
 # This script will:
