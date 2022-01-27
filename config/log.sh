@@ -33,6 +33,7 @@ INFO:
      - SSH user:  $SSHUSER
      - SSH port:  $PORTSSH
 
-CONNECT TO ==> ssh -p $PORTSSH $USER@$IP
+CONNECT WITH SSH ==>     ssh -p $PORTSSH $USER@$IP
+CONNECT WITH HTTP ==>    $IP:9055
 -------------------------------------------------------------------------
 EOF
