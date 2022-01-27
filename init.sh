@@ -134,11 +134,10 @@ echo
 
 banner2 "    R U N  C O N T A I N E R S"
 mv ./config/docker-compose.yml /home/$USER/docker/docker-compose.yml
-docker-compose -f /home/$USER/docker/docker-compose.yml up -d
 cp .var /home/$USER/docker/homer/.var
+docker-compose -f /home/$USER/docker/docker-compose.yml up -d
 mv /home/$USER/docker/homer/config.yml /home/$USER/docker/homer/config.yml.original
 mv ./config/homer/config.yml /home/$USER/docker/homer/config.yml
-docker-compose -f /home/$USER/docker/docker-compose.yml up -d --force-recreate
 docker ps
 
 echo
