@@ -14,7 +14,7 @@ Script installs:
 
 # Step one
 
-Link for dovnload Ubuntu Server 20.04 LTS : https://ubuntu.com/download/server
+Download Ubuntu Server 20.04 LTS : https://ubuntu.com/download/server
 
 # Step two
 
@@ -25,8 +25,9 @@ Create SSH key for client:
 # Step three
 
 Command list:
-   - ssh
+   - connect to host with SSH
    - git clone https://github.com/sekkigit/home_lab_installation_bash.git init && cd init/
+   #Edit variables
    - sudo nano .var
    - sudo bash init.sh
 
