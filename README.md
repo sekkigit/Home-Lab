@@ -12,17 +12,17 @@ Script installs:
    - Portainer
    - OpenSpeedTest
 
-Step one
+# Step one
 
 Link for dovnload Ubuntu Server 20.04 LTS : https://ubuntu.com/download/server
 
-Step two
+# Step two
 
 Create SSH key for client:
    - sudo ssh-keygen -b 4096
    - cat .ssh/id_rsa.pub
 
-Step three
+# Step three
 
 Command list:
    - ssh
@@ -30,7 +30,7 @@ Command list:
    - sudo nano .var
    - sudo bash init.sh
 
-Step four
+# Step four
 
 Server dashboard:
    - port:9055
