@@ -47,11 +47,9 @@ colors:
 
 # Optional message
 message:
-  #url: https://b4bz.io
   style: "is-dark"
   title: "Samba"
-  icon: "fa fa-grin"
-  content: "This is a ip for file server. \\192.168.0.112"
+  content: "This is a ip for file server: $IP"
 
 # Optional navbar
 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
