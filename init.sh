@@ -138,6 +138,7 @@ docker-compose -f /home/$USER/docker/docker-compose.yml up -d
 cp .var /home/$USER/docker/homer/.var
 mv /home/$USER/docker/homer/config.yml /home/$USER/docker/homer/config.yml.original
 mv ./config/homer/config.yml /home/$USER/docker/homer/config.yml
+docker-compose -f /home/$USER/docker/docker-compose.yml up -d --force-recreate
 docker ps
 
 echo

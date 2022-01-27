@@ -35,8 +35,8 @@ services:
     env_file: .var
     #ebter info from new user ($USER)
     environment:
-      - USER=master
-      - GROUP=master
+      - USER=$USER
+      - GROUP=$USER
       - UID=1001
       - GID=1001
     volumes:
