@@ -16,7 +16,8 @@ INFO:
   
   WEB:
 
-     - Cockpit:   $IP:9090       
+     - Dashboard: $IP:9055
+     - Cockpit:   $IP:9090
      - Portainer: $IP:9000
      - Plex:      $IP:32400/web
      - SpeedTest: $IP:3000

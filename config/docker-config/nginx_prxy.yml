@@ -1,4 +1,5 @@
 version: '3'
+
 services:
   nginx-proxy-manager:
     image: jlesage/nginx-proxy-manager:v1.25.0
