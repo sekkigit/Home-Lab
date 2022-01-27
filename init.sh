@@ -134,7 +134,7 @@ echo
 
 banner2 "    R U N  C O N T A I N E R S"
 mv ./config/docker-compose.yml /home/$USER/docker/docker-compose.yml
-cp .var /home/$USER/docker/homer/.var
+cp .var /home/$USER/docker/.env
 docker-compose -f /home/$USER/docker/docker-compose.yml up -d
 mv /home/$USER/docker/homer/config.yml /home/$USER/docker/homer/config.yml.original
 mv ./config/homer/config.yml /home/$USER/docker/homer/config.yml

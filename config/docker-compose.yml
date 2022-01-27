@@ -32,7 +32,7 @@ services:
     ports:
       - 9055:8080
     restart: unless-stopped
-    env_file: .var
+    env_file: .env
     #ebter info from new user ($USER)
     environment:
       - USER=$USER
