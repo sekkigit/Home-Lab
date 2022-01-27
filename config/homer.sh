@@ -9,7 +9,6 @@ cat <<EOF > /home/$USER/docker/homer/config.yml
 
 title: "Home-Lab"
 subtitle: "Dashboard"
-icon: "fas fa-skull-crossbones" # Optional icon
 
 header: true
 footer: false
