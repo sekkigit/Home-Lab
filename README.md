@@ -26,6 +26,9 @@ Command list:
    - sudo nano .var
    - sudo bash init.sh
 
+Server dashbord:
+   - port:9055
+
 # This script will:
 
    - Turn off hibernate, sleep, and suspend (in case u use a laptop for your server)
