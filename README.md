@@ -18,7 +18,7 @@ Download Ubuntu Server 20.04 LTS : https://ubuntu.com/download/server
 
 # Step two
 
-Create SSH key for client:
+Create SSH key on client:
    - sudo ssh-keygen -b 4096
    - cat .ssh/id_rsa.pub
 
@@ -27,13 +27,12 @@ Create SSH key for client:
 Command list:
    - connect to host with SSH
    - git clone https://github.com/sekkigit/home_lab_installation_bash.git init && cd init/
-   #Edit variables
-   - sudo nano .var
+   - sudo nano .var  (edit variables, enter client SSH key)
    - sudo bash init.sh
 
 # Step four
 
-Server dashboard:
+Visit server dashboard:
    - port:9055
 
 # This script will:
