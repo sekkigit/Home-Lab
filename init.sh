@@ -37,7 +37,7 @@ echo
 echo
 
 banner2 "    S W A P  P A R T I T I O N"
-bash ./config/swap.sh &> /dev/null | pv > /dev/null
+bash ./config/swap.sh &> /dev/null
 echo
 echo "CREATED $RAM MB SWAP PARTITION"
 
@@ -45,7 +45,7 @@ echo
 echo
 
 banner2 "    U P D A T E  O S"
-apt update && apt upgrade -y
+bash ./config/update_os.sh
 echo
 echo "ALL UP TO DAIT"
 
@@ -61,7 +61,7 @@ echo
 echo
 
 banner2 "    C R E A T E D  D I R"
-bash ./config/dirtree.sh &> /dev/null | pv > /dev/null
+bash ./config/dirtree.sh &> /dev/null
 echo "
      - .ssh
      - $SAMBA
@@ -72,7 +72,7 @@ echo
 echo
 
 banner2 "    P O L I C Y  U P D A T E"
-bash ./config/dirpolicy.sh &> /dev/null | pv > /dev/null
+bash ./config/dirpolicy.sh &> /dev/null
 echo "
      - $USER
      - Samba
@@ -91,7 +91,7 @@ echo
 echo
 
 banner2 "    L O C K  S S H"
-bash ./config/lock_ssh.sh &> /dev/null | pv > /dev/null
+bash ./config/lock_ssh.sh &> /dev/null
 
 echo
 echo
@@ -100,7 +100,7 @@ sleep 2s
 
 banner2 "    C O C K P I T  S E T U P"
 apt install cockpit -y
-bash ./config/network.sh &> /dev/null | pv > /dev/null
+bash ./config/network.sh &> /dev/null
 netplan apply && service cockpit start
 
 echo
@@ -108,7 +108,7 @@ echo
 
 banner2 "    S A M B A  S E T U P"
 apt install samba -y
-bash ./config/sambaconfig.sh &> /dev/null | pv > /dev/null
+bash ./config/sambaconfig.sh &> /dev/null
 service smbd start
 
 echo
@@ -120,7 +120,7 @@ echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sour
 
 apt update
 echo y | apt install plexmediaserver -y
-bash ./config/plexufw.sh &> /dev/null | pv > /dev/null
+bash ./config/plexufw.sh &> /dev/null
 service plexmediaserver start
 
 echo
@@ -133,18 +133,18 @@ echo
 echo
 
 banner2 "    R U N  C O N T A I N E R S"
-bash ./config/docker-env.sh &> /dev/null | pv > /dev/null
+bash ./config/docker-env.sh &> /dev/null
 cp ./config/docker-compose.yml /home/$USER/docker/docker-compose.yml
 docker-compose -f /home/$USER/docker/docker-compose.yml up -d
 mv /home/$USER/docker/homer/config.yml /home/$USER/docker/homer/config.yml.original
-bash ./config/homer.sh &> /dev/null | pv > /dev/null
+bash ./config/homer.sh &> /dev/null
 docker ps
 
 echo
 echo
 
 banner2 "    U F W  C O N F I G"
-bash ./config/firewall.sh &> /dev/null | pv > /dev/null
+bash ./config/firewall.sh &> /dev/null
 
 sleep 2
 
@@ -184,7 +184,7 @@ echo
 echo
 
 banner2 "C H E K  S T A T U S"
-bash ./config/log.sh &> /dev/null | pv > /dev/null
+bash ./config/log.sh &> /dev/null
 cp log.txt /home/$USER/log.txt
 cat log.txt
 banner "    R E A D Y ! ! !"
