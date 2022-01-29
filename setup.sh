@@ -2,5 +2,5 @@
 
 apt install pv
 clear
-sudo bash init.sh $> /dev/null | pv > /dev/null
+sudo bash init.sh | tee /dev/null | pv > /dev/null
 cat log.txt
