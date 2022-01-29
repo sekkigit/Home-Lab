@@ -25,12 +25,11 @@ banner2()
 
 clear
 banner "    S T A R T "
-apt install pv
 echo
 echo
 
 banner2 "    L A P T O P  L I D  O F F"
-systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target | pv > /dev/null
+systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 echo
 echo "HIBERNATE/SLEEP/SUSPEND IS OFF"
 
@@ -38,7 +37,7 @@ echo
 echo
 
 banner2 "    S W A P  P A R T I T I O N"
-bash ./config/swap.sh | pv > /dev/null
+bash ./config/swap.sh
 echo
 echo "CREATED $RAM MB SWAP PARTITION"
 
@@ -46,7 +45,7 @@ echo
 echo
 
 banner2 "    U P D A T E  O S"
-apt update && apt upgrade -y | pv > /dev/null
+apt update && apt upgrade -y
 echo
 echo "ALL UP TO DAIT"
 
@@ -62,7 +61,7 @@ echo
 echo
 
 banner2 "    C R E A T E D  D I R"
-bash ./config/dirtree.sh | pv > /dev/null
+bash ./config/dirtree.sh
 echo "
      - .ssh
      - $SAMBA
@@ -73,7 +72,7 @@ echo
 echo
 
 banner2 "    P O L I C Y  U P D A T E"
-bash ./config/dirpolicy.sh | pv > /dev/null
+bash ./config/dirpolicy.sh
 echo "
      - $USER
      - Samba
@@ -92,7 +91,7 @@ echo
 echo
 
 banner2 "    L O C K  S S H"
-bash ./config/lock_ssh.sh | pv > /dev/null
+bash ./config/lock_ssh.sh
 
 echo
 echo
@@ -101,7 +100,7 @@ sleep 2s
 
 banner2 "    C O C K P I T  S E T U P"
 apt install cockpit -y
-bash ./config/network.sh | pv > /dev/null
+bash ./config/network.sh
 netplan apply && service cockpit start
 
 echo
@@ -109,7 +108,7 @@ echo
 
 banner2 "    S A M B A  S E T U P"
 apt install samba -y
-bash ./config/sambaconfig.sh | pv > /dev/null
+bash ./config/sambaconfig.sh
 service smbd start
 
 echo
@@ -121,7 +120,7 @@ echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sour
 
 apt update
 echo y | apt install plexmediaserver -y
-bash ./config/plexufw.sh | pv > /dev/null
+bash ./config/plexufw.sh
 service plexmediaserver start
 
 echo
@@ -134,18 +133,18 @@ echo
 echo
 
 banner2 "    R U N  C O N T A I N E R S"
-bash ./config/docker-env.sh | pv > /dev/null
+bash ./config/docker-env.sh
 cp ./config/docker-compose.yml /home/$USER/docker/docker-compose.yml
 docker-compose -f /home/$USER/docker/docker-compose.yml up -d
 mv /home/$USER/docker/homer/config.yml /home/$USER/docker/homer/config.yml.original
-bash ./config/homer.sh | pv > /dev/null
+bash ./config/homer.sh
 docker ps
 
 echo
 echo
 
 banner2 "    U F W  C O N F I G"
-bash ./config/firewall.sh | pv > /dev/null
+bash ./config/firewall.sh
 
 sleep 2
 
@@ -153,7 +152,7 @@ echo
 echo
 
 banner2 "    F A I L 2 B A N"
-apt install fail2ban -y | pv > /dev/null
+apt install fail2ban -y
 systemctl enable fail2ban
 systemctl start fail2ban
 echo
