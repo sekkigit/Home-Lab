@@ -104,7 +104,9 @@ echo
 banner2 "      S A M B A  S E T U P"
 bash ./config/samba.sh &> /dev/null
 bash ./config/sambaconfig.sh &> /dev/null
-service smbd start && service smbd status
+service smbd start
+echo
+samba --version
 echo
 echo "         Samba STARTED"
 
