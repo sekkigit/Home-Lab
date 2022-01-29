@@ -23,7 +23,7 @@ banner2()
   echo "+------------------------------------------+"
 }
 
-clear
+apt install pv && clear
 banner "          S T A R T "
 echo
 echo
