@@ -142,14 +142,6 @@ docker ps
 echo
 echo
 
-banner2 "U F W  C O N F I G"
-bash ./config/firewall.sh &> /dev/null
-ufw status
-sleep 2
-
-echo
-echo
-
 banner2 "F A I L 2 B A N"
 bash ./config/fail2ban.sh &> /dev/null
 systemctl status fail2ban
@@ -166,16 +158,10 @@ echo "Cleared all packages"
 echo
 echo
 
-banner2 "I N S T A L L E D"
-echo "
-          SERVICES:
-
-          - COCKPIT
-          - DOCKER
-          - SAMBA
-          - PLEX
-          - UFW
-          - FAIL2BAN"
+banner2 "U F W  C O N F I G"
+bash ./config/firewall.sh &> /dev/null
+ufw status
+sleep 2
 
 echo
 echo
