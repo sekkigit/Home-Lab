@@ -45,7 +45,7 @@ echo
 echo
 
 banner2 "    U P D A T E  O S"
-bash ./config/update_os.sh
+bash ./config/update_os.sh &> /dev/null
 echo
 echo "ALL UP TO DAIT"
 
@@ -92,6 +92,7 @@ echo
 
 banner2 "    L O C K  S S H"
 bash ./config/lock_ssh.sh &> /dev/null
+echo "ONLY "$SSHUSER" SSH KEY ACEPTED"
 
 echo
 echo
@@ -99,7 +100,7 @@ echo
 sleep 2s
 
 banner2 "    C O C K P I T  S E T U P"
-apt install cockpit -y
+apt install cockpit -y | pv > /dev/null 
 bash ./config/network.sh &> /dev/null
 netplan apply && service cockpit start
 
@@ -107,7 +108,7 @@ echo
 echo
 
 banner2 "    S A M B A  S E T U P"
-apt install samba -y
+apt install samba -y | pv > /dev/null 
 bash ./config/sambaconfig.sh &> /dev/null
 service smbd start
 
@@ -115,11 +116,7 @@ echo
 echo
 
 banner2 "    P L E X  S E T U P"
-curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -
-echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
-
-apt update
-echo y | apt install plexmediaserver -y
+bash ./config/plex.sh | pv > /dev/null
 bash ./config/plexufw.sh &> /dev/null
 service plexmediaserver start
 
@@ -145,14 +142,14 @@ echo
 
 banner2 "    U F W  C O N F I G"
 bash ./config/firewall.sh &> /dev/null
-
+ufw status
 sleep 2
 
 echo
 echo
 
 banner2 "    F A I L 2 B A N"
-apt install fail2ban -y
+apt install fail2ban -y  | pv > /dev/null
 systemctl enable fail2ban
 systemctl start fail2ban
 echo
