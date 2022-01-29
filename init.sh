@@ -93,7 +93,7 @@ echo
 banner2 "      L O C K  S S H"
 bash ./config/lock_ssh.sh &> /dev/null
 echo
-echo "         ONLY "$SSHUSER" SSH KEY ADDED"
+echo "         "$SSHUSER" SSH KEY ADDED TO WHITELIST"
 
 echo
 echo
@@ -113,6 +113,7 @@ banner2 "      S A M B A  S E T U P"
 bash ./config/samba.sh &> /dev/null
 bash ./config/sambaconfig.sh &> /dev/null
 service smbd start && service smbd status
+echo
 echo "         Samba STARTED"
 
 echo
@@ -139,7 +140,7 @@ echo
 banner2 "      C L E A N  U P  P A C K A G E S"
 bash ./config/clear.sh &> /dev/null
 echo
-echo "         Cleared all packages"
+echo "         Packages cleared"
 
 echo
 echo
