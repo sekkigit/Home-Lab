@@ -7,13 +7,6 @@
 
 source .var
 
-if pgrep -x "gedit" > /dev/null
-then
-    echo "Running"
-else
-    echo "Stopped"
-fi
-
 banner()
 {
   echo "+------------------------------------------+"
@@ -31,7 +24,7 @@ banner2()
 }
 
 clear
-banner "            S T A R T "
+banner "              S T A R T "
 echo
 echo
 
@@ -179,4 +172,4 @@ banner2 "      C H E K  S T A T U S"
 bash ./config/log.sh &> /dev/null
 cp log /home/$USER/log
 cat log
-banner "            R E A D Y ! ! !"
+banner "              R E A D Y ! ! !"
