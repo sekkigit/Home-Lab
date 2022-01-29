@@ -1,28 +1,39 @@
 #REQUIRED Public Key from client - cat /home/"USER"/.ssh/id_rsa.pub
 KEY="ENTER KEY.PUB"
+
 #Client user name
 SSHUSER="my_linux_user"
+
 #Host username
 USER="user"
+
 #Host password
 USERPASS="pass"
+
 #Host roll
 USERROLL="admin"
+
 #Host group
 USERGROUP="usergr"
 
 #OS version
 OSVER=$(cat /etc/*release | awk '/DISTRIB_DESCRIPTION=/ {print $2}')
 
+
 #Network/Firewall
+
 #Default gateway (ruter ip)
 GATE4=$(ip route | awk '/default/ {print $3; exit}')
+
 #Client subnet
 SUBNET=$(ip -o -f inet addr show | awk '/scope global/ {printf "%s ", $4}' | awk '{print $1}')
+
 #Host network adapter
 NETADAPT=$(ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//")
+
 #Host IP
 IP=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
+
 #Host public IP
 PUBIP=$(curl ifconfig.me)
 
@@ -34,8 +45,10 @@ SAMBA="fileserver"
 PLEX="plexmedia"
 
 #Lock_ssh
+
 #Open SSH port
 PORTSSH="22"
+
 #Edit sshd_confg
 FILE="/etc/ssh/sshd_config"
 PARAM[1]="PermitRootLogin "

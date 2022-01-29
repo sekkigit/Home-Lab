@@ -23,8 +23,9 @@ banner2()
   echo "+------------------------------------------+"
 }
 
+apt install pv
 clear
-banner "       S T A R T "
+banner "            S T A R T "
 echo
 echo
 
@@ -71,17 +72,6 @@ echo "
 echo
 echo
 
-banner2 "      P O L I C Y  U P D A T E"
-bash ./config/dirpolicy.sh &> /dev/null
-echo "
-          - $USER
-          - Samba
-          - Docker
-          - Plex"
-
-echo
-echo
-
 banner2 "      S S H  K E Y"
 bash ./config/enter_ssh.sh &> /dev/null
 bash ./config/lock_ssh.sh &> /dev/null
@@ -92,7 +82,7 @@ echo
 echo
 
 banner2 "      C O C K P I T  S E T U P"
-bash ./config/cockpit.sh &> /dev/null
+bash ./config/cockpit.sh &> /dev/null | pv > log-cockpit
 bash ./config/network.sh &> /dev/null
 netplan apply && service cockpit start
 echo
@@ -102,7 +92,7 @@ echo
 echo
 
 banner2 "      S A M B A  S E T U P"
-bash ./config/samba.sh &> /dev/null
+bash ./config/samba.sh &> /dev/null | pv > log-samba
 bash ./config/sambaconfig.sh &> /dev/null
 service smbd start
 echo
@@ -114,7 +104,7 @@ echo
 echo
 
 banner2 "      P L E X  S E T U P"
-bash ./config/plex.sh &> /dev/null
+bash ./config/plex.sh &> /dev/null | pv > log-plex
 bash ./config/plexufw.sh &> /dev/null
 service plexmediaserver start
 echo
@@ -135,6 +125,17 @@ banner2 "      C L E A N  U P  P A C K A G E S"
 bash ./config/clear.sh &> /dev/null
 echo
 echo "         Packages cleared"
+
+echo
+echo
+
+banner2 "      P O L I C Y  U P D A T E"
+bash ./config/dirpolicy.sh &> /dev/null
+echo "
+          - $USER
+          - Samba
+          - Docker
+          - Plex"
 
 echo
 echo
@@ -172,4 +173,4 @@ banner2 "      C H E K  S T A T U S"
 bash ./config/log.sh &> /dev/null
 cp log /home/$USER/log
 cat log
-banner "       R E A D Y ! ! !"
+banner "            R E A D Y ! ! !"
