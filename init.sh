@@ -84,21 +84,12 @@ echo
 
 banner2 "      S S H  K E Y"
 bash ./config/enter_ssh.sh &> /dev/null
+bash ./config/lock_ssh.sh &> /dev/null
 echo
 echo "         SSH KEY FROM "$SSHUSER" ADDED"
 
 echo
 echo
-
-banner2 "      L O C K  S S H"
-bash ./config/lock_ssh.sh &> /dev/null
-echo
-echo "         "$SSHUSER" SSH KEY ADDED TO WHITELIST"
-
-echo
-echo
-
-sleep 2s
 
 banner2 "      C O C K P I T  S E T U P"
 bash ./config/cockpit.sh &> /dev/null
@@ -106,6 +97,7 @@ bash ./config/network.sh &> /dev/null
 netplan apply && service cockpit start
 echo
 echo "         Cockpit STARTED"
+
 echo
 echo
 
