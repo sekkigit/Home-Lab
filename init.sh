@@ -55,7 +55,7 @@ echo
 banner2 "     C R E A T E  U S E R"
 useradd -p $(openssl passwd $USERPASS) $USER -m -c "$USERROLL" -G sudo -s /bin/bash
 echo
-echo "          $USER"
+echo "          User: $USER"
 
 echo
 echo
@@ -81,7 +81,7 @@ echo
 echo
 
 banner2 "     C O C K P I T  S E T U P"
-bash ./config/cockpit.sh &> /home/$USER/log-cockpit
+bash ./config/cockpit.sh &> /dev/null
 bash ./config/network.sh &> /dev/null
 netplan apply && service cockpit start
 echo
@@ -91,7 +91,7 @@ echo
 echo
 
 banner2 "     S A M B A  S E T U P"
-bash ./config/samba.sh &> /home/$USER/log-samba
+bash ./config/samba.sh &> /dev/null
 bash ./config/sambaconfig.sh &> /dev/null
 service smbd start
 echo
@@ -103,7 +103,7 @@ echo
 echo
 
 banner2 "     P L E X  S E T U P"
-bash ./config/plex.sh &> /home/$USER/log-plex
+bash ./config/plex.sh &> /dev/null
 bash ./config/plexufw.sh &> /dev/null
 service plexmediaserver start
 echo
@@ -140,7 +140,7 @@ echo
 echo
 
 banner2 "     D O C K E R  S E T U P"
-bash ./config/docker.sh &> /home/$USER/log-docker
+bash ./config/docker.sh &> /dev/null
 echo
 docker --version && docker-compose --version
 
