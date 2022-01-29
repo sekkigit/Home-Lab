@@ -168,8 +168,8 @@ ufw status
 echo
 echo
 
-banner2 "     C H E K  S T A T U S"
+banner2 "     I N F O"
 bash ./config/log.sh &> /dev/null
 cp log /home/$USER/log
 cat log
-banner "              R E A D Y ! ! !"
+banner "           R E A D Y ! ! !"
