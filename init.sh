@@ -82,7 +82,7 @@ echo
 echo
 
 banner2 "      C O C K P I T  S E T U P"
-bash ./config/cockpit.sh &> /dev/null | pv > log-cockpit
+bash ./config/cockpit.sh &> log-cockpit | pv > /dev/null
 bash ./config/network.sh &> /dev/null
 netplan apply && service cockpit start
 echo
@@ -92,7 +92,7 @@ echo
 echo
 
 banner2 "      S A M B A  S E T U P"
-bash ./config/samba.sh &> /dev/null | pv > log-samba
+bash ./config/samba.sh &> log-samba | pv > /dev/null
 bash ./config/sambaconfig.sh &> /dev/null
 service smbd start
 echo
@@ -104,7 +104,7 @@ echo
 echo
 
 banner2 "      P L E X  S E T U P"
-bash ./config/plex.sh &> /dev/null | pv > log-plex
+bash ./config/plex.sh &> log-plex | pv > /dev/null
 bash ./config/plexufw.sh &> /dev/null
 service plexmediaserver start
 echo
