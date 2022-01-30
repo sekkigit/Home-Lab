@@ -80,7 +80,7 @@ services:
       - app-network
 
   prometheus:
-    image: prom/prometheus:latest
+    image: grafana/prometheus-pulsar-remote-write-build-image:latest
     container_name: prometheus
     ports:
       - "9010:9090"
