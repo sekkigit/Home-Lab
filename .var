@@ -21,6 +21,8 @@ OSVER=$(cat /etc/*release | awk '/DISTRIB_DESCRIPTION=/ {print $2}')
 
 #Time zone
 TIMEZONE="Europe/Zagreb"
+
+
 #Network/Firewall
 
 #Default gateway (ruter ip)
