@@ -23,6 +23,7 @@ banner2()
   echo "+------------------------------------------+"
 }
 
+bash ./config/timezone.sh &> /dev/null
 clear
 banner "              S T A R T "
 echo

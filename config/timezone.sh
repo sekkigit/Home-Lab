@@ -1,4 +1,5 @@
 #!/bin/bash
 
-Etc/GMT+1
-Europe/Zagreb
+source .var
+
+timedatectl set-timezone $TIMEZONE
