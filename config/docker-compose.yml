@@ -84,6 +84,9 @@ services:
     container_name: prometheus
     ports:
       - "9010:9090"
+    environment:
+      - UID=1000
+      - GID=1000
     volumes:
       - /etc/prometheus:/etc/prometheus
       - prometheus-data:/prometheus
