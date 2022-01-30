@@ -81,6 +81,7 @@ echo
 
 banner2 "     C O C K P I T  S E T U P"
 bash ./config/cockpit.sh &> /dev/null
+bash ./config/network.sh &> /dev/null
 echo
 echo "         Cockpit STARTED"
 
@@ -89,6 +90,7 @@ echo
 
 banner2 "     S A M B A  S E T U P"
 bash ./config/samba.sh &> /dev/null
+bash ./config/sambaconfig.sh &> /dev/null
 echo
 samba --version
 echo
@@ -99,6 +101,7 @@ echo
 
 banner2 "     P L E X  S E T U P"
 bash ./config/plex.sh &> /dev/null
+bash ./config/plexufw.sh &> /dev/null
 echo
 echo "         Plex STARTED"
 

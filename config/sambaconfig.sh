@@ -35,3 +35,5 @@ force directory mode = 0775
 public = yes
 writable = yes
 EOF
+
+service smbd start
