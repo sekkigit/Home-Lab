@@ -16,6 +16,6 @@ usermod -aG docker,adm $USER
 chown -R $USER:$USER /home/$USER
 chown -R plex: /home/$USER/$SAMBA/$PLEX
 chown -R $USER:docker /home/$USER
-
 chown -R smbuser:smbgroup /home/$USER/$SAMBA
+
 chmod -R g+w /home/$USER/$SAMBA
