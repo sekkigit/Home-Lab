@@ -2,7 +2,7 @@
 
 source .var
 
-cat <<EOF > /etc/prometheus/prometheus.yml
+cat <<EOF > /home/$USER/docker/prometheus/prometheus.yml
 global:
   scrape_interval:     15s # By default, scrape targets every 15 seconds.
 

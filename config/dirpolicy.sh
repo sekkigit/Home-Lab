@@ -7,7 +7,7 @@ groupadd --system smbgroup
 groupadd --system dockergroup
 groupadd --system plexgroup
 
-useradd --system --no-create-home --group dockergroup,$USERGROUP -s /bin/false docker
+useradd --system --no-create-home --group dockergroup,$USERGROUP,$USER -s /bin/false docker
 useradd --system --no-create-home --group smbgroup -s /bin/false smbuser
 useradd --system --no-create-home --group plexgroup -s /bin/false plex
 

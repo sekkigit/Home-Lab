@@ -10,7 +10,7 @@ services:
     volumes:
       - "/home/master/docker/nginx-proxy-manager:/config:rw"
 
-
+#######################################################################
 
 version: '3'
 services:
