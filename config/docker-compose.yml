@@ -90,7 +90,7 @@ services:
     command:
       - "--config.file=/config/prometheus.yml"
     restart: unless-stopped
-  networks:
+    networks:
       - app-network
     
   grafana:
@@ -101,7 +101,7 @@ services:
     volumes:
       - grafana-data:/var/lib/grafana
     restart: unless-stopped
-  networks:
+    networks:
       - app-network
 
   node_exporter:
@@ -130,7 +130,7 @@ services:
     devices:
       - /dev/kmsg
     restart: unless-stopped
-  networks:
+    networks:
       - app-network
 
 networks:
