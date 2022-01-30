@@ -1,5 +1,11 @@
 version: '3'
 
+volumes:
+  prometheus-data:
+    driver: local
+  grafana-data:
+    driver: local
+
 services:
   portainer:
     image: portainer/portainer-ce
@@ -11,7 +17,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./portainer-data:/data
     ports:
-      - 9000:9000
+      - 9099:9000
     restart: unless-stopped
     networks:
       - app-network
@@ -20,21 +26,39 @@ services:
     image: openspeedtest/latest:latest
     container_name: openspeedtest
     ports:
-      - 3000:3000
-      - 3001:3001
+      - 3005:3000
+      - 3006:3001
     restart: unless-stopped
     networks:
       - app-network
   
-  nginx-proxy-manager:
-    image: jlesage/nginx-proxy-manager:v1.25.0
-    container_name: nginx-proxy
+  nginx:
+    image: 'jc21/nginx-proxy-manager:latest'
     ports:
-      - "8181:8181"
-      - "80:8080"
-      - "443:4443"
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    environment:
+      DB_MYSQL_HOST: "db"
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: "npm"
+      DB_MYSQL_PASSWORD: "npm"
+      DB_MYSQL_NAME: "npm"
     volumes:
-      - "./nginx-proxy-manager:/config:rw"
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    networks:
+      - app-network
+
+  db:
+    image: 'jc21/mariadb-aria:latest'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'npm'
+      MYSQL_DATABASE: 'npm'
+      MYSQL_USER: 'npm'
+      MYSQL_PASSWORD: 'npm'
+    volumes:
+      - ./data/mysql:/var/lib/mysql
     networks:
       - app-network
 
@@ -53,6 +77,60 @@ services:
     volumes:
       - ./homer:/www/assets
     networks:
+      - app-network
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9010:9000"
+    volumes:
+      - /etc/prometheus:/config
+      - prometheus-data:/prometheus
+    command:
+      - "--config.file=/config/prometheus.yml"
+    restart: unless-stopped
+  networks:
+      - app-network
+    
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    ports:
+      - "4020:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    restart: unless-stopped
+  networks:
+      - app-network
+
+  node_exporter:
+    image: quay.io/prometheus/node-exporter:latest
+    container_name: node_exporter
+    command:
+      - '--path.rootfs=/host'
+    pid: host
+    restart: unless-stopped
+    volumes:
+      - '/:/host:ro,rslave'
+    networks:
+      - app-network
+
+  cadvisor:
+    image: google/cadvisor:latest
+    container_name: cadvisor
+    ports:
+      - "8030:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    devices:
+      - /dev/kmsg
+    restart: unless-stopped
+  networks:
       - app-network
 
 networks:

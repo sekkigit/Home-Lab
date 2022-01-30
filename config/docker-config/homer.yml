@@ -16,3 +16,18 @@ dashbord:
       - ./homer:/www/assets
     networks:
       - app-network
+
+
+version: '3'
+
+services:
+  homer:
+    image: b4bz/homer:latest
+    container_name: homer
+    ports:
+      - "8080:8080"
+    volumes:
+      - /etc/homer/assets/:/www/assets
+    restart: unless-stopped
+    networks:
+      - app-network

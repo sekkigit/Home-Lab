@@ -154,6 +154,7 @@ cp ./config/docker-compose.yml /home/$USER/docker/docker-compose.yml
 docker-compose -f /home/$USER/docker/docker-compose.yml up -d
 mv /home/$USER/docker/homer/config.yml /home/$USER/docker/homer/config.yml.original
 bash ./config/homer.sh &> /dev/null
+bash ./config/prometheus.sh &> /dev/null
 echo
 docker ps
 

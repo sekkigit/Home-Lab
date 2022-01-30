@@ -18,11 +18,14 @@ ____________________________________________________________
 |     WEB:
 |
 |        - Dashboard: $IP:9055
+|        - Grafana:   $IP:4020
 |        - Cockpit:   $IP:9090
-|        - Nginx:     $IP:8181
-|        - Portainer: $IP:9000
+|        - Nginx:     $IP:81
+|        - Portainer: $IP:9099
 |        - Plex:      $IP:32400/web
-|        - SpeedTest: $IP:3000
+|        - SpeedTest: $IP:3005
+|        - Prometheus:$IP:9010
+|        - Cadvisor:  $IP:8030
 |        - Public IP: $PUBIP
 |
 |     EXPLORER:
