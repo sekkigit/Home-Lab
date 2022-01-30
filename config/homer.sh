@@ -2,8 +2,9 @@
 
 source .var
 
+mv /home/$USER/docker/homer/config.yml /home/$USER/docker/homer/config.yml.original
+
 cat <<EOF > /home/$USER/docker/homer/config.yml
----
 # Homepage configuration
 # See https://fontawesome.com/icons for icons options
 

@@ -5,3 +5,7 @@ echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sour
 
 apt update
 echo y | apt install plexmediaserver -y
+
+bash plexufw.sh
+
+service plexmediaserver start

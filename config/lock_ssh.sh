@@ -2,6 +2,8 @@
 
 source .var
 
+echo "$KEY" >> /home/$USER/.ssh/authorized_keys
+
 edit_sshd_config(){
   for PARAM in ${PARAM[@]}
   do

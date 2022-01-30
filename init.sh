@@ -72,7 +72,6 @@ echo
 echo
 
 banner2 "     S S H  K E Y"
-bash ./config/enter_ssh.sh &> /dev/null
 bash ./config/lock_ssh.sh &> /dev/null
 echo
 echo "         SSH KEY FROM "$SSHUSER" ADDED"
@@ -82,8 +81,6 @@ echo
 
 banner2 "     C O C K P I T  S E T U P"
 bash ./config/cockpit.sh &> /dev/null
-bash ./config/network.sh &> /dev/null
-netplan apply && service cockpit start
 echo
 echo "         Cockpit STARTED"
 
@@ -92,8 +89,6 @@ echo
 
 banner2 "     S A M B A  S E T U P"
 bash ./config/samba.sh &> /dev/null
-bash ./config/sambaconfig.sh &> /dev/null
-service smbd start
 echo
 samba --version
 echo
@@ -104,8 +99,6 @@ echo
 
 banner2 "     P L E X  S E T U P"
 bash ./config/plex.sh &> /dev/null
-bash ./config/plexufw.sh &> /dev/null
-service plexmediaserver start
 echo
 echo "         Plex STARTED"
 
@@ -150,11 +143,10 @@ echo
 banner2 "     R U N  C O N T A I N E R S"
 echo
 bash ./config/docker-env.sh &> /dev/null
-bash ./config/prometheus.sh &> /dev/null
-bash ./config/homer.sh &> /dev/null
 cp ./config/docker-compose.yml /home/$USER/docker/docker-compose.yml
 docker-compose -f /home/$USER/docker/docker-compose.yml up -d
-mv /home/$USER/docker/homer/config.yml /home/$USER/docker/homer/config.yml.original
+bash ./config/homer.sh &> /dev/null
+bash ./config/prometheus.sh &> /dev/null
 echo
 docker ps
 
