@@ -16,11 +16,11 @@ USERROLL="admin"
 #Host group
 USERGROUP="usergr"
 
-#OS version
-OSVER=$(cat /etc/*release | awk '/DISTRIB_DESCRIPTION=/ {print $2}')
-
 #Time zone
 TIMEZONE="Europe/Zagreb"
+
+#OS version
+OSVER=$(cat /etc/*release | awk '/DISTRIB_DESCRIPTION=/ {print $2}')
 
 
 #Network/Firewall
