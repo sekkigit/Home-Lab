@@ -35,9 +35,11 @@
    - Homer
    - OpenSpeedTest
 
+
 # Step one
 
 Download and install Ubuntu Server 20.04 LTS : https://ubuntu.com/download/server
+
 
 # Step two
 
@@ -45,6 +47,7 @@ Create SSH key on client:
    - sudo ssh-keygen -b 4096
    - cat .ssh/id_rsa.pub
    - connect to the new host with SSH
+
 
 # Step three
 
@@ -54,6 +57,7 @@ Enter commands on host:
    - sudo bash init.sh
 
 Edit .var variables, ENTER client SSH key.
+
 
 # Step four
 
@@ -81,6 +85,7 @@ Portainer
 Plex
    - Server Setup
    - Add media from /home/USERNAME/fileserver/plexmedia
+
 
 # Warning
 
