@@ -1,6 +1,25 @@
 # Home Lab installation
 
-Script installs: 
+# This script will:
+
+   - Turn off hibernate, sleep, and suspend (in case u use a laptop for your server)
+   - Create swap partition
+   - Update and upgrade ubuntu
+   - Create an admin user for the server
+   - Create directory tree
+   - Menage users
+   - Insert your client SSH key and lock SSH
+   - Install Cockpit
+   - Install Samba
+   - Install Plex media server
+   - Install Docker, Docker-compose
+   - Run Portainer, OpenSpeedTest, Nginx-proxy-manager, Grafana, Prometheus, Node Exporter, and Cadvisor
+   - Configure and run UFW (firewall)
+   - Install Fail2Ban
+   - Display basic info about server
+
+# Script installs: 
+
    - Cockpit
    - Samba
    - Plex
@@ -10,6 +29,8 @@ Script installs:
    - Nginx proxy manager
    - Grafana
    - Prometheus
+   - Cadvisor
+   - Node Exporter
    - Portainer
    - Homer
    - OpenSpeedTest
@@ -60,22 +81,3 @@ Cockpit
 Plex
    - Server Setup
    - Add media from /home/USERNAME/fileserver/plexmedia
-
-# This script will:
-
-   - Turn off hibernate, sleep, and suspend (in case u use a laptop for your server)
-   - Create swap partition
-   - Update and upgrade ubuntu
-   - Create an admin user for the server
-   - Create directory tree
-   - Menage users
-   - Insert your client SSH key
-   - Lock SSH
-   - Install Cockpit
-   - Install Samba
-   - Install Plex media server
-   - Install Docker, Docker-compose
-   - Run Portainer, OpenSpeedTest, Nginx-proxy-manager, Grafana, Prometheus, Node Exporter, and Cadvisor
-   - Configure and run UFW (firewall)
-   - Install Fail2Ban
-   - Display basic info about server
