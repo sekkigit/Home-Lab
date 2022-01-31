@@ -54,8 +54,8 @@ Portainer
 
 Cockpit
    - Menage accounts
-   - Set time zone
    - Change configuration options
+   - Set time zone
 
 Plex
    - Server Setup
