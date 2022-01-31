@@ -8,6 +8,8 @@ Script installs:
    - Docker
    - Docker-compose
    - Nginx proxy manager
+   - Grafana
+   - Prometheus
    - Portainer
    - Homer
    - OpenSpeedTest
@@ -34,8 +36,30 @@ Edit .var variables, and ENTER client SSH key.
 
 # Step four
 
-Visit server dashboard:
+Visit server dashboard (Homer):
    - port:9055
+
+Grafana
+   - Open Grafana
+   - Add Prometheus for the data base
+   - Import dashboard from file or Grafana.com (ID 14282 - node_exporter, ID 1860 - cadvisor)
+
+Nginx proxy manager
+   - Login to the web UI of NGINX proxy manager:
+      - username: admin@example.com
+      - password: changeme
+
+Portainer
+   - Edit environment details: Public IP
+
+Cockpit
+   - Menage accounts
+   - Set time zone
+   - Change configuration options
+
+Plex
+   - Server Setup
+   - Add media from /home/USERNAME/fileserver/plexmedia
 
 # This script will:
 
@@ -50,7 +74,8 @@ Visit server dashboard:
    - Install Cockpit
    - Install Samba
    - Install Plex media server
-   - Install Docker, Docker-compose, Portainer and OpenSpeedTest, Nginx-proxy-manager
+   - Install Docker, Docker-compose
+   - Run Portainer, OpenSpeedTest, Nginx-proxy-manager, Grafana, Prometheus, Node Exporter, and Cadvisor
    - Configure and run UFW (firewall)
    - Install Fail2Ban
    - Display basic info about server
