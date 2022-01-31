@@ -53,12 +53,17 @@ Enter commands on host:
    - sudo nano .var
    - sudo bash init.sh
 
-Edit .var variables, and ENTER client SSH key.
+Edit .var variables, ENTER client SSH key.
 
 # Step four
 
 Visit server dashboard (Homer):
    - port:9055
+
+Cockpit
+   - Menage accounts
+   - Change configuration options
+   - Set time zone (NTP server: time.google.com)
 
 Grafana
    - Open Grafana
@@ -73,11 +78,10 @@ Nginx proxy manager
 Portainer
    - Edit environment details: Public IP
 
-Cockpit
-   - Menage accounts
-   - Change configuration options
-   - Set time zone
-
 Plex
    - Server Setup
    - Add media from /home/USERNAME/fileserver/plexmedia
+
+# Warning
+
+⚠️ Please beware that products can change over time. I do my best to keep up with the latest changes and releases, but please understand that this won’t always be the case.
