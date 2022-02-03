@@ -13,7 +13,7 @@
    - Install Samba
    - Install Plex media server
    - Install Docker, Docker-compose
-   - Run Portainer, OpenSpeedTest, Grafana, Prometheus, Node Exporter, and Cadvisor
+   - Run Portainer, Treafik, OpenSpeedTest, Grafana, Prometheus, Node Exporter, and Cadvisor
    - Configure and run UFW (firewall)
    - Install Fail2Ban
    - Display basic info about server
@@ -26,6 +26,7 @@
    - Fail2Ban
    - Docker
    - Docker-compose
+   - Treafik
    - Grafana
    - Prometheus
    - Cadvisor
