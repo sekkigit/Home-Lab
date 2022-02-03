@@ -2,7 +2,7 @@
 
 source .var
 
-cat <<EOF > /home/$USER/docker/traefik/treafik.yml
+cat <<EOF > /home/$USER/docker/treafik/treafik.yml
 global:
   checkNewVersion: true
   sendAnonymousUsage: false  # true by default
@@ -35,9 +35,9 @@ entryPoints:
     # ---
     http:
       redirections:
-        entryPoint:
-          to: websecure
-          scheme: https
+       entryPoint:
+        to: websecure
+        scheme: https
 
   websecure:
     address: :443
@@ -77,5 +77,3 @@ providers:
     directory: /etc/traefik
     watch: true
 EOF
-
-netplan apply && service cockpit start && systemctl start cockpit

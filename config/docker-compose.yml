@@ -23,7 +23,7 @@ services:
       # (Optional) Expose Dashboard
       - "81:8080"  # Don't do this in production!
     volumes:
-      - ./traefik:/etc/traefik
+      - ./treafik:/etc/traefik
       - certs:/etc/traefik/certs
       - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
