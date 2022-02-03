@@ -123,6 +123,7 @@ banner2 "     D O C K E R  S E T U P"
 bash ./config/docker.sh &> /dev/null
 echo
 docker --version && docker-compose --version
+echo
 echo -e "$COLOR         Docker is $(systemctl is-enabled docker) and $(systemctl is-active docker)\e[0m"
 
 echo
