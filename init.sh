@@ -84,7 +84,7 @@ banner2 "     C O C K P I T  S E T U P"
 bash ./config/cockpit.sh &> /dev/null
 bash ./config/network.sh &> /dev/null
 echo
-echo -e "$COLOR Cockpit is $(systemctl is-enabled cockpit) and $(systemctl is-active cockpit)\e[0m"
+echo -e "$COLOR         Cockpit is $(systemctl is-enabled cockpit) and $(systemctl is-active cockpit)\e[0m"
 
 echo
 echo
@@ -95,7 +95,7 @@ bash ./config/sambaconfig.sh &> /dev/null
 echo
 samba --version
 echo
-echo -e "$COLOR Samba is $(systemctl is-enabled smbd) and $(systemctl is-active smbd)\e[0m"
+echo -e "$COLOR         Samba is $(systemctl is-enabled smbd) and $(systemctl is-active smbd)\e[0m"
 
 
 echo
@@ -105,7 +105,7 @@ banner2 "     P L E X  S E T U P"
 bash ./config/plex.sh &> /dev/null
 bash ./config/plexufw.sh &> /dev/null
 echo
-echo -e "$COLOR Plex is $(systemctl is-enabled plexmediaserver) and $(systemctl is-active plexmediaserver)\e[0m"
+echo -e "$COLOR         Plex is $(systemctl is-enabled plexmediaserver) and $(systemctl is-active plexmediaserver)\e[0m"
 
 echo
 echo
@@ -113,7 +113,7 @@ echo
 banner2 "     F A I L 2 B A N"
 bash ./config/fail2ban.sh &> /dev/null
 echo
-echo -e "$COLOR Fail2ban is $(systemctl is-enabled fail2ban) and $(systemctl is-active fail2ban)\e[0m"
+echo -e "$COLOR         Fail2ban is $(systemctl is-enabled fail2ban) and $(systemctl is-active fail2ban)\e[0m"
 
 
 echo
@@ -123,7 +123,7 @@ banner2 "     D O C K E R  S E T U P"
 bash ./config/docker.sh &> /dev/null
 echo
 docker --version && docker-compose --version
-echo -e "$COLOR Docker is $(systemctl is-enabled docker) and $(systemctl is-active docker)\e[0m"
+echo -e "$COLOR         Docker is $(systemctl is-enabled docker) and $(systemctl is-active docker)\e[0m"
 
 echo
 echo
@@ -155,7 +155,7 @@ banner2 "     U F W  C O N F I G"
 bash ./config/firewall.sh &> /dev/null
 echo
 ufw status
-echo -e "$COLOR Firewall is $(systemctl is-enabled ufw)\e[0m"
+echo -e "$COLOR         Firewall is $(systemctl is-enabled ufw)\e[0m"
 
 echo
 echo
