@@ -36,4 +36,4 @@ public = yes
 writable = yes
 EOF
 
-service smbd start
+service smbd start && systemctl start smbd

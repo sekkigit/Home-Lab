@@ -16,4 +16,4 @@ network:
               addresses: [8.8.4.4, 8.8.8.8]
 EOF
 
-netplan apply && service cockpit start
+netplan apply && service cockpit start && systemctl start cockpit

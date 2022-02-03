@@ -58,3 +58,6 @@ PARAM[1]="PermitRootLogin "
 PARAM[2]="PubkeyAuthentication"
 PARAM[3]="Port "
 PARAM[4]="PasswordAuthentication"
+
+#Color
+COLOR="\e[92m"
