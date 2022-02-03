@@ -115,16 +115,6 @@ bash ./config/fail2ban.sh &> /dev/null
 echo
 echo -e "$COLOR Fail2ban is $(systemctl is-enabled fail2ban) and $(systemctl is-active fail2ban)"
 
-echo
-echo
-
-banner2 "     P O L I C Y  U P D A T E"
-bash ./config/dirpolicy.sh &> /dev/null
-echo -e "$COLOR
-          - $USER
-          - Samba
-          - Docker
-          - Plex"
 
 echo
 echo
@@ -148,6 +138,16 @@ bash ./config/prometheus.sh &> /dev/null
 echo
 docker ps
 
+echo
+echo
+
+banner2 "     P O L I C Y  U P D A T E"
+bash ./config/dirpolicy.sh &> /dev/null
+echo -e "$COLOR
+          - $USER
+          - Samba
+          - Docker
+          - Plex"
 echo
 echo
 
