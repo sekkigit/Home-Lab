@@ -32,11 +32,12 @@ services:
   web:
     image: nginx:latest
     container_name: nginx
+    env_file: .env
     labels:
       - "maintainer=NGINX Docker Maintainers <docker>"
       - "treafik.enable=true"
       - "treafik.http.routers.nginx.entrypoints=web, websecure"
-      - "treafik.http.routers.nginx.rule=Host('nginx.disrapid.com')"
+      - "treafik.http.routers.nginx.rule=Host('$WEB')"
       - "treafik.http.routers.nginx.tls=true"
       - "treafik.http.routers.nginx.tls.certresolver=production"
     volumes:

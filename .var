@@ -10,6 +10,9 @@ USER="user"
 #Host password
 USERPASS="pass"
 
+#Web domain
+WEB="website.com"
+
 #Host roll
 USERROLL="admin"
 
