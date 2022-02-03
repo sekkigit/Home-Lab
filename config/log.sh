@@ -20,7 +20,7 @@ ____________________________________________________________
 |        - Dashboard: $IP:9055
 |        - Grafana:   $IP:4020
 |        - Cockpit:   $IP:9090
-|        - Nginx:     $IP:81
+|        - Treafik:   $IP:81
 |        - Portainer: $IP:9099
 |        - Plex:      $IP:32400/web
 |        - SpeedTest: $IP:3005
