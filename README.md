@@ -13,7 +13,7 @@
    - Install Samba
    - Install Plex media server
    - Install Docker, Docker-compose
-   - Run Portainer, OpenSpeedTest, Nginx-proxy-manager, Grafana, Prometheus, Node Exporter, and Cadvisor
+   - Run Portainer, OpenSpeedTest, Grafana, Prometheus, Node Exporter, and Cadvisor
    - Configure and run UFW (firewall)
    - Install Fail2Ban
    - Display basic info about server
@@ -26,7 +26,6 @@
    - Fail2Ban
    - Docker
    - Docker-compose
-   - Nginx proxy manager
    - Grafana
    - Prometheus
    - Cadvisor
@@ -74,11 +73,6 @@ Grafana
    - Open Grafana
    - Add Prometheus for the data base
    - Import dashboard from file or Grafana.com (ID 14282 - node_exporter, ID 1860 - cadvisor)
-
-Nginx proxy manager
-   - Login to the web UI of NGINX proxy manager:
-      - username: admin@example.com
-      - password: changeme
 
 Portainer
    - Edit environment details: Public IP

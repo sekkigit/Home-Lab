@@ -5,8 +5,47 @@ volumes:
     driver: local
   grafana-data:
     driver: local
+  certs:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge
 
 services:
+  traefik:
+    image: "traefik:v2.5"
+    container_name: "traefik"
+    env_file: .env
+    ports:
+      - "80:80"
+      - "443:443"
+      # (Optional) Expose Dashboard
+      - "81:8080"  # Don't do this in production!
+    volumes:
+      - ./traefik:/etc/traefik
+      - certs:/etc/traefik/certs
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - app-network
+  
+  web:
+    image: nginx:latest
+    container_name: nginx
+    labels:
+      - "maintainer=NGINX Docker Maintainers <docker>"
+      - "treafik.enable=true"
+      - "treafik.http.routers.nginx.entrypoints=web, websecure"
+      - "treafik.http.routers.nginx.rule=Host('nginx.disrapid.com')"
+      - "treafik.http.routers.nginx.tls=true"
+      - "treafik.http.routers.nginx.tls.certresolver=production"
+    volumes:
+      - ./nginx-conf:/etc/nginx/conf.d
+    restart: unless-stopped
+    networks:
+      - app-network
+
+
   portainer:
     image: portainer/portainer-ce
     container_name: portainer
@@ -21,7 +60,7 @@ services:
     restart: unless-stopped
     networks:
       - app-network
-  
+    
   speedtest:
     image: openspeedtest/latest:latest
     container_name: openspeedtest
@@ -32,36 +71,6 @@ services:
     networks:
       - app-network
   
-  nginx:
-    image: 'jc21/nginx-proxy-manager:latest'
-    ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
-    environment:
-      DB_MYSQL_HOST: "db"
-      DB_MYSQL_PORT: 3306
-      DB_MYSQL_USER: "npm"
-      DB_MYSQL_PASSWORD: "npm"
-      DB_MYSQL_NAME: "npm"
-    volumes:
-      - ./data:/data
-      - ./letsencrypt:/etc/letsencrypt
-    networks:
-      - app-network
-
-  db:
-    image: 'jc21/mariadb-aria:latest'
-    environment:
-      MYSQL_ROOT_PASSWORD: 'npm'
-      MYSQL_DATABASE: 'npm'
-      MYSQL_USER: 'npm'
-      MYSQL_PASSWORD: 'npm'
-    volumes:
-      - ./data/mysql:/var/lib/mysql
-    networks:
-      - app-network
-
   dashboard:
     image: b4bz/homer
     container_name: homer-dashboard
@@ -132,7 +141,3 @@ services:
     restart: unless-stopped
     networks:
       - app-network
-
-networks:
-  app-network:
-    driver: bridge
