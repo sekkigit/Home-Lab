@@ -32,7 +32,7 @@ echo
 banner2 "     L A P T O P  L I D  O F F"
 bash ./config/hybrid-sleep.sh &> /dev/null
 echo
-echo -e "$COLOR       HIBERNATE/SLEEP/SUSPEND IS OFF"
+echo -e "$COLOR       HIBERNATE/SLEEP/SUSPEND IS OFF\e[0m"
 
 echo
 echo
@@ -40,7 +40,7 @@ echo
 banner2 "     S W A P  P A R T I T I O N"
 bash ./config/swap.sh &> /dev/null
 echo
-echo -e "$COLOR         CREATED $RAM MB SWAP PARTITION"
+echo -e "$COLOR         CREATED $RAM MB SWAP PARTITION\e[0m"
 
 echo
 echo
@@ -48,7 +48,7 @@ echo
 banner2 "     U P D A T E  O S"
 bash ./config/update_os.sh &> /dev/null
 echo
-echo -e "$COLOR         ALL UP TO DAIT"
+echo -e "$COLOR         ALL UP TO DAIT\e[0m"
 
 echo
 echo
@@ -56,7 +56,7 @@ echo
 banner2 "     C R E A T E  U S E R"
 useradd -p $(openssl passwd $USERPASS) $USER -m -c "$USERROLL" -G sudo -s /bin/bash
 echo
-echo -e "$COLOR          User: $USER"
+echo -e "$COLOR          User: $USER\e[0m"
 
 echo
 echo
@@ -67,7 +67,7 @@ echo -e "$COLOR
           - .ssh
           - $SAMBA
           - public_files
-          - $PLEX"
+          - $PLEX\e[0m"
 
 echo
 echo
@@ -75,7 +75,7 @@ echo
 banner2 "     S S H  K E Y"
 bash ./config/lock_ssh.sh &> /dev/null
 echo
-echo -e "$COLOR         SSH KEY FROM "$SSHUSER" ADDED"
+echo -e "$COLOR         SSH KEY FROM "$SSHUSER" ADDED\e[0m"
 
 echo
 echo
@@ -84,7 +84,7 @@ banner2 "     C O C K P I T  S E T U P"
 bash ./config/cockpit.sh &> /dev/null
 bash ./config/network.sh &> /dev/null
 echo
-echo -e "$COLOR Cockpit is $(systemctl is-enabled cockpit) and $(systemctl is-active cockpit)"
+echo -e "$COLOR Cockpit is $(systemctl is-enabled cockpit) and $(systemctl is-active cockpit)\e[0m"
 
 echo
 echo
@@ -95,7 +95,7 @@ bash ./config/sambaconfig.sh &> /dev/null
 echo
 samba --version
 echo
-echo -e "$COLOR Samba is $(systemctl is-enabled smbd) and $(systemctl is-active smbd)"
+echo -e "$COLOR Samba is $(systemctl is-enabled smbd) and $(systemctl is-active smbd)\e[0m"
 
 
 echo
@@ -105,7 +105,7 @@ banner2 "     P L E X  S E T U P"
 bash ./config/plex.sh &> /dev/null
 bash ./config/plexufw.sh &> /dev/null
 echo
-echo -e "$COLOR Plex is $(systemctl is-enabled plexmediaserver) and $(systemctl is-active plexmediaserver)"
+echo -e "$COLOR Plex is $(systemctl is-enabled plexmediaserver) and $(systemctl is-active plexmediaserver)\e[0m"
 
 echo
 echo
@@ -113,7 +113,7 @@ echo
 banner2 "     F A I L 2 B A N"
 bash ./config/fail2ban.sh &> /dev/null
 echo
-echo -e "$COLOR Fail2ban is $(systemctl is-enabled fail2ban) and $(systemctl is-active fail2ban)"
+echo -e "$COLOR Fail2ban is $(systemctl is-enabled fail2ban) and $(systemctl is-active fail2ban)\e[0m"
 
 
 echo
@@ -123,7 +123,7 @@ banner2 "     D O C K E R  S E T U P"
 bash ./config/docker.sh &> /dev/null
 echo
 docker --version && docker-compose --version
-echo -e "$COLOR Docker is $(systemctl is-enabled docker) and $(systemctl is-active docker)"
+echo -e "$COLOR Docker is $(systemctl is-enabled docker) and $(systemctl is-active docker)\e[0m"
 
 echo
 echo
@@ -147,7 +147,7 @@ echo -e "$COLOR
           - $USER
           - Samba
           - Docker
-          - Plex"
+          - Plex\e[0m"
 echo
 echo
 
@@ -155,7 +155,7 @@ banner2 "     U F W  C O N F I G"
 bash ./config/firewall.sh &> /dev/null
 echo
 ufw status
-echo -e "$COLOR Firewall is $(systemctl is-enabled ufw)"
+echo -e "$COLOR Firewall is $(systemctl is-enabled ufw)\e[0m"
 
 echo
 echo
