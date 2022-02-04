@@ -44,8 +44,8 @@ Download and install Ubuntu Server 20.04 LTS : https://ubuntu.com/download/serve
 # Step two
 
 Create SSH key on client:
-   - sudo ssh-keygen -b 4096
-   - cat .ssh/id_rsa.pub
+   - ssh-keygen -b 4096
+   - cat ~/.ssh/id_rsa.pub
    
 Connect to the new host with SSH
 
