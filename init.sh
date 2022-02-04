@@ -12,14 +12,14 @@ banner()
   echo "+------------------------------------------+"
   printf "| %-40s |\n" "$(date)"                     
   echo "|                                          |"
-  printf '\e[1;36m%-6s\e[m' "|$(tput bold) %-40s $(tput sgr0)|\n" "$@"
+  printf "|$(tput bold) %-40s $(tput sgr0)|\n" "$@"
   echo "+------------------------------------------+"
 }
 
 banner2()
 {
   echo "+------------------------------------------+"
-  printf '\e[1;36m%-6s\e[m' "|$(tput bold) %-40s $(tput sgr0)|\n" "$@"
+  printf "|$(tput bold) %-40s $(tput sgr0)|\n" "$@"
   echo "+------------------------------------------+"
 }
 
