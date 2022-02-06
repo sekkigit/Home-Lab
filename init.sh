@@ -51,7 +51,7 @@ update(){
   load &
   pid=$!
 
-  for i in `bash ./config/update_os.sh &> /dev/null`
+  for i in $(bash ./config/update_os.sh &> /dev/null)
   do
     sleep 1;
   done
@@ -109,7 +109,7 @@ cockpit(){
   load &
   pid=$!
 
-  for i in `bash ./config/cockpit.sh &> /dev/null`
+  for i in $(bash ./config/cockpit.sh &> /dev/null)
   do
     sleep 1;
   done
@@ -141,7 +141,7 @@ samba(){
   load &
   pid=$!
 
-  for i in `./config/samba.sh &> /dev/null`
+  for i in $(./config/samba.sh &> /dev/null)
   do
     sleep 1;
   done
@@ -176,7 +176,7 @@ plex(){
   load &
   pid=$!
 
-  for i in `bash plex.sh &> /dev/null`
+  for i in $(bash plex.sh &> /dev/null)
   do
     sleep 1;
   done
@@ -208,7 +208,7 @@ fail2ban(){
   load &
   pid=$!
 
-  for i in `bash ./config/fail2ban.sh &> /dev/null`
+  for i in $(bash ./config/fail2ban.sh &> /dev/null)
   do
     sleep 1;
   done
@@ -240,7 +240,7 @@ docker(){
   load &
   pid=$!
 
-  for i in `bash ./config/docker.sh &> /dev/null`
+  for i in $(bash ./config/docker.sh &> /dev/null)
   do
     sleep 1;
   done
