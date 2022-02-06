@@ -39,7 +39,7 @@ echo
 
 banner2 "     S W A P  P A R T I T I O N"
 swap(){
-  echo "Installing"
+  echo "Creating"
   load &
   pid=$!
 
@@ -70,7 +70,7 @@ echo
 
 banner2 "     U P D A T E  O S"
 update(){
-  echo "Installing"
+  echo "Updateing"
   load &
   pid=$!
 
