@@ -17,15 +17,15 @@ ____________________________________________________________
 |  
 |     WEB:
 |
+|        - Treafik:   $IP:81 ----------- user:admin / pass:$TREAFIKPASS
 |        - Dashboard: $IP:9055
 |        - Grafana:   $IP:4020
 |        - Cockpit:   $IP:9090
-|        - Treafik:   $IP:81 ----------- user:admin / pass:$TREAFIKPASS
 |        - Portainer: $IP:9000
 |        - Plex:      $IP:32400/web
 |        - SpeedTest: $IP:3005
 |        - Prometheus:$IP:9010
-|        - Cadvisor:  $IP:8030
+|
 |        - Public IP: $PUBIP
 |
 |     EXPLORER:
