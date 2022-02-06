@@ -12,11 +12,13 @@ ____________________________________________________________
 |     USER INFO:
 |        - Username:  $USER
 |        - Userpass:  $USERPASS
+|
+|      NETWORK:
 |        - Subnet:    $SUBNET
 |        - Gateway:   $GATE4
-|  
-|     WEB:
+|        - Public IP: $PUBIP
 |
+|     WEB:
 |        - Treafik:   $IP:81 ----------- user:admin / pass:$TREAFIKPASS
 |        - Dashboard: $IP:9055
 |        - Grafana:   $IP:4020
@@ -26,14 +28,11 @@ ____________________________________________________________
 |        - SpeedTest: $IP:3005
 |        - Prometheus:$IP:9010
 |
-|        - Public IP: $PUBIP
 |
 |     EXPLORER:
-|
 |        - Samba:     $IP
 |    
 |     SSH:
-|
 |        - SSH user:  $SSHUSER
 |        - SSH port:  $PORTSSH
 |
