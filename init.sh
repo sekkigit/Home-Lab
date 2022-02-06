@@ -38,7 +38,30 @@ echo
 echo
 
 banner2 "     S W A P  P A R T I T I O N"
-bash ./config/swap.sh &> /dev/null
+swap(){
+  echo "Installing"
+  load &
+  pid=$!
+
+  for i in $(bash ./config/swap.sh &> /dev/null)
+  do
+    sleep 1;
+  done
+
+  kill $pid
+  echo ""
+}
+
+load(){
+  while [ 1 ]
+  do
+    echo -ne ".";
+    sleep 0.2;
+  done
+}
+
+swap
+#bash ./config/swap.sh &> /dev/null
 echo
 echo -e "$COLOR         CREATED $RAM MB SWAP PARTITION$ENDCOLOR"
 
