@@ -1,11 +1,11 @@
 #!/bin/bash
 
-install(){
-  echo "Instaling"
+cockpit(){
+  echo "Installing"
   load &
   pid=$!
 
-  for i in "bash update_os.sh"
+  for i in `bash plex.sh &> /dev/null`
   do
     sleep 1;
   done
@@ -22,4 +22,4 @@ load(){
   done
 }
 
-install
+cockpit
