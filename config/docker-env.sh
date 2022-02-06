@@ -4,6 +4,5 @@ source .var
 
 cat <<EOF > /home/$USER/docker/.env
 USER=$USER
-WEB=$WEB
-EMAIL=$EMAIL
+SITE=$SITE
 EOF

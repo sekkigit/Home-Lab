@@ -20,7 +20,7 @@ SSHUSER="my_linux_user"
 #Web-server
 
 #Web domain
-WEB="website.com"
+SITE="website.com"
 
 #Email
 EMAIL="examlpe@email.com"

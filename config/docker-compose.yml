@@ -35,7 +35,7 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
       - "traefik.http.routers.traefik-secure.entrypoints=websecure"
-      - "traefik.http.routers.traefik-secure.rule=Host(`treafik.$WEB`)"
+      - "traefik.http.routers.traefik-secure.rule=Host(`treafik.$SITE`)"
       - "traefik.http.routers.traefik-secure.middlewares=user-auth@file"
       - "traefik.http.routers.traefik-secure.service=api@internal"
 
@@ -58,7 +58,7 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
       - "traefik.http.routers.portainer-secure.entrypoints=websecure"
-      - "traefik.http.routers.portainer-secure.rule=Host(`portainer.$WEB`)"
+      - "traefik.http.routers.portainer-secure.rule=Host(`portainer.$SITE`)"
       - "traefik.http.routers.portainer-secure.service=portainer"
       - "traefik.http.services.portainer.loadbalancer.server.port=9000"
 
@@ -76,7 +76,7 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
       - "traefik.http.routers.speedtest-secure.entrypoints=websecure"
-      - "traefik.http.routers.speedtest-secure.rule=Host(`speedtest.$WEB`)"
+      - "traefik.http.routers.speedtest-secure.rule=Host(`speedtest.$SITE`)"
       - "traefik.http.routers.speedtest-secure.service=portainer"
       - "traefik.http.services.speedtest.loadbalancer.server.port=3006"
   
@@ -100,7 +100,7 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
       - "traefik.http.routers.homer-secure.entrypoints=websecure"
-      - "traefik.http.routers.homer-secure.rule=Host(`homer.$WEB`)"
+      - "traefik.http.routers.homer-secure.rule=Host(`homer.$SITE`)"
       - "traefik.http.routers.homer-secure.service=portainer"
       - "traefik.http.services.homer.loadbalancer.server.port=9055"
 
@@ -119,7 +119,7 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
       - "traefik.http.routers.grafana-secure.entrypoints=websecure"
-      - "traefik.http.routers.grafana-secure.rule=Host(`grafana.$WEB`)"
+      - "traefik.http.routers.grafana-secure.rule=Host(`grafana.$SITE`)"
       - "traefik.http.routers.grafana-secure.service=portainer"
       - "traefik.http.services.grafana.loadbalancer.server.port=4020"
 
