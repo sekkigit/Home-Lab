@@ -73,7 +73,7 @@ services:
       - name: "Portainer"
         logo: "https://cdn.iconscout.com/icon/free/png-256/docker-226091.png"
         subtitle: "Docker menager"
-        url: "http://$IP:9099"
+        url: "http://$IP:9000"
         target: "_blank"
       - name: "Cockpit"
         logo: "https://avatars.githubusercontent.com/u/5765104?s=280&v=4"
