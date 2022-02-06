@@ -9,67 +9,76 @@ volumes:
     driver: local
 
 networks:
-  app-network:
-    driver: bridge
+  proxy:
+    external: true
 
 services:
   traefik:
-    image: "traefik:v2.5"
-    container_name: "traefik"
-    ports:
-      - "80:80"
-      - "443:443"
-      # (Optional) Expose Dashboard
-      - "81:8080"  # Don't do this in production!
-    volumes:
-      - ./treafik:/etc/traefik
-      - certs:/etc/traefik/certs
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:
-      - app-network
-  
-  web:
-    image: nginx:latest
-    container_name: nginx
-    env_file: .env
-    labels:
-      - "maintainer=NGINX Docker Maintainers <docker>"
-      - "treafik.enable=true"
-      - "treafik.http.routers.nginx.entrypoints=web, websecure"
-      - "treafik.http.routers.nginx.rule=Host('$WEB')"
-      - "treafik.http.routers.nginx.tls=true"
-      - "treafik.http.routers.nginx.tls.certresolver=production"
-    volumes:
-      - ./nginx-conf:/etc/nginx/conf.d
+    image: traefik:latest
+    container_name: traefik
     restart: unless-stopped
-    networks:
-      - app-network
-
-
-  portainer:
-    image: portainer/portainer-ce
-    container_name: portainer
+    env_file: .env
     security_opt:
       - no-new-privileges:true
-    volumes:
-      - /etc/localtime:/etc/localtime
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./portainer-data:/data
-    ports:
-      - 9099:9000
-    restart: unless-stopped
     networks:
-      - app-network
-    
+      - proxy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik-data/traefik.yml:/traefik.yml:ro
+      - ./traefik-data/acme.json:/acme.json
+      - ./traefik-data/configurations:/configurations
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.traefik-secure.entrypoints=websecure"
+      - "traefik.http.routers.traefik-secure.rule=Host(`treafik.$WEB`)"
+      - "traefik.http.routers.traefik-secure.middlewares=user-auth@file"
+      - "traefik.http.routers.traefik-secure.service=api@internal"
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - 9000:9000
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - proxy
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./portainer-data:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.portainer-secure.entrypoints=websecure"
+      - "traefik.http.routers.portainer-secure.rule=Host(`portainer.$WEB`)"
+      - "traefik.http.routers.portainer-secure.service=portainer"
+      - "traefik.http.services.portainer.loadbalancer.server.port=9000"
+
   speedtest:
     image: openspeedtest/latest:latest
     container_name: openspeedtest
+    env_file: .env
     ports:
       - 3005:3000
       - 3006:3001
     restart: unless-stopped
     networks:
-      - app-network
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.speedtest-secure.entrypoints=websecure"
+      - "traefik.http.routers.speedtest-secure.rule=Host(`speedtest.$WEB`)"
+      - "traefik.http.routers.speedtest-secure.service=portainer"
+      - "traefik.http.services.speedtest.loadbalancer.server.port=3006"
   
   dashboard:
     image: b4bz/homer
@@ -86,13 +95,39 @@ services:
     volumes:
       - ./homer:/www/assets
     networks:
-      - app-network
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.homer-secure.entrypoints=websecure"
+      - "traefik.http.routers.homer-secure.rule=Host(`homer.$WEB`)"
+      - "traefik.http.routers.homer-secure.service=portainer"
+      - "traefik.http.services.homer.loadbalancer.server.port=9055"
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    env_file: .env
+    ports:
+      - 4020:3000
+    volumes:
+      - grafana-data:/var/lib/grafana
+    restart: unless-stopped
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.grafana-secure.entrypoints=websecure"
+      - "traefik.http.routers.grafana-secure.rule=Host(`grafana.$WEB`)"
+      - "traefik.http.routers.grafana-secure.service=portainer"
+      - "traefik.http.services.grafana.loadbalancer.server.port=4020"
 
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
     ports:
-      - "9010:9090"
+      - 9010:9090
     volumes:
       - ./prometheus:/etc/prometheus
       - prometheus-data:/prometheus
@@ -100,19 +135,8 @@ services:
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
     networks:
-      - app-network
+      - proxy
     
-  grafana:
-    image: grafana/grafana-oss:latest
-    container_name: grafana
-    ports:
-      - "4020:3000"
-    volumes:
-      - grafana-data:/var/lib/grafana
-    restart: unless-stopped
-    networks:
-      - app-network
-
   node_exporter:
     image: quay.io/prometheus/node-exporter:latest
     container_name: node_exporter
@@ -123,7 +147,7 @@ services:
     volumes:
       - '/:/host:ro,rslave'
     networks:
-      - app-network
+      - proxy
 
   cadvisor:
     image: google/cadvisor:latest
@@ -140,4 +164,4 @@ services:
       - /dev/kmsg
     restart: unless-stopped
     networks:
-      - app-network
+      - proxy

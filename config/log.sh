@@ -20,8 +20,8 @@ ____________________________________________________________
 |        - Dashboard: $IP:9055
 |        - Grafana:   $IP:4020
 |        - Cockpit:   $IP:9090
-|        - Treafik:   $IP:81
-|        - Portainer: $IP:9099
+|        - Treafik:   $IP:81 ----------- user:admin / pass:$TREAFIKPASS
+|        - Portainer: $IP:9000
 |        - Plex:      $IP:32400/web
 |        - SpeedTest: $IP:3005
 |        - Prometheus:$IP:9010

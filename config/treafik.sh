@@ -2,78 +2,75 @@
 
 source .var
 
-cat <<EOF > /home/$USER/docker/treafik/treafik.yml
-global:
-  checkNewVersion: true
-  sendAnonymousUsage: false  # true by default
+touch /home/$USER/docker/traefik-data/acme.json
 
-# (Optional) Log information
-# ---
-# log:
-#  level: ERROR  # DEBUG, INFO, WARNING, ERROR, CRITICAL
-#   format: common  # common, json, logfmt
-#   filePath: /var/log/traefik/traefik.log
+chmod 600 /home/$USER/docker/traefik-data/acme.json
 
-# (Optional) Accesslog
-# ---
-# accesslog:
-  # format: common  # common, json, logfmt
-  # filePath: /var/log/traefik/access.log
+docker network create proxy
 
-# (Optional) Enable API and Dashboard
-# ---
+cat <<EOF > /home/$USER/docker/traefik-data/traefik.yml
 api:
-  dashboard: true  # true by default
-  insecure: true  # Don't do this in production!
+  dashboard: true
 
-# Entry Points configuration
-# ---
 entryPoints:
   web:
     address: :80
-    # (Optional) Redirect to HTTPS
-    # ---
     http:
       redirections:
-       entryPoint:
-        to: websecure
-        scheme: https
+        entryPoint:
+          to: websecure
 
   websecure:
     address: :443
-
-# Configure your CertificateResolver here...
-# ---
-certificatesResolvers:
-   staging:
-     acme:
-       email: sekiuredjaji@gmail.com
-       storage: /etc/traefik/certs/acme.json
-       caServer: "https://acme-staging-v02.api.letsencrypt.org/directory"
-       httpChallenge:
-         entryPoint: web
-
-   production:
-     acme:
-       email: sekiuredjaji@gmail.com
-       storage: /etc/traefik/certs/acme.json
-       caServer: "https://acme-v02.api.letsencrypt.org/directory"
-       httpChallenge:
-         entryPoint: web
-
-# (Optional) Overwrite Default Certificates
-# tls:
-#   stores:
-#     default:
-#       defaultCertificate:
-#         certFile: /etc/traefik/certs/cert.pem
-#         keyFile: /etc/traefik/certs/cert-key.pem
+    http:
+      middlewares:
+        - secureHeaders@file
+      tls:
+        certResolver: letsencrypt
 
 providers:
   docker:
-    exposedByDefault: false  # Default is true
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
   file:
-    # watch for dynamic configuration changes
-    directory: /etc/traefik
-    watch: true
+    filename: /configurations/dynamic.yml
+
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: $EMAIL
+      storage: acme.json
+      keyType: EC384
+      httpChallenge:
+        entryPoint: web
+EOF
+
+cat <<EOF > /home/$USER/docker/traefik-data/configurations/dynamic.yml
+# Dynamic configuration
+http:
+  middlewares:
+    secureHeaders:
+      headers:
+        sslRedirect: true
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 31536000
+
+    user-auth:
+      basicAuth:
+        users:
+          - "$TRPASS"
+
+tls:
+  options:
+    default:
+      cipherSuites:
+        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+        - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+        - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+        - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+        - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
+      minVersion: VersionTLS12
 EOF

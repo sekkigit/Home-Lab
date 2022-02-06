@@ -1,17 +1,11 @@
 #REQUIRED Public Key from client - cat /home/"USER"/.ssh/id_rsa.pub
 KEY="ENTER KEY.PUB"
 
-#Client user name
-SSHUSER="my_linux_user"
-
 #Host username
 USER="user"
 
 #Host password
 USERPASS="pass"
-
-#Web domain
-WEB="website.com"
 
 #Host roll
 USERROLL="admin"
@@ -19,11 +13,22 @@ USERROLL="admin"
 #Host group
 USERGROUP="usergr"
 
-#Time zone
-TIMEZONE="Europe/Zagreb"
+#Client user name
+SSHUSER="my_linux_user"
 
-#OS version
-OSVER=$(cat /etc/*release | awk '/DISTRIB_DESCRIPTION=/ {print $2}')
+
+#Web-server
+
+#Web domain
+WEB="website.com"
+
+#Email
+EMAIL="examlpe@email.com"
+
+#Treafik password
+TREAFIKPASS="treafik2022"
+
+TRPASS="$(cat /var/pass)"
 
 
 #Network/Firewall
@@ -43,14 +48,24 @@ IP=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
 #Host public IP
 PUBIP=$(curl ifconfig.me)
 
-#Swap
+
+#OS
+
+#OS version
+OSVER=$(cat /etc/*release | awk '/DISTRIB_DESCRIPTION=/ {print $2}')
+
+#Time zone
+TIMEZONE="Europe/Zagreb"
+
+#Swap partition
 RAM="1024"
 
 #Dir
 SAMBA="fileserver"
 PLEX="plexmedia"
 
-#Lock_ssh
+
+#Security (Lock_ssh)
 
 #Open SSH port
 PORTSSH="22"
@@ -61,6 +76,7 @@ PARAM[1]="PermitRootLogin "
 PARAM[2]="PubkeyAuthentication"
 PARAM[3]="Port "
 PARAM[4]="PasswordAuthentication"
+
 
 #Color
 COLOR="\e[92m"
