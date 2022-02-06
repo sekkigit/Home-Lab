@@ -46,7 +46,7 @@ echo
 echo
 
 banner2 "     U P D A T E  O S"
-install(){
+updates(){
   echo "Instaling"
   load &
   pid=$!
@@ -68,7 +68,8 @@ load(){
   done
 }
 
-install
+updates
+
 #bash ./config/update_os.sh &> /dev/null
 echo
 echo -e "$COLOR         ALL UP TO DAIT$ENDCOLOR"
@@ -104,7 +105,7 @@ echo
 echo
 
 banner2 "     C O C K P I T  S E T U P"
-install(){
+cockpit(){
   echo "Instaling"
   load &
   pid=$!
@@ -126,7 +127,7 @@ load(){
   done
 }
 
-install
+cockpit
 #bash ./config/cockpit.sh &> /dev/null
 bash ./config/network.sh &> /dev/null
 echo
