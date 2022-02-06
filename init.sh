@@ -46,7 +46,30 @@ echo
 echo
 
 banner2 "     U P D A T E  O S"
-bash ./config/update_os.sh &> /dev/null
+install(){
+  echo "Instaling"
+  load &
+  pid=$!
+
+  for i in "bash ./config/update_os.sh"
+  do
+    sleep 1;
+  done
+
+  kill $pid
+  echo ""
+}
+
+load(){
+  while [ 1 ]
+  do
+    echo -ne ".";
+    sleep 0.2;
+  done
+}
+
+install
+#bash ./config/update_os.sh &> /dev/null
 echo
 echo -e "$COLOR         ALL UP TO DAIT$ENDCOLOR"
 
@@ -81,7 +104,30 @@ echo
 echo
 
 banner2 "     C O C K P I T  S E T U P"
-bash ./config/cockpit.sh &> /dev/null
+install(){
+  echo "Instaling"
+  load &
+  pid=$!
+
+  for i in "bash ./config/cockpit.sh"
+  do
+    sleep 1;
+  done
+
+  kill $pid
+  echo ""
+}
+
+load(){
+  while [ 1 ]
+  do
+    echo -ne ".";
+    sleep 0.2;
+  done
+}
+
+install
+#bash ./config/cockpit.sh &> /dev/null
 bash ./config/network.sh &> /dev/null
 echo
 echo -e "$COLOR         Cockpit is $(systemctl is-enabled cockpit) and $(systemctl is-active cockpit)$ENDCOLOR"
