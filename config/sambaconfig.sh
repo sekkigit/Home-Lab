@@ -2,6 +2,8 @@
 
 source .var
 
+apt install samba -y
+
 cat <<EOF > /etc/samba/smb.conf
 [global]
 server string = File Server

@@ -8,7 +8,7 @@
 source .var
 
 #Loading
-spinner=(▁ ▂ ▃ ▄ ▅ ▆ ▇ █ ▇ ▆ ▅ ▄ ▃ ▂ ▁);
+spinner=(┤ ┘ ┴ └ ├ ┌┬┐);
 
 spin(){
   while [ 1 ]
@@ -134,7 +134,7 @@ cockpit(){
   spin &
   pid=$!
 
-  for i in $(bash ./config/cockpit.sh &> /dev/null && bash ./config/network.sh &> /dev/null)
+  for i in $(bash ./config/cockpit.sh &> /dev/null)
   do
     sleep 0.1;
   done
@@ -160,7 +160,7 @@ samba(){
   spin &
   pid=$!
 
-  for i in $(bash ./config/samba.sh &> /dev/null && bash ./config/sambaconfig.sh &> /dev/null)
+  for i in $(bash ./config/sambaconfig.sh &> /dev/null)
   do
     sleep 0.1;
   done
@@ -189,7 +189,7 @@ plex(){
   spin &
   pid=$!
 
-  for i in $(bash ./config/plex.sh &> /dev/null && bash ./config/plexufw.sh &> /dev/null)
+  for i in $(bash ./config/plex.sh &> /dev/null)
   do
     sleep 0.1;
   done
@@ -264,7 +264,6 @@ echo
 
 banner2 "     R U N  C O N T A I N E R S"
 echo
-bash ./config/docker-env.sh &> /dev/null
 bash ./config/treafik.sh &> /dev/null
 bash ./config/utls.sh &> /dev/null
 cp ./config/docker-compose.yml /home/$USER/docker/docker-compose.yml

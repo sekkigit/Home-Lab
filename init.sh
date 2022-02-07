@@ -82,7 +82,6 @@ echo
 
 banner2 "     C O C K P I T  S E T U P"
 bash ./config/cockpit.sh &> /dev/null
-bash ./config/network.sh &> /dev/null
 echo
 echo -e "$COLOR         Cockpit is $(systemctl is-enabled cockpit) and $(systemctl is-active cockpit)$ENDCOLOR"
 
@@ -90,7 +89,6 @@ echo
 echo
 
 banner2 "     S A M B A  S E T U P"
-bash ./config/samba.sh &> /dev/null
 bash ./config/sambaconfig.sh &> /dev/null
 echo
 samba --version
@@ -103,7 +101,6 @@ echo
 
 banner2 "     P L E X  S E T U P"
 bash ./config/plex.sh &> /dev/null
-bash ./config/plexufw.sh &> /dev/null
 echo
 echo -e "$COLOR         Plex is $(systemctl is-enabled plexmediaserver) and $(systemctl is-active plexmediaserver)$ENDCOLOR"
 
@@ -131,7 +128,6 @@ echo
 
 banner2 "     R U N  C O N T A I N E R S"
 echo
-bash ./config/docker-env.sh &> /dev/null
 bash ./config/treafik.sh &> /dev/null
 bash ./config/utls.sh &> /dev/null
 cp ./config/docker-compose.yml /home/$USER/docker/docker-compose.yml
