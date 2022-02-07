@@ -8,7 +8,7 @@
 source .var
 
 #Loading
-spinner=(▉ ▊ ▋ ▌ ▍ ▎ ▏ ▎ ▍ ▌ ▋ ▊ ▉);
+spinner=(▉ ▊ ▋ ▌ ▍ ▎ ▏ ▎ ▍ ▌ ▋ ▊ ▉ );
 
 spin(){
   while [ 1 ]
