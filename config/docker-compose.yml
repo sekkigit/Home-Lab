@@ -1,86 +1,66 @@
 version: '3'
 
-volumes:
-  prometheus-data:
-    driver: local
-  grafana-data:
-    driver: local
-  certs:
-    driver: local
-
-networks:
-  proxy:
-    external: true
-
 services:
-  traefik:
-    image: traefik:latest
-    container_name: traefik
-    restart: unless-stopped
-    env_file: .env
+  portainer:
+    image: portainer/portainer-ce
+    container_name: portainer
     security_opt:
       - no-new-privileges:true
-    networks:
-      - proxy
-    ports:
-      - 80:80
-      - 443:443
-      - 81:8080
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./traefik-data/traefik.yml:/traefik.yml:ro
-      - ./traefik-data/acme.json:/acme.json
-      - ./traefik-data/configurations:/configurations
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=proxy"
-      - "traefik.http.routers.traefik-secure.entrypoints=websecure"
-      - "traefik.http.routers.traefik-secure.rule=Host(`treafik.${SITE}`)"
-      - "traefik.http.routers.traefik-secure.middlewares=user-auth@file"
-      - "traefik.http.routers.traefik-secure.service=api@internal"
-
-  portainer:
-    image: portainer/portainer-ce:latest
-    container_name: portainer
-    restart: unless-stopped
-    env_file: .env
+      - /etc/localtime:/etc/localtime
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./portainer-data:/data
     ports:
       - 9000:9000
-    security_opt:
-      - no-new-privileges:true
+    restart: unless-stopped
     networks:
       - proxy
+
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+      - '81:81' # Admin Web Port
+    environment:
+      DB_MYSQL_HOST: "db"
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: "npm"
+      DB_MYSQL_PASSWORD: "npm"
+      DB_MYSQL_NAME: "npm"
+      DISABLE_IPV6: 'true'
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./portainer-data:/data
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=proxy"
-      - "traefik.http.routers.portainer-secure.entrypoints=websecure"
-      - "traefik.http.routers.portainer-secure.rule=Host(`portainer.${SITE}`)"
-      - "traefik.http.routers.portainer-secure.service=portainer"
-      - "traefik.http.services.portainer.loadbalancer.server.port=9000"
+      - ./nginx/data:/data
+      - ./nginx/letsencrypt:/etc/letsencrypt
+    depends_on:
+      - db
+    networks:
+      - proxy
+
+  db:
+    image: 'jc21/mariadb-aria:latest'
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 'npm'
+      MYSQL_DATABASE: 'npm'
+      MYSQL_USER: 'npm'
+      MYSQL_PASSWORD: 'npm'
+    volumes:
+      - ./nginx/data/mysql:/var/lib/mysql
+    networks:
+      - proxy
 
   speedtest:
     image: openspeedtest/latest:latest
     container_name: openspeedtest
-    env_file: .env
     ports:
       - 3005:3000
       - 3006:3001
     restart: unless-stopped
     networks:
       - proxy
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=proxy"
-      - "traefik.http.routers.speedtest-secure.entrypoints=websecure"
-      - "traefik.http.routers.speedtest-secure.rule=Host(`speedtest.${SITE}`)"
-      - "traefik.http.routers.speedtest-secure.service=portainer"
-      - "traefik.http.services.speedtest.loadbalancer.server.port=3006"
-  
+      
   dashboard:
     image: b4bz/homer
     container_name: homer-dashboard
@@ -97,18 +77,10 @@ services:
       - ./homer:/www/assets
     networks:
       - proxy
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=proxy"
-      - "traefik.http.routers.homer-secure.entrypoints=websecure"
-      - "traefik.http.routers.homer-secure.rule=Host(`homer.${SITE}`)"
-      - "traefik.http.routers.homer-secure.service=portainer"
-      - "traefik.http.services.homer.loadbalancer.server.port=9055"
 
   grafana:
     image: grafana/grafana-oss:latest
     container_name: grafana
-    env_file: .env
     ports:
       - 4020:3000
     volumes:
@@ -116,14 +88,7 @@ services:
     restart: unless-stopped
     networks:
       - proxy
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=proxy"
-      - "traefik.http.routers.grafana-secure.entrypoints=websecure"
-      - "traefik.http.routers.grafana-secure.rule=Host(`grafana.${SITE}`)"
-      - "traefik.http.routers.grafana-secure.service=portainer"
-      - "traefik.http.services.grafana.loadbalancer.server.port=4020"
-
+ 
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
@@ -153,8 +118,6 @@ services:
   cadvisor:
     image: google/cadvisor:latest
     container_name: cadvisor
-    #ports:
-    #  - "8030:8080"
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
@@ -166,3 +129,13 @@ services:
     restart: unless-stopped
     networks:
       - proxy
+
+networks:
+  proxy:
+    external: true
+
+volumes:
+  prometheus-data:
+    driver: local
+  grafana-data:
+    driver: local

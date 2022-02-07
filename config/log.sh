@@ -19,13 +19,13 @@ ____________________________________________________________
 |        - Public IP: $PUBIP
 |
 |     WEB:
-|        - Treafik:   $IP:81 ----------- user:admin / pass:$TREAFIKPASS
 |        - Dashboard: $IP:9055
-|        - Grafana:   $IP:4020
 |        - Cockpit:   $IP:9090
 |        - Portainer: $IP:9000
-|        - Plex:      $IP:32400/web
+|        - Grafana:   $IP:4020
+|        - Nginx:     $IP:81
 |        - SpeedTest: $IP:3005
+|        - Plex:      $IP:32400/web
 |        - Prometheus:$IP:9010
 |
 |

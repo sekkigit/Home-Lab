@@ -13,7 +13,7 @@
    - Install Samba
    - Install Plex media server
    - Install Docker, Docker-compose
-   - Run Portainer, Treafik, OpenSpeedTest, Grafana, Prometheus, Node Exporter, and Cadvisor
+   - Run Portainer, Nginx Proxy Menager, OpenSpeedTest, Grafana, Prometheus, Node Exporter, and Cadvisor
    - Configure and run UFW (firewall)
    - Install Fail2Ban
    - Display basic info about server
@@ -26,7 +26,7 @@
    - Fail2Ban
    - Docker
    - Docker-compose
-   - Treafik
+   - Nginx Proxy Menager
    - Grafana
    - Prometheus
    - Cadvisor
@@ -55,7 +55,7 @@ Connect to the new host with SSH
 Enter commands on host:
    - git clone https://github.com/sekkigit/Home-Lab.git init && cd init/
    - sudo nano .var
-   - sudo bash init.sh
+   - sudo bash install.sh
 
 Edit .var variables, ENTER client SSH key.
 
