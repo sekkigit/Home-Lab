@@ -8,7 +8,7 @@
 source .var
 
 #Loading
-spinner=( Ooooo oOooo ooOoo oooOo ooooO oooOo ooOoo oOooo);
+spinner=(◐◓◑◒);
 
 spin(){
   while [ 1 ]
@@ -54,7 +54,6 @@ echo
 banner2 "     S W A P  P A R T I T I O N"
 
 swap(){
-  echo "Creating"
   spin &
   pid=$!
 
@@ -69,6 +68,7 @@ swap(){
 
 swap
 
+sleep 0.1
 #bash ./config/swap.sh &> /dev/null
 echo
 echo -e "$COLOR         CREATED $RAM MB SWAP PARTITION$ENDCOLOR"
@@ -79,13 +79,12 @@ echo
 banner2 "     U P D A T E  O S"
 
 update_os(){
-  echo "Updateing"
   spin &
   pid=$!
 
   for i in $(bash ./config/update_os.sh &> /dev/null)
   do
-    sleep 1;
+    sleep 0.1;
   done
 
   kill $pid
@@ -94,6 +93,7 @@ update_os(){
 
 update_os
 
+sleep 0.1
 #bash ./config/update_os.sh &> /dev/null
 echo
 echo -e "$COLOR         ALL UP TO DAIT$ENDCOLOR"
@@ -131,13 +131,12 @@ echo
 banner2 "     C O C K P I T  S E T U P"
 
 cockpit(){
-  echo "Installing"
   spin &
   pid=$!
 
   for i in $(bash ./config/cockpit.sh &> /dev/null && bash ./config/network.sh &> /dev/null)
   do
-    sleep 1;
+    sleep 0.1;
   done
 
   kill $pid
@@ -146,6 +145,7 @@ cockpit(){
 
 cockpit
 
+sleep 0.1
 #bash ./config/cockpit.sh &> /dev/null
 #bash ./config/network.sh &> /dev/null
 echo
@@ -157,13 +157,12 @@ echo
 banner2 "     S A M B A  S E T U P"
 
 samba(){
-  echo "Installing"
   spin &
   pid=$!
 
   for i in $(bash ./config/samba.sh &> /dev/null && bash ./config/sambaconfig.sh &> /dev/null)
   do
-    sleep 1;
+    sleep 0.1;
   done
 
   kill $pid
@@ -172,6 +171,7 @@ samba(){
 
 samba
 
+sleep 0.1
 #bash ./config/samba.sh &> /dev/null
 #bash ./config/sambaconfig.sh &> /dev/null
 echo
@@ -186,13 +186,12 @@ echo
 banner2 "     P L E X  S E T U P"
 
 plex(){
-  echo "Installing"
   spin &
   pid=$!
 
   for i in $(bash ./config/plex.sh &> /dev/null && bash ./config/plexufw.sh &> /dev/null)
   do
-    sleep 1;
+    sleep 0.1;
   done
 
   kill $pid
@@ -201,6 +200,7 @@ plex(){
 
 plex
 
+sleep 0.1
 #bash ./config/plex.sh &> /dev/null
 #bash ./config/plexufw.sh &> /dev/null
 echo
@@ -212,13 +212,12 @@ echo
 banner2 "     F A I L 2 B A N"
 
 fail2ban(){
-  echo "Installing"
   spin &
   pid=$!
 
   for i in $(bash ./config/fail2ban.sh &> /dev/null)
   do
-    sleep 1;
+    sleep 0.1;
   done
 
   kill $pid
@@ -227,6 +226,7 @@ fail2ban(){
 
 fail2ban
 
+sleep 0.1
 #bash ./config/fail2ban.sh &> /dev/null
 echo
 echo -e "$COLOR         Fail2ban is $(systemctl is-enabled fail2ban) and $(systemctl is-active fail2ban)$ENDCOLOR"
@@ -244,7 +244,7 @@ docker(){
 
   for i in $(bash ./config/docker.sh &> /dev/null)
   do
-    sleep 1;
+    sleep 0.1;
   done
 
   kill $pid
@@ -253,6 +253,7 @@ docker(){
 
 docker
 
+sleep 0.1
 #bash ./config/docker.sh &> /dev/null
 echo
 docker --version && docker-compose --version
