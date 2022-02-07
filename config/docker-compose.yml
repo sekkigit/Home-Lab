@@ -16,7 +16,7 @@ services:
     networks:
       - proxy
 
-  app:
+  nginx:
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
     ports:
@@ -29,16 +29,15 @@ services:
       DB_MYSQL_USER: 'npm'
       DB_MYSQL_PASSWORD: 'npm'
       DB_MYSQL_NAME: 'npm'
-      DISABLE_IPV6: 'true'
     volumes:
-      - ./nginx/data:/data
+      - ./nginx:/data
       - ./nginx/letsencrypt:/etc/letsencrypt
     depends_on:
-      - db
+      - nginxdb
     networks:
       - proxy
 
-  db:
+  nginxdb:
     image: 'jc21/mariadb-aria:latest'
     restart: unless-stopped
     environment:
@@ -47,7 +46,7 @@ services:
       MYSQL_USER: 'npm'
       MYSQL_PASSWORD: 'npm'
     volumes:
-      - ./nginx/data/mysql:/var/lib/mysql
+      - ./nginx/mysql:/var/lib/mysql
     networks:
       - proxy
 
