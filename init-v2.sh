@@ -7,6 +7,20 @@
 
 source .var
 
+#Loading
+spinner=( Ooooo oOooo ooOoo oooOo ooooO oooOo ooOoo oOooo);
+
+spin(){
+  while [ 1 ]
+  do
+    for i in ${spinner[@]};
+    do
+      echo -ne "\r$i";
+      sleep 0.2;
+    done;
+  done
+}
+
 banner()
 {
   echo "+------------------------------------------+"
@@ -38,7 +52,24 @@ echo
 echo
 
 banner2 "     S W A P  P A R T I T I O N"
-bash ./config/swap.sh &> /dev/null
+
+swap(){
+  echo "Creating"
+  spin &
+  pid=$!
+
+  for i in $(bash ./config/swap.sh &> /dev/null)
+  do
+    sleep 1;
+  done
+
+  kill $pid
+  echo ""
+}
+
+swap
+
+#bash ./config/swap.sh &> /dev/null
 echo
 echo -e "$COLOR         CREATED $RAM MB SWAP PARTITION$ENDCOLOR"
 
@@ -46,7 +77,24 @@ echo
 echo
 
 banner2 "     U P D A T E  O S"
-bash ./config/update_os.sh &> /dev/null
+
+update_os(){
+  echo "Updateing"
+  spin &
+  pid=$!
+
+  for i in $(bash ./config/update_os.sh &> /dev/null)
+  do
+    sleep 1;
+  done
+
+  kill $pid
+  echo ""
+}
+
+update_os
+
+#bash ./config/update_os.sh &> /dev/null
 echo
 echo -e "$COLOR         ALL UP TO DAIT$ENDCOLOR"
 
@@ -81,8 +129,25 @@ echo
 echo
 
 banner2 "     C O C K P I T  S E T U P"
-bash ./config/cockpit.sh &> /dev/null
-bash ./config/network.sh &> /dev/null
+
+cockpit(){
+  echo "Installing"
+  spin &
+  pid=$!
+
+  for i in $(bash ./config/cockpit.sh &> /dev/null && bash ./config/network.sh &> /dev/null)
+  do
+    sleep 1;
+  done
+
+  kill $pid
+  echo ""
+}
+
+cockpit
+
+#bash ./config/cockpit.sh &> /dev/null
+#bash ./config/network.sh &> /dev/null
 echo
 echo -e "$COLOR         Cockpit is $(systemctl is-enabled cockpit) and $(systemctl is-active cockpit)$ENDCOLOR"
 
@@ -90,8 +155,25 @@ echo
 echo
 
 banner2 "     S A M B A  S E T U P"
-bash ./config/samba.sh &> /dev/null
-bash ./config/sambaconfig.sh &> /dev/null
+
+samba(){
+  echo "Installing"
+  spin &
+  pid=$!
+
+  for i in $(bash ./config/samba.sh &> /dev/null && bash ./config/sambaconfig.sh &> /dev/null)
+  do
+    sleep 1;
+  done
+
+  kill $pid
+  echo ""
+}
+
+samba
+
+#bash ./config/samba.sh &> /dev/null
+#bash ./config/sambaconfig.sh &> /dev/null
 echo
 samba --version
 echo
@@ -102,8 +184,25 @@ echo
 echo
 
 banner2 "     P L E X  S E T U P"
-bash ./config/plex.sh &> /dev/null
-bash ./config/plexufw.sh &> /dev/null
+
+plex(){
+  echo "Installing"
+  spin &
+  pid=$!
+
+  for i in $(bash ./config/plex.sh &> /dev/null && bash ./config/plexufw.sh &> /dev/null)
+  do
+    sleep 1;
+  done
+
+  kill $pid
+  echo ""
+}
+
+plex
+
+#bash ./config/plex.sh &> /dev/null
+#bash ./config/plexufw.sh &> /dev/null
 echo
 echo -e "$COLOR         Plex is $(systemctl is-enabled plexmediaserver) and $(systemctl is-active plexmediaserver)$ENDCOLOR"
 
@@ -111,7 +210,24 @@ echo
 echo
 
 banner2 "     F A I L 2 B A N"
-bash ./config/fail2ban.sh &> /dev/null
+
+fail2ban(){
+  echo "Installing"
+  spin &
+  pid=$!
+
+  for i in $(bash ./config/fail2ban.sh &> /dev/null)
+  do
+    sleep 1;
+  done
+
+  kill $pid
+  echo ""
+}
+
+fail2ban
+
+#bash ./config/fail2ban.sh &> /dev/null
 echo
 echo -e "$COLOR         Fail2ban is $(systemctl is-enabled fail2ban) and $(systemctl is-active fail2ban)$ENDCOLOR"
 
@@ -120,7 +236,24 @@ echo
 echo
 
 banner2 "     D O C K E R  S E T U P"
-bash ./config/docker.sh &> /dev/null
+
+docker(){
+  echo "Installing"
+  spin &
+  pid=$!
+
+  for i in $(bash ./config/docker.sh &> /dev/null)
+  do
+    sleep 1;
+  done
+
+  kill $pid
+  echo ""
+}
+
+docker
+
+#bash ./config/docker.sh &> /dev/null
 echo
 docker --version && docker-compose --version
 echo
