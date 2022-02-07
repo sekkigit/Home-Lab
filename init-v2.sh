@@ -238,7 +238,6 @@ echo
 banner2 "     D O C K E R  S E T U P"
 
 docker(){
-  echo "Installing"
   spin &
   pid=$!
 
