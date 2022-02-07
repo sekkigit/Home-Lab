@@ -3,8 +3,7 @@
 source .var
 
 cat <<EOF > log
-____________________________________________________________
-| 
+|
 |   SERVER INFO:
 |
 |     OS VERSION:     $OSVER
@@ -13,7 +12,7 @@ ____________________________________________________________
 |        - Username:  $USER
 |        - Userpass:  $USERPASS
 |
-|      NETWORK:
+|     NETWORK:
 |        - Subnet:    $SUBNET
 |        - Gateway:   $GATE4
 |        - Public IP: $PUBIP
@@ -36,7 +35,9 @@ ____________________________________________________________
 |        - SSH user:  $SSHUSER
 |        - SSH port:  $PORTSSH
 |
-|  CONNECT WITH SSH  ==>  ssh -p $PORTSSH $USER@$IP
-|  CONNECT WITH HTTP ==>  $IP:9055
-____________________________________________________________
+|###########################################################
+|  CONNECT 
+|          HTTP ==>  $IP:9055
+|          SSH  ==>  ssh -p $PORTSSH $USER@$IP
+|###########################################################
 EOF

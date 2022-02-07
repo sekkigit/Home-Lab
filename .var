@@ -25,11 +25,6 @@ SITE="website.com"
 #Email
 EMAIL="examlpe@email.com"
 
-#Treafik password
-TREAFIKPASS="treafik2022"
-
-TRPASS="$(cat /var/pass)"
-
 
 #Network/Firewall
 
