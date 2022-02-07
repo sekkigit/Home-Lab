@@ -38,30 +38,7 @@ echo
 echo
 
 banner2 "     S W A P  P A R T I T I O N"
-swap(){
-  echo "Creating"
-  load &
-  pid=$!
-
-  for i in $(bash ./config/swap.sh &> /dev/null)
-  do
-    sleep 1;
-  done
-
-  kill $pid
-  echo ""
-}
-
-load(){
-  while [ 1 ]
-  do
-    echo -ne ".";
-    sleep 0.2;
-  done
-}
-
-swap
-#bash ./config/swap.sh &> /dev/null
+bash ./config/swap.sh &> /dev/null
 echo
 echo -e "$COLOR         CREATED $RAM MB SWAP PARTITION$ENDCOLOR"
 
@@ -69,30 +46,7 @@ echo
 echo
 
 banner2 "     U P D A T E  O S"
-update(){
-  echo "Updateing"
-  load &
-  pid=$!
-
-  for i in $(bash ./config/update_os.sh &> /dev/null)
-  do
-    sleep 1;
-  done
-
-  kill $pid
-  echo ""
-}
-
-load(){
-  while [ 1 ]
-  do
-    echo -ne ".";
-    sleep 0.2;
-  done
-}
-
-update
-#bash ./config/update_os.sh &> /dev/null
+bash ./config/update_os.sh &> /dev/null
 echo
 echo -e "$COLOR         ALL UP TO DAIT$ENDCOLOR"
 
@@ -159,30 +113,7 @@ echo
 echo
 
 banner2 "     S A M B A  S E T U P"
-samba(){
-  echo "Installing"
-  load &
-  pid=$!
-
-  for i in $(./config/samba.sh &> /dev/null)
-  do
-    sleep 1;
-  done
-
-  kill $pid
-  echo ""
-}
-
-load(){
-  while [ 1 ]
-  do
-    echo -ne ".";
-    sleep 0.2;
-  done
-}
-
-samba
-#bash ./config/samba.sh &> /dev/null
+bash ./config/samba.sh &> /dev/null
 bash ./config/sambaconfig.sh &> /dev/null
 echo
 samba --version
@@ -194,30 +125,7 @@ echo
 echo
 
 banner2 "     P L E X  S E T U P"
-plex(){
-  echo "Installing"
-  load &
-  pid=$!
-
-  for i in $(bash plex.sh &> /dev/null)
-  do
-    sleep 1;
-  done
-
-  kill $pid
-  echo ""
-}
-
-load(){
-  while [ 1 ]
-  do
-    echo -ne ".";
-    sleep 0.2;
-  done
-}
-
-plex
-#bash ./config/plex.sh &> /dev/null
+bash ./config/plex.sh &> /dev/null
 bash ./config/plexufw.sh &> /dev/null
 echo
 echo -e "$COLOR         Plex is $(systemctl is-enabled plexmediaserver) and $(systemctl is-active plexmediaserver)$ENDCOLOR"
@@ -226,30 +134,7 @@ echo
 echo
 
 banner2 "     F A I L 2 B A N"
-fail2ban(){
-  echo "Installing"
-  load &
-  pid=$!
-
-  for i in $(bash ./config/fail2ban.sh &> /dev/null)
-  do
-    sleep 1;
-  done
-
-  kill $pid
-  echo ""
-}
-
-load(){
-  while [ 1 ]
-  do
-    echo -ne ".";
-    sleep 0.2;
-  done
-}
-
-fail2ban
-#bash ./config/fail2ban.sh &> /dev/null
+bash ./config/fail2ban.sh &> /dev/null
 echo
 echo -e "$COLOR         Fail2ban is $(systemctl is-enabled fail2ban) and $(systemctl is-active fail2ban)$ENDCOLOR"
 
@@ -258,30 +143,7 @@ echo
 echo
 
 banner2 "     D O C K E R  S E T U P"
-docker(){
-  echo "Installing"
-  load &
-  pid=$!
-
-  for i in $(bash ./config/docker.sh &> /dev/null)
-  do
-    sleep 1;
-  done
-
-  kill $pid
-  echo ""
-}
-
-load(){
-  while [ 1 ]
-  do
-    echo -ne ".";
-    sleep 0.2;
-  done
-}
-
-docker
-#bash ./config/docker.sh &> /dev/null
+bash ./config/docker.sh &> /dev/null
 echo
 docker --version && docker-compose --version
 echo
