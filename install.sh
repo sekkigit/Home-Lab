@@ -69,7 +69,6 @@ swap(){
   kill $pid
   echo ""
 }
-
 swap
 
 sleep 0.1
@@ -94,7 +93,6 @@ update_os(){
   kill $pid
   echo ""
 }
-
 update_os
 
 sleep 0.1
@@ -146,7 +144,6 @@ cockpit(){
   kill $pid
   echo ""
 }
-
 cockpit
 
 sleep 0.1
@@ -171,9 +168,8 @@ samba(){
   kill $pid
   echo ""
 }
-
 samba
-
+echo
 sleep 0.1
 echo
 echo -e "$COLOR$(samba --version)$ENDCOLOR"
@@ -199,7 +195,6 @@ plex(){
   kill $pid
   echo ""
 }
-
 plex
 
 sleep 0.1
@@ -224,7 +219,6 @@ fail2ban(){
   kill $pid
   echo ""
 }
-
 fail2ban
 
 sleep 0.1
@@ -250,9 +244,8 @@ docker(){
   kill $pid
   echo ""
 }
-
 docker
-
+echo
 sleep 0.1
 echo
 echo -e "$COLOR$(docker --version)$ENDCOLOR"
