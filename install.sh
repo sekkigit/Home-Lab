@@ -41,6 +41,7 @@ banner2()
 bash ./config/timezone.sh &> /dev/null
 clear
 echo -e "$COLOR       OS TIME ZONE: $TIMEZONE$ENDCOLOR"
+echo
 banner "              S T A R T "
 echo
 echo
