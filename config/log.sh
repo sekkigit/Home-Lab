@@ -46,7 +46,7 @@ cat <<EOF > log
 |     CONNECT TO:
 |
 |        DASHBOARD ==>  $IP:9055
-|             SSH  ==>  ssh -p $PORTSSH $USER@$IP
+|              SSH ==>  ssh -p $PORTSSH $USER@$IP
 |
 ###############################################################
 
