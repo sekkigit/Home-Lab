@@ -40,6 +40,7 @@ banner2()
 
 bash ./config/timezone.sh &> /dev/null
 clear
+echo -e "$COLOR       OS TIME ZONE: $TIMEZONE$ENDCOLOR"
 banner "              S T A R T "
 echo
 echo
@@ -70,7 +71,6 @@ swap(){
 swap
 
 sleep 0.1
-#bash ./config/swap.sh &> /dev/null
 echo
 echo -e "$COLOR         CREATED $RAM MB SWAP PARTITION$ENDCOLOR"
 
@@ -95,7 +95,6 @@ update_os(){
 update_os
 
 sleep 0.1
-#bash ./config/update_os.sh &> /dev/null
 echo
 echo -e "$COLOR         ALL UP TO DAIT$ENDCOLOR"
 
@@ -105,7 +104,7 @@ echo
 banner2 "     C R E A T E  U S E R"
 useradd -p $(openssl passwd $USERPASS) $USER -m -c "$USERROLL" -G sudo -s /bin/bash
 echo
-echo -e "$COLOR          User: $USER$ENDCOLOR"
+echo -e "$COLOR          NEW USER: $USER$ENDCOLOR"
 
 echo
 echo
@@ -147,8 +146,6 @@ cockpit(){
 cockpit
 
 sleep 0.1
-#bash ./config/cockpit.sh &> /dev/null
-#bash ./config/network.sh &> /dev/null
 echo
 echo -e "$COLOR         Cockpit is $(systemctl is-enabled cockpit) and $(systemctl is-active cockpit)$ENDCOLOR"
 
@@ -173,10 +170,8 @@ samba(){
 samba
 
 sleep 0.1
-#bash ./config/samba.sh &> /dev/null
-#bash ./config/sambaconfig.sh &> /dev/null
 echo
-samba --version
+echo -e "$COLOR$(samba --version)$ENDCOLOR"
 echo
 echo -e "$COLOR         Samba is $(systemctl is-enabled smbd) and $(systemctl is-active smbd)$ENDCOLOR"
 
@@ -202,8 +197,6 @@ plex(){
 plex
 
 sleep 0.1
-#bash ./config/plex.sh &> /dev/null
-#bash ./config/plexufw.sh &> /dev/null
 echo
 echo -e "$COLOR         Plex is $(systemctl is-enabled plexmediaserver) and $(systemctl is-active plexmediaserver)$ENDCOLOR"
 
@@ -228,7 +221,6 @@ fail2ban(){
 fail2ban
 
 sleep 0.1
-#bash ./config/fail2ban.sh &> /dev/null
 echo
 echo -e "$COLOR         Fail2ban is $(systemctl is-enabled fail2ban) and $(systemctl is-active fail2ban)$ENDCOLOR"
 
@@ -254,9 +246,9 @@ docker(){
 docker
 
 sleep 0.1
-#bash ./config/docker.sh &> /dev/null
 echo
-docker --version && docker-compose --version
+echo -e "$COLOR$(docker --version)$ENDCOLOR"
+echo -e "$COLOR$(docker-compose --version)$ENDCOLOR"
 echo
 echo -e "$COLOR         Docker is $(systemctl is-enabled docker) and $(systemctl is-active docker)$ENDCOLOR"
 
@@ -265,8 +257,6 @@ echo
 
 banner2 "     R U N  C O N T A I N E R S"
 echo
-bash ./config/treafik.sh &> /dev/null
-bash ./config/utls.sh &> /dev/null
 cp ./config/docker-compose.yml /home/$USER/docker/docker-compose.yml
 docker-compose -f /home/$USER/docker/docker-compose.yml up -d
 bash ./config/homer.sh &> /dev/null
@@ -279,9 +269,9 @@ banner2 "     P O L I C Y  U P D A T E"
 bash ./config/dirpolicy.sh &> /dev/null
 echo -e "$COLOR
           - $USER
-          - Samba
-          - Docker
-          - Plex$ENDCOLOR"
+          - SAMBA
+          - DOCKER
+          - PLEX$ENDCOLOR"
 echo
 echo
 
@@ -296,6 +286,5 @@ echo
 
 banner2 "     I N F O"
 bash ./config/log.sh &> /dev/null
-cp log /home/$USER/log
-cat log
+cp log /home/$USER/log && cat log
 banner "           R E A D Y ! ! !"
