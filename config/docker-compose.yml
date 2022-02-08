@@ -24,11 +24,11 @@ services:
       - '443:443'
       - '81:81' # Admin Web Port
     environment:
-      DB_MYSQL_HOST: 'db'
+      DB_MYSQL_HOST: "nginxdb"
       DB_MYSQL_PORT: 3306
-      DB_MYSQL_USER: 'npm'
-      DB_MYSQL_PASSWORD: 'npm'
-      DB_MYSQL_NAME: 'npm'
+      DB_MYSQL_USER: "npm"
+      DB_MYSQL_PASSWORD: "npm"
+      DB_MYSQL_NAME: "npm"
     volumes:
       - ./nginx:/data
       - ./nginx/config.json:/app/config/production.json
