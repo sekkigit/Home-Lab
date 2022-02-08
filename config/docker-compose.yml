@@ -17,39 +17,29 @@ services:
       - proxy
 
   nginx:
-    image: jc21/nginx-proxy-manager:latest
-    container_name: nginx
-    restart: unless-stopped
+    image: 'jc21/nginx-proxy-manager:latest'
     ports:
-      - 80:80
-      - 443:443
-      - 81:81
+      - '80:80'
+      - '81:81'
+      - '443:443'
     environment:
-      DB_MYSQL_HOST: "nginxdb"
+      DB_MYSQL_HOST: "db"
       DB_MYSQL_PORT: 3306
       DB_MYSQL_USER: "npmchangeme"
       DB_MYSQL_PASSWORD: "npmchangeme"
       DB_MYSQL_NAME: "npmchangeme"
     volumes:
-      - ./nginx:/data
-      - ./nginx/config.json:/app/config/production.json:ro
-      - ./nginx/letsencrypt:/etc/letsencrypt
-    depends_on:
-      - nginxdb
-    networks:
-      - proxy
-
-  nginxdb:
-    image: jc21/mariadb-aria:latest
-    container_name: nginxdb
-    restart: unless-stopped
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+  db:
+    image: 'jc21/mariadb-aria:latest'
     environment:
       MYSQL_ROOT_PASSWORD: 'npmchangeme'
       MYSQL_DATABASE: 'npmchangeme'
       MYSQL_USER: 'npmchangeme'
       MYSQL_PASSWORD: 'npmchangeme'
     volumes:
-      - ./nginx/mysql:/var/lib/mysql
+      - ./data/mysql:/var/lib/mysql
 
   speedtest:
     image: openspeedtest/latest:latest
@@ -84,7 +74,7 @@ services:
     ports:
       - 4020:3000
     volumes:
-      - grafana-data:/var/lib/grafana:ro
+      - grafana-data:/var/lib/grafana
     restart: unless-stopped
     networks:
       - proxy
@@ -95,8 +85,8 @@ services:
     ports:
       - 9010:9090
     volumes:
-      - ./prometheus:/etc/prometheus:ro
-      - prometheus-data:/prometheus:ro
+      - ./prometheus:/etc/prometheus
+      - prometheus-data:/prometheus
     restart: unless-stopped
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
