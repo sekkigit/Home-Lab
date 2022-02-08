@@ -169,7 +169,6 @@ samba(){
   echo ""
 }
 samba
-done
 sleep 0.1
 echo
 echo -e "$COLOR$(samba --version)$ENDCOLOR"
@@ -245,11 +244,10 @@ docker(){
   echo ""
 }
 docker
-done
 sleep 0.1
 echo
-echo -e "$COLOR$(docker --version)$ENDCOLOR"
 echo -e "$COLOR$(docker-compose --version)$ENDCOLOR"
+echo -e "$COLOR$(docker --version)$ENDCOLOR"
 echo
 echo -e "$COLOR         Docker is $(systemctl is-enabled docker) and $(systemctl is-active docker)$ENDCOLOR"
 
