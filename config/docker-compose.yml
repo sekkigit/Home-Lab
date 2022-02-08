@@ -7,8 +7,8 @@ services:
     security_opt:
       - no-new-privileges:true
     volumes:
-      - /etc/localtime:/etc/localtime
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./portainer-data:/data
     ports:
       - 9000:9000
@@ -17,21 +17,22 @@ services:
       - proxy
 
   nginx:
-    image: 'jc21/nginx-proxy-manager:latest'
+    image: jc21/nginx-proxy-manager:latest
+    container_name: nginx
     restart: unless-stopped
     ports:
-      - '80:80'
-      - '443:443'
-      - '81:81' # Admin Web Port
+      - 80:80
+      - 443:443
+      - 81:81
     environment:
       DB_MYSQL_HOST: "nginxdb"
       DB_MYSQL_PORT: 3306
-      DB_MYSQL_USER: "npm"
-      DB_MYSQL_PASSWORD: "npm"
-      DB_MYSQL_NAME: "npm"
+      DB_MYSQL_USER: "npmchangeme"
+      DB_MYSQL_PASSWORD: "npmchangeme"
+      DB_MYSQL_NAME: "npmchangeme"
     volumes:
       - ./nginx:/data
-      - ./nginx/config.json:/app/config/production.json
+      - ./nginx/config.json:/app/config/production.json:ro
       - ./nginx/letsencrypt:/etc/letsencrypt
     depends_on:
       - nginxdb
@@ -39,13 +40,14 @@ services:
       - proxy
 
   nginxdb:
-    image: 'jc21/mariadb-aria:latest'
+    image: jc21/mariadb-aria:latest
+    container_name: nginxdb
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: 'npm'
-      MYSQL_DATABASE: 'npm'
-      MYSQL_USER: 'npm'
-      MYSQL_PASSWORD: 'npm'
+      MYSQL_ROOT_PASSWORD: 'npmchangeme'
+      MYSQL_DATABASE: 'npmchangeme'
+      MYSQL_USER: 'npmchangeme'
+      MYSQL_PASSWORD: 'npmchangeme'
     volumes:
       - ./nginx/mysql:/var/lib/mysql
 
@@ -62,17 +64,17 @@ services:
   dashboard:
     image: b4bz/homer
     container_name: homer-dashboard
+    env_file: .env
     ports:
       - 9055:8080
     restart: unless-stopped
-    env_file: .env
     environment:
       - USER=${USER}
       - GROUP=${USER}
       - UID=1001
       - GID=1001
     volumes:
-      - ./homer:/www/assets
+      - ./homer:/www/assets:ro
     networks:
       - proxy
 
@@ -82,7 +84,7 @@ services:
     ports:
       - 4020:3000
     volumes:
-      - grafana-data:/var/lib/grafana
+      - grafana-data:/var/lib/grafana:ro
     restart: unless-stopped
     networks:
       - proxy
@@ -93,8 +95,8 @@ services:
     ports:
       - 9010:9090
     volumes:
-      - ./prometheus:/etc/prometheus
-      - prometheus-data:/prometheus
+      - ./prometheus:/etc/prometheus:ro
+      - prometheus-data:/prometheus:ro
     restart: unless-stopped
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
