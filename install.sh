@@ -42,10 +42,11 @@ bash ./config/timezone.sh &> /dev/null
 clear
 echo -e "$COLOR       OS TIME ZONE: $TIMEZONE$ENDCOLOR"
 echo
+##################################################################
 banner "              S T A R T "
 echo
 echo
-
+##################################################################
 banner2 "     L A P T O P  L I D  O F F"
 bash ./config/hybrid-sleep.sh &> /dev/null
 echo
@@ -53,7 +54,7 @@ echo -e "$COLOR       HIBERNATE/SLEEP/SUSPEND IS OFF$ENDCOLOR"
 
 echo
 echo
-
+##################################################################
 banner2 "     S W A P  P A R T I T I O N"
 
 swap(){
@@ -77,7 +78,7 @@ echo -e "$COLOR         CREATED $RAM MB SWAP PARTITION$ENDCOLOR"
 
 echo
 echo
-
+##################################################################
 banner2 "     U P D A T E  O S"
 
 update_os(){
@@ -101,7 +102,7 @@ echo -e "$COLOR         ALL UP TO DAIT$ENDCOLOR"
 
 echo
 echo
-
+##################################################################
 banner2 "     C R E A T E  U S E R"
 useradd -p $(openssl passwd $USERPASS) $USER -m -c "$USERROLL" -G sudo -s /bin/bash
 echo
@@ -109,7 +110,7 @@ echo -e "$COLOR          NEW USER: $USER$ENDCOLOR"
 
 echo
 echo
-
+##################################################################
 banner2 "     C R E A T E D  D I R"
 bash ./config/dirtree.sh &> /dev/null
 echo -e "$COLOR
@@ -120,7 +121,7 @@ echo -e "$COLOR
 
 echo
 echo
-
+##################################################################
 banner2 "     S S H  K E Y"
 bash ./config/lock_ssh.sh &> /dev/null
 echo
@@ -128,7 +129,7 @@ echo -e "$COLOR         SSH KEY FROM "$SSHUSER" ADDED$ENDCOLOR"
 
 echo
 echo
-
+##################################################################
 banner2 "     C O C K P I T  S E T U P"
 
 cockpit(){
@@ -152,7 +153,7 @@ echo -e "$COLOR         Cockpit is $(systemctl is-enabled cockpit) and $(systemc
 
 echo
 echo
-
+##################################################################
 banner2 "     S A M B A  S E T U P"
 
 samba(){
@@ -178,7 +179,7 @@ echo -e "$COLOR         Samba is $(systemctl is-enabled smbd) and $(systemctl is
 
 echo
 echo
-
+##################################################################
 banner2 "     P L E X  S E T U P"
 
 plex(){
@@ -202,7 +203,7 @@ echo -e "$COLOR         Plex is $(systemctl is-enabled plexmediaserver) and $(sy
 
 echo
 echo
-
+##################################################################
 banner2 "     F A I L 2 B A N"
 
 fail2ban(){
@@ -227,7 +228,7 @@ echo -e "$COLOR         Fail2ban is $(systemctl is-enabled fail2ban) and $(syste
 
 echo
 echo
-
+##################################################################
 banner2 "     D O C K E R  S E T U P"
 
 docker(){
@@ -253,7 +254,7 @@ echo -e "$COLOR         Docker is $(systemctl is-enabled docker) and $(systemctl
 
 echo
 echo
-
+##################################################################
 banner2 "     R U N  C O N T A I N E R S"
 echo
 cp ./config/docker-compose.yml /home/$USER/docker/docker-compose.yml
@@ -263,7 +264,7 @@ bash ./config/prometheus.sh &> /dev/null
 
 echo
 echo
-
+##################################################################
 banner2 "     P O L I C Y  U P D A T E"
 bash ./config/dirpolicy.sh &> /dev/null
 echo -e "$COLOR
@@ -273,7 +274,7 @@ echo -e "$COLOR
           - PLEX$ENDCOLOR"
 echo
 echo
-
+##################################################################
 banner2 "     U F W  C O N F I G"
 bash ./config/firewall.sh &> /dev/null
 echo
@@ -282,7 +283,7 @@ echo -e "$COLOR         Firewall is $(systemctl is-enabled ufw)$ENDCOLOR"
 
 echo
 echo
-
+##################################################################
 banner2 "     I N F O"
 bash ./config/log.sh &> /dev/null
 cp log /home/$USER/log && cat log
