@@ -57,6 +57,7 @@ echo
 banner2 "     S W A P  P A R T I T I O N"
 
 swap(){
+  echo ""
   spin &
   pid=$!
 
@@ -81,6 +82,7 @@ echo
 banner2 "     U P D A T E  O S"
 
 update_os(){
+  echo ""
   spin &
   pid=$!
 
@@ -132,6 +134,7 @@ echo
 banner2 "     C O C K P I T  S E T U P"
 
 cockpit(){
+  echo ""
   spin &
   pid=$!
 
@@ -156,6 +159,7 @@ echo
 banner2 "     S A M B A  S E T U P"
 
 samba(){
+  echo ""
   spin &
   pid=$!
 
@@ -183,6 +187,7 @@ echo
 banner2 "     P L E X  S E T U P"
 
 plex(){
+  echo ""
   spin &
   pid=$!
 
@@ -207,6 +212,7 @@ echo
 banner2 "     F A I L 2 B A N"
 
 fail2ban(){
+  echo ""
   spin &
   pid=$!
 
@@ -232,6 +238,7 @@ echo
 banner2 "     D O C K E R  S E T U P"
 
 docker(){
+  echo ""
   spin &
   pid=$!
 

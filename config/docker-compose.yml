@@ -31,6 +31,7 @@ services:
       DB_MYSQL_NAME: 'npm'
     volumes:
       - ./nginx:/data
+      - ./nginx/config.json:/app/config/production.json
       - ./nginx/letsencrypt:/etc/letsencrypt
     depends_on:
       - nginxdb
@@ -47,8 +48,6 @@ services:
       MYSQL_PASSWORD: 'npm'
     volumes:
       - ./nginx/mysql:/var/lib/mysql
-    networks:
-      - proxy
 
   speedtest:
     image: openspeedtest/latest:latest
