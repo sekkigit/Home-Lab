@@ -169,7 +169,7 @@ samba(){
   echo ""
 }
 samba
-echo
+kill samba
 sleep 0.1
 echo
 echo -e "$COLOR$(samba --version)$ENDCOLOR"
@@ -245,7 +245,7 @@ docker(){
   echo ""
 }
 docker
-echo
+kill docker
 sleep 0.1
 echo
 echo -e "$COLOR$(docker --version)$ENDCOLOR"
