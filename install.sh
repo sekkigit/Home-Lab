@@ -169,8 +169,7 @@ samba(){
   echo ""
 }
 samba
-pid=$!
-kill $pid
+
 sleep 0.1
 echo
 echo -e "$COLOR$(samba --version)$ENDCOLOR"
@@ -246,8 +245,7 @@ docker(){
   echo ""
 }
 docker
-pid=$!
-kill $pid
+
 sleep 0.1
 echo
 echo -e "$COLOR$(docker --version)$ENDCOLOR"
