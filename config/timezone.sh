@@ -3,4 +3,3 @@
 source .var
 
 timedatectl set-timezone $TIMEZONE
-##
