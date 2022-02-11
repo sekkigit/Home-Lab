@@ -44,6 +44,7 @@ services:
     ports:
       - 9055:8080
     restart: unless-stopped
+    env_file: ./.env
     environment:
       - USER=${USER}
       - GROUP=${USER}
