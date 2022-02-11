@@ -19,7 +19,6 @@ services:
   cloudflare-ddns:
     image: oznu/cloudflare-ddns:latest
     container_name: ddns
-    env_file: .env
     restart: unless-stopped
     environment:
       - API_KEY=${DNSAPI}
@@ -55,7 +54,6 @@ services:
   dashboard:
     image: b4bz/homer
     container_name: homer-dashboard
-    env_file: .env
     ports:
       - 9055:8080
     restart: unless-stopped
