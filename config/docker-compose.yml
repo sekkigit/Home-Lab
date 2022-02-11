@@ -110,6 +110,7 @@ services:
     image: oznu/cloudflare-ddns:latest
     container_name: ddns
     restart: unless-stopped
+    env_file: ./.env
     environment:
       - API_KEY=$DNSAPI
       - ZONE=$SITE
