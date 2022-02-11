@@ -1,0 +1,14 @@
+version: '3'
+services:
+  cloudflare-ddns:
+    image: oznu/cloudflare-ddns:latest
+    env_file: .env
+    restart: unless-stopped
+    environment:
+      - API_KEY=${DNSAPI}
+      - ZONE=${SITE}
+      - PROXIED=true
+      - PUID=1001
+      - PGID=1001
+    networks:
+      - proxy

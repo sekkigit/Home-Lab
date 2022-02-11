@@ -4,6 +4,7 @@ source .var
 
 cat <<EOF > /home/$USER/docker/.env
 USER="$USER"
+DNSAPI="$DNSAPI"
 SITE="$SITE"
 EOF
 

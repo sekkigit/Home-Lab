@@ -1,3 +1,5 @@
+#READ .var
+
 #REQUIRED Public Key from client - cat /home/"USER"/.ssh/id_rsa.pub
 KEY="ENTER KEY.PUB"
 
@@ -22,8 +24,8 @@ SSHUSER="my_linux_user"
 #Web domain
 SITE="website.com"
 
-#Email
-EMAIL="examlpe@email.com"
+#DDNS API key from CloudFlare
+DNSAPI="XXXXXXXXXX"
 
 
 #Network/Firewall
