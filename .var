@@ -79,4 +79,3 @@ PARAM[4]="PasswordAuthentication"
 COLOR="\e[92m"
 ENDCOLOR="\e[0m"
 
-spinner=(◢ ◣ ◤ ◥);
