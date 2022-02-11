@@ -3,9 +3,9 @@
 source .var
 
 cat <<EOF > /home/$USER/docker/.env
-USER="$USER"
-DNSAPI="$DNSAPI"
-SITE="$SITE"
+USER=$USER
+DNSAPI=$DNSAPI
+SITE=$SITE
 EOF
 
 cat <<EOF > /home/$USER/docker/nginx/config.json
