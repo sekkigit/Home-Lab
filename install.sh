@@ -252,7 +252,6 @@ echo
 ##################################################################
 banner2 "     R U N  C O N T A I N E R S"
 echo
-cp ./config/docker-compose.yml /home/$USER/docker/docker-compose.yml
 docker-compose -f /home/$USER/docker/docker-compose.yml up -d
 bash ./config/homer.sh &> /dev/null
 bash ./config/prometheus.sh &> /dev/null
