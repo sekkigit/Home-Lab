@@ -53,7 +53,7 @@ Connect to the new host with SSH
 # Step three
 
 Enter commands on host:
-   - git clone https://github.com/sekkigit/Home-Lab.git init && cd init/
+   - sudo git clone https://github.com/sekkigit/Home-Lab.git init && cd init/
    - sudo nano .var
    - sudo bash install.sh
 
