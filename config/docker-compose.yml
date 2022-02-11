@@ -111,8 +111,8 @@ services:
     container_name: ddns
     restart: unless-stopped
     environment:
-      - API_KEY=${DNSAPI}
-      - ZONE=${SITE}
+      - API_KEY=$DNSAPI
+      - ZONE=$SITE
       - PROXIED=true
       - PUID=1001
       - PGID=1001
