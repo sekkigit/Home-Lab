@@ -72,7 +72,6 @@ swap(){
 }
 swap
 
-sleep 0.1
 echo
 echo -e "$COLOR         CREATED $RAM MB SWAP PARTITION$ENDCOLOR"
 
@@ -96,7 +95,6 @@ update_os(){
 }
 update_os
 
-sleep 0.1
 echo
 echo -e "$COLOR         ALL UP TO DAIT$ENDCOLOR"
 
@@ -147,7 +145,6 @@ cockpit(){
 }
 cockpit
 
-sleep 0.1
 echo
 echo -e "$COLOR         Cockpit is $(systemctl is-enabled cockpit) and $(systemctl is-active cockpit)$ENDCOLOR"
 
@@ -170,10 +167,9 @@ samba(){
   echo ""
 }
 samba
-sleep 0.1
+
 echo
 echo -e "$COLOR         Samba is $(systemctl is-enabled smbd) and $(systemctl is-active smbd)$ENDCOLOR"
-
 
 echo
 echo
@@ -195,7 +191,6 @@ plex(){
 }
 plex
 
-sleep 0.1
 echo
 echo -e "$COLOR         Plex is $(systemctl is-enabled plexmediaserver) and $(systemctl is-active plexmediaserver)$ENDCOLOR"
 
@@ -219,7 +214,6 @@ fail2ban(){
 }
 fail2ban
 
-sleep 0.1
 echo
 echo -e "$COLOR         Fail2ban is $(systemctl is-enabled fail2ban) and $(systemctl is-active fail2ban)$ENDCOLOR"
 
@@ -243,10 +237,10 @@ docker(){
   echo ""
 }
 docker
-sleep 0.1
+
 echo
 echo -e "$COLOR         Docker is $(systemctl is-enabled docker) and $(systemctl is-active docker)$ENDCOLOR"
-
+sleep 0.5
 echo
 echo
 ##################################################################
