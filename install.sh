@@ -172,8 +172,6 @@ samba(){
 samba
 sleep 0.1
 echo
-echo -e "$COLOR$(samba --version)$ENDCOLOR"
-echo
 echo -e "$COLOR         Samba is $(systemctl is-enabled smbd) and $(systemctl is-active smbd)$ENDCOLOR"
 
 
@@ -246,9 +244,6 @@ docker(){
 }
 docker
 sleep 0.1
-echo
-echo -e "$COLOR$(docker-compose --version)$ENDCOLOR"
-echo -e "$COLOR$(docker --version)$ENDCOLOR"
 echo
 echo -e "$COLOR         Docker is $(systemctl is-enabled docker) and $(systemctl is-active docker)$ENDCOLOR"
 
