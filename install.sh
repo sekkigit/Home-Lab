@@ -8,6 +8,8 @@
 source .var
 
 #Loading
+spinner=(◢ ◣ ◤ ◥);
+
 spin(){
   while [ 1 ]
   do
