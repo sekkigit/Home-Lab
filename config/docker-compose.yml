@@ -17,29 +17,16 @@ services:
       - proxy
 
   nginx:
-    image: 'jc21/nginx-proxy-manager:latest'
+    image: jc21/nginx-proxy-manager:2.9.15
     ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
-    environment:
-      DB_MYSQL_HOST: "db"
-      DB_MYSQL_PORT: 3306
-      DB_MYSQL_USER: "npmchangeme"
-      DB_MYSQL_PASSWORD: "npmchangeme"
-      DB_MYSQL_NAME: "npmchangeme"
+      - 80:80
+      - 81:81
+      - 443:443
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
-  db:
-    image: 'jc21/mariadb-aria:latest'
     environment:
-      MYSQL_ROOT_PASSWORD: 'npmchangeme'
-      MYSQL_DATABASE: 'npmchangeme'
-      MYSQL_USER: 'npmchangeme'
-      MYSQL_PASSWORD: 'npmchangeme'
-    volumes:
-      - ./data/mysql:/var/lib/mysql
+      - DISABLE_IPV6: 'true'
 
   speedtest:
     image: openspeedtest/latest:latest
