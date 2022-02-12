@@ -9,10 +9,8 @@ ufw limit $PORTSSH/tcp
 ufw allow 80
 ufw allow 443
 ufw allow 9010
-ufw allow from $SUBNET to any port 9090
 ufw allow from $SUBNET to any port 9055
-ufw allow from $SUBNET to any port 9099
-ufw allow from $SUBNET to any port 8030
+ufw allow from $SUBNET to any port 9000
 ufw allow from $SUBNET to any port 4020
 ufw allow from $SUBNET to any port 3005
 ufw allow from $SUBNET to any port 3006
