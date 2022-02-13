@@ -246,7 +246,7 @@ echo
 ##################################################################
 banner2 "     R U N  C O N T A I N E R S"
 echo
-docker-compose -f /home/$USER/docker/docker-compose.yml up -d
+docker-compose -f /home/$USER/docker/docker-compose.yml --env-file /home/$USER/docker/.env up -d
 bash ./config/homer.sh &> /dev/null
 bash ./config/prometheus.sh &> /dev/null
 

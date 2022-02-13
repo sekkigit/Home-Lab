@@ -44,7 +44,7 @@ services:
     ports:
       - 9055:8080
     restart: unless-stopped
-    env_file: ./.env
+    env_file: .env
     environment:
       - USER=${USER}
       - GROUP=${USER}
@@ -111,7 +111,7 @@ services:
     image: oznu/cloudflare-ddns:latest
     container_name: ddns
     restart: unless-stopped
-    env_file: ./.env
+    env_file: .env
     environment:
       - API_KEY=${DNSAPI}
       - ZONE=${SITE}

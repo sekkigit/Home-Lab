@@ -11,3 +11,5 @@ USER=${USER}
 DNSAPI=${DNSAPI}
 SITE=${SITE}
 EOF
+
+setfacl -m "u:root:rw" /home/$USER/docker/.env
