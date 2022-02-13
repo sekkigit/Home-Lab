@@ -7,9 +7,9 @@ services:
     restart: unless-stopped
     environment:
       - MYSQL_DATABASE=wordpress
-      - MYSQL_ROOT_PASSWORD=example
+      - MYSQL_ROOT_PASSWORD=3_KDduEU#R2F
     volumes:
-      - /home/master/docker/dbdata:/var/lib/mysql
+      - wpdb-data:/var/lib/mysql
     command: '--default-authentication-plugin=mysql_native_password'
 
   wordpress:
@@ -19,11 +19,17 @@ services:
     container_name: wordpress
     restart: unless-stopped
     ports:
-      - 7070:80
+      - 41524:80
     environment:
       - WORDPRESS_DB_HOST=db:3306
-      - WORDPRESS_DB_USER=myuser
-      - WORDPRESS_DB_PASSWORD=example
+      - WORDPRESS_DB_USER=adminwb
+      - WORDPRESS_DB_PASSWORD=X7Yd6*sx=FAw
       - WORDPRESS_DB_NAME=wordpress
     volumes:
-      - /home/master/docker/wordpress:/var/www/html
+      - wordpress-data:/var/www/html
+
+volumes:
+  wordpress-data:
+    driver: local
+  wpdb-data:
+    driver: local
