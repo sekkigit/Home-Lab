@@ -1,5 +1,3 @@
-#READ .var
-
 #REQUIRED Public Key from client - cat /home/"USER"/.ssh/id_rsa.pub
 KEY="ENTER KEY.PUB"
 
