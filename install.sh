@@ -47,6 +47,14 @@ banner "              S T A R T "
 echo
 echo
 ##################################################################
+banner2 "     C R O N T A B  T A S K"
+bash ./config/autotask.sh &> /dev/null
+echo
+echo -e "$COLOR         Cron task is $(systemctl is-enabled cron) and $(systemctl is-active cron)$ENDCOLOR"
+
+echo
+echo
+##################################################################
 banner2 "     L A P T O P  L I D  O F F"
 bash ./config/hybrid-sleep.sh &> /dev/null
 echo
@@ -197,30 +205,6 @@ echo -e "$COLOR         Plex is $(systemctl is-enabled plexmediaserver) and $(sy
 echo
 echo
 ##################################################################
-banner2 "     F A I L 2 B A N"
-
-fail2ban(){
-  echo ""
-  spin &
-  pid=$!
-
-  for i in $(bash ./config/fail2ban.sh &> /dev/null)
-  do
-    sleep 0.1;
-  done
-
-  kill $pid
-  echo ""
-}
-fail2ban
-
-echo
-echo -e "$COLOR         Fail2ban is $(systemctl is-enabled fail2ban) and $(systemctl is-active fail2ban)$ENDCOLOR"
-
-
-echo
-echo
-##################################################################
 banner2 "     D O C K E R  S E T U P"
 
 docker(){
@@ -268,6 +252,29 @@ bash ./config/firewall.sh &> /dev/null
 echo
 ufw status
 echo -e "$COLOR         Firewall is $(systemctl is-enabled ufw)$ENDCOLOR"
+
+echo
+echo
+##################################################################
+banner2 "     C R O W D S E C"
+
+crowdsec(){
+  echo ""
+  spin &
+  pid=$!
+
+  for i in $(bash ./config/crowdsec.sh &> /dev/null)
+  do
+    sleep 0.1;
+  done
+
+  kill $pid
+  echo ""
+}
+crowdsec
+
+echo
+echo -e "$COLOR         CrowdSec is $(systemctl is-enabled crowdsec) and $(systemctl is-active crowdsec)$ENDCOLOR"
 
 echo
 echo
