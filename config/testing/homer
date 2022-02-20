@@ -46,7 +46,7 @@ colors:
 # Optional navbar
 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
 links:
-  - name: "Home-Lab Git-Hub"
+  - name: "Seki Git-Hub"
     icon: "fab fa-github"
     url: "https://github.com/sekkigit/Home-Lab.git"
     target: "_blank" # optional html a tag target attribute
