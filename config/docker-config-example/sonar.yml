@@ -1,0 +1,94 @@
+
+version: "2"
+services:
+  jackett:
+    image: linuxserver/jackett
+    container_name: jackett
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=Europe/Zagreb
+    volumes:
+      - ./sonar/Jackett:/config
+      - ./sonar/Torrents:/downloads
+    ports:
+      - 9117:9117
+    restart: unless-stopped
+    networks:
+      - sonar
+    
+  organizr:
+    container_name: organizr
+    hostname: organizr
+    image: organizr/organizr
+    restart: unless-stopped
+    networks:
+      - sonar
+    ports:
+        - 91:80
+    volumes:
+        - ./sonar/Organizr:/config
+    environment:
+        - fpm=true #true or false | using true will provide better performance
+        - branch=v2-master #v2-master or #v2-develop
+        - PUID=1001
+        - PGID=1001
+        - TZ=Europe/Zagreb
+    
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=Europe/Zagreb
+      #- UMASK_SET=022 #optional
+    volumes:
+      - ./sonar/Radarr:/config
+      - ./sonar/Movies:/movies
+      - ./sonar/Torrents:/downloads
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+    networks:
+      - sonar
+    
+  sabnzbd:
+    image: ghcr.io/linuxserver/sabnzbd
+    container_name: sabnzbd
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=Europe/Zagreb
+    volumes:
+      - ./sonar/Sabnzbd:/config
+      - ./sonar/Downloads:/downloads
+      - ./sonar/Downloads/Incomplete:/incomplete-downloads #optional
+    ports:
+      - 8381:8080
+      - 9391:9090
+    restart: unless-stopped
+    networks:
+      - sonar
+    
+  sonarr:
+    image: linuxserver/sonarr
+    container_name: sonarr
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=Europe/Zagreb
+      - UMASK_SET=022
+    volumes:
+      - ./sonar/Sonarr:/config
+      - ./sonar/TV:/tv
+      - ./sonar/Torrents:/downloads
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+    networks:
+      - sonar
+
+networks:
+  sonar:
+    external: true
