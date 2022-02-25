@@ -30,7 +30,7 @@ services:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
   db:
-    image: 'jc21/mariadb-aria:latest'
+    image: mysql:8.0.28-oracle
     environment:
       MYSQL_ROOT_PASSWORD: 'npm'
       MYSQL_DATABASE: 'npm'
