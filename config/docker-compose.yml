@@ -16,8 +16,21 @@ services:
     networks:
       - proxy
 
+  db:
+    image: mysql:8.0.28-oracle
+    container_name: mysql
+    env_file: .env
+    environment:
+      MYSQL_ROOT_PASSWORD: 'npm'
+      MYSQL_DATABASE: 'npm'
+      MYSQL_USER: 'npm'
+      MYSQL_PASSWORD: 'npm'
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+
   nginx:
     image: jc21/nginx-proxy-manager:2.9.15
+    container_name: nginx
     ports:
       - 80:80
       - 81:81
@@ -27,6 +40,8 @@ services:
       - ./letsencrypt:/etc/letsencrypt
     environment:
       - DISABLE_IPV6=true
+    depends_on:
+      - db
 
   speedtest:
     image: openspeedtest/latest:latest
@@ -120,6 +135,11 @@ services:
       - PGID=1001
     networks:
       - proxy
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
 
 networks:
   proxy:

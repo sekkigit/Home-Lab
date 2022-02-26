@@ -45,17 +45,21 @@ colors:
     link-hover: "#ffdd57"
 
 # Optional message
-message:
-  style: "is-dark"
-  title: "Samba"
-  content: "Open in file explorer for the file server: $IP"
+#message:
+#  style: "is-dark"
+#  title: "Samba"
+#  content: "Open in file explorer for the file server: 192.168.1.19"
 
 # Optional navbar
 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
 links:
-  - name: "Home-Lab Git-Hub"
+  - name: "Seki Git-Hub"
     icon: "fab fa-github"
     url: "https://github.com/sekkigit/Home-Lab.git"
+    target: "_blank" # optional html a tag target attribute
+  - name: "Sekith.xyz"
+    icon: ""
+    url: "https://sekiteh.xyz"
     target: "_blank" # optional html a tag target attribute
 
 # Services
@@ -65,34 +69,41 @@ services:
   - name: "Applications"
     icon: "fas fa-cloud"
     items:
+      - name: "SpeedTest"
+        logo: "https://play-lh.googleusercontent.com/xKUdbWyGGv4lbYH5Fzrz-USBEKk84Aw43IPmnl9VVq4jewz4y8JrwOivPsAYCtTbDbdt"
+        subtitle: "OpenSpeedTest"
+        url: "https://speedtest.sekiteh.xyz/"
+        target: "_blank"
+      - name: "Plex"
+        logo: "https://www.feirox.com/rivu/2015/12/PlexforAndroid-3.png"
+        subtitle: "Media server"
+        url: "https://app.plex.tv/desktop/#!/"
+        target: "_blank"
       - name: "Grafana"
         logo: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Grafana_logo.png"
         subtitle: "Console"
-        url: "http://$IP:4020"
+        url: "https://graf.sekiteh.xyz"
+        target: "_blank"
+
+  - name: "Applications"
+    icon: "fas fa-cloud"
+    items:
+      - name: "Nginx Proxy Menager"
+        logo: "https://nginxproxymanager.com/icon.png"
+        subtitle: "Proxy menager"
+        tag: "Intrnal"
+        url: "http://$IP:81"
         target: "_blank"
       - name: "Portainer"
         logo: "https://cdn.iconscout.com/icon/free/png-256/docker-226091.png"
         subtitle: "Docker menager"
+        tag: "Intrnal"
         url: "http://$IP:9000"
         target: "_blank"
       - name: "Cockpit"
         logo: "https://avatars.githubusercontent.com/u/5765104?s=280&v=4"
         subtitle: "Server menager"
+        tag: "Intrnal"
         url: "http://$IP:9090"
-        target: "_blank"
-      - name: "Nginx Proxy Menager"
-        logo: "https://nginxproxymanager.com/icon.png"
-        subtitle: "Proxy menager"
-        url: "http://$IP:81"
-        target: "_blank"
-      - name: "Plex"
-        logo: "https://www.feirox.com/rivu/2015/12/PlexforAndroid-3.png"
-        subtitle: "Media server"
-        url: "http://$IP:32400/web"
-        target: "_blank"
-      - name: "SpeedTest"
-        logo: "https://play-lh.googleusercontent.com/xKUdbWyGGv4lbYH5Fzrz-USBEKk84Aw43IPmnl9VVq4jewz4y8JrwOivPsAYCtTbDbdt"
-        subtitle: "OpenSpeedTest"
-        url: "http://$IP:3005"
         target: "_blank"
 EOF
