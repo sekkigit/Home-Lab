@@ -1,0 +1,21 @@
+---
+version: "2.1"
+services:
+  webtop:
+    image: lscr.io/linuxserver/webtop
+    container_name: webtop
+    security_opt:
+      - seccomp:unconfined #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Zagreb
+      - SUBFOLDER=/ #optional
+      - KEYBOARD=en-us-qwerty #optional
+    volumes:
+      - ./webtop:/config
+      - /var/run/docker.sock:/var/run/docker.sock #optional
+    ports:
+      - 3000:3000
+    shm_size: "4gb" #optional
+    restart: unless-stopped
