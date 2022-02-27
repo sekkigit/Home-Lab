@@ -70,7 +70,7 @@ Cockpit
    - Set time zone (NTP server: time.google.com)
 
 Nginx Proxy Menager
-   - Login with admin@example.com - changeme
+   - Login: admin@example.com / changeme
 
 Grafana
    - Open Grafana
