@@ -25,6 +25,11 @@ SITE="website.com"
 #DDNS API key from CloudFlare
 DNSAPI="XXXXXXXXXX"
 
+#MYSQL_DB
+ROOT_PASSWORD="change_me_123456789ABC"
+MYSQL_DATABASE="changedbname"
+MYSQL_USER="changeme"
+MYSQL_PASSWORD="change_me_0123456789ABC"
 
 #Network/Firewall
 

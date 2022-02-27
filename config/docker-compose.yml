@@ -16,21 +16,22 @@ services:
     networks:
       - proxy
 
-  db:
+  dbnginx:
     image: mysql:8.0.28-oracle
-    container_name: mysql
+    container_name: dbnginx
     env_file: .env
     environment:
-      MYSQL_ROOT_PASSWORD: 'npm'
-      MYSQL_DATABASE: 'npm'
-      MYSQL_USER: 'npm'
-      MYSQL_PASSWORD: 'npm'
+      - MYSQL_ROOT_PASSWORD="${ROOT_PASSWORD}"
+      - MYSQL_DATABASE="${MYSQL_DATABASE}"
+      - MYSQL_USER="${MYSQL_USER}"
+      - MYSQL_PASSWORD="${MYSQL_PASSWORD}"
     volumes:
       - ./data/mysql:/var/lib/mysql
 
   nginx:
     image: jc21/nginx-proxy-manager:2.9.15
-    container_name: nginx
+    container_name: proxymanager
+    env_file: .env
     ports:
       - 80:80
       - 81:81
@@ -39,9 +40,14 @@ services:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
     environment:
+      - DB_MYSQL_HOST="dbnginx"
+      - DB_MYSQL_PORT=3306
+      - DB_MYSQL_USER="${MYSQL_USER}"
+      - DB_MYSQL_PASSWORD="${MYSQL_PASSWORD}"
+      - DB_MYSQL_NAME="${MYSQL_DATABASE}"
       - DISABLE_IPV6=true
     depends_on:
-      - db
+      - dbnginx
 
   speedtest:
     image: openspeedtest/latest:latest
@@ -138,6 +144,8 @@ services:
 
   watchtower:
     image: containrrr/watchtower
+    container_name: watchtower
+    restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
