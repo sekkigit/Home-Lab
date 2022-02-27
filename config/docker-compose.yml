@@ -16,17 +16,21 @@ services:
     networks:
       - proxy
 
-  dbnginx:
-    image: mysql:8.0.28-oracle
-    container_name: dbnginx
+  db:
+    image: mysql:5.7-oracle
+    container_name: db
     env_file: .env
+    command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp
     environment:
-      - MYSQL_ROOT_PASSWORD="${ROOT_PASSWORD}"
-      - MYSQL_DATABASE="${MYSQL_DATABASE}"
-      - MYSQL_USER="${MYSQL_USER}"
-      - MYSQL_PASSWORD="${MYSQL_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - ./data/mysql:/var/lib/mysql
+    restart: unless-stopped
+    networks:
+      - proxy
 
   nginx:
     image: jc21/nginx-proxy-manager:2.9.15
@@ -40,14 +44,16 @@ services:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
     environment:
-      - DB_MYSQL_HOST="dbnginx"
+      - DB_MYSQL_HOST="db"
       - DB_MYSQL_PORT=3306
       - DB_MYSQL_USER="${MYSQL_USER}"
       - DB_MYSQL_PASSWORD="${MYSQL_PASSWORD}"
       - DB_MYSQL_NAME="${MYSQL_DATABASE}"
       - DISABLE_IPV6=true
     depends_on:
-      - dbnginx
+      - db
+    networks:
+      - proxy
 
   speedtest:
     image: openspeedtest/latest:latest
