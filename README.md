@@ -13,9 +13,8 @@
    - Install Samba
    - Install Plex media server
    - Install Docker, Docker-compose
-   - Run Portainer, Nginx Proxy Menager, OpenSpeedTest, Grafana, Prometheus, Node Exporter, and Cadvisor
+   - Run Portainer, Nginx Proxy Menager, OpenSpeedTest, Grafana, Prometheus, CrowdSec , Node Exporter, and Cadvisor
    - Configure and run UFW (firewall)
-   - Install Fail2Ban
    - Display basic info about server
 
 # Script installs: 
@@ -23,7 +22,7 @@
    - Cockpit
    - Samba
    - Plex
-   - Fail2Ban
+   - CrowdSec
    - Docker
    - Docker-compose
    - Nginx Proxy Menager
@@ -57,7 +56,7 @@ Enter commands on host:
    - sudo nano .var
    - sudo bash install.sh
 
-Edit .var variables, ENTER client SSH key.
+Edit .var variables, ENTER client SSH key
 
 
 # Step four
@@ -69,6 +68,9 @@ Cockpit
    - Menage accounts
    - Change configuration options
    - Set time zone (NTP server: time.google.com)
+
+Nginx Proxy Menager
+   - Login with admin@example.com - changeme
 
 Grafana
    - Open Grafana
