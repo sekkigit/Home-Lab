@@ -44,11 +44,11 @@ Download and install Ubuntu Server 20.04 LTS : https://ubuntu.com/download/serve
 
 # Step two
 
-Create SSH key on client:
+Create SSH key on a client:
    - ssh-keygen -b 4096
    - cat ~/.ssh/id_rsa.pub
    
-Connect to the new host with SSH
+Connect to the new host using SSH
 
 
 # Step three
@@ -58,7 +58,7 @@ Enter commands on host:
    - sudo nano .var
    - sudo bash install.sh
 
-Edit .var variables, ENTER client SSH key
+Edit .var variables, ENTER client SSH key that you created in step two
 
 
 # Step four
@@ -75,7 +75,6 @@ Nginx Proxy Menager
    - Login: admin@example.com / changeme
 
 Grafana
-   - Open Grafana
    - Add Prometheus for the data base
    - Import dashboard from file or Grafana.com (ID 14282 - node_exporter, ID 1860 - cadvisor)
 
