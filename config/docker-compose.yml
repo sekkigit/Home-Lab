@@ -49,6 +49,7 @@ services:
       DB_MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
       DB_MYSQL_NAME: "${MYSQL_DATABASE}"
       DISABLE_IPV6: 'true'
+    restart: unless-stopped
     depends_on:
       - db
     networks:
