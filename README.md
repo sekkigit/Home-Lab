@@ -19,22 +19,22 @@
 
 # Script installs: 
 
-   - Cockpit               => graphical interface to administer servers
-   - Samba                 => enables Linux / Unix machines to communicate with Windows machines in a network.
-   - Plex                  => find and access all the media 
-   - CrowdSec              => analyze behaviors, respond to attacks & share signals across the community
-   - Docker                => enables you to separate your applications from your infrastructure
-   - Docker-compose        => tool that help define and share multi-container applications
-   - Portainer             => self-service container service delivery platform
-   - Homer                 => static html/js dashboard, generated from the source in /src using webpack
-   - Nginx Proxy Manager   => reverse proxy management system running on Docker
-   - MariaDB               => relational databases
-   - OpenSpeedTest         => HTML5 Network Performance Estimation Tool
-   - Watchtower            => application that monitors your running containers for changes to the image
-   - Grafana               => analytics & monitoring solution for every database
-   - Prometheus            => scrapes metrics from instrumented jobs
-   - Node Exporter         => prometheus exporter for server level and OS level metrics with configurable metric collectors
-   - Cadvisor              => provides container users an understanding of the resource usage and performance characteristics of their running containers
+   - Cockpit               > graphical interface to administer servers
+   - Samba                 > enables Linux / Unix machines to communicate with Windows machines in a network.
+   - Plex                  > find and access all the media 
+   - CrowdSec              > analyze behaviors, respond to attacks & share signals across the community
+   - Docker                > enables you to separate your applications from your infrastructure
+   - Docker-compose        > tool that help define and share multi-container applications
+   - Portainer             > self-service container service delivery platform
+   - Homer                 > static html/js dashboard, generated from the source in /src using webpack
+   - Nginx Proxy Manager   > reverse proxy management system running on Docker
+   - MariaDB               > relational databases
+   - OpenSpeedTest         > HTML5 Network Performance Estimation Tool
+   - Watchtower            > application that monitors your running containers for changes to the image
+   - Grafana               > analytics & monitoring solution for every database
+   - Prometheus            > scrapes metrics from instrumented jobs
+   - Node Exporter         > prometheus exporter for server level and OS level metrics with configurable metric collectors
+   - Cadvisor              > provides container users an understanding of the resource usage and performance characteristics of their running containers
 
 
 # Step one
