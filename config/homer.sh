@@ -85,8 +85,8 @@ services:
         url: "https://graf.sekiteh.xyz"
         target: "_blank"
 
-  - name: "Applications"
-    icon: "fas fa-cloud"
+  - name: "Local applications"
+    icon: "fas fa-local"
     items:
       - name: "Nginx Proxy Menager"
         logo: "https://nginxproxymanager.com/icon.png"
