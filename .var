@@ -1,3 +1,4 @@
+#############################################################################
 #REQUIRED Public Key from client - cat /home/"USER"/.ssh/id_rsa.pub
 KEY="ENTER KEY.PUB"
 
@@ -16,7 +17,7 @@ USERGROUP="usergr"
 #Client user name
 SSHUSER="my_linux_user"
 
-
+#############################################################################
 #Web-server
 
 #Web domain
@@ -31,6 +32,7 @@ MYSQL_DATABASE="changedbname"
 MYSQL_USER="changeme"
 MYSQL_PASSWORD="change_me_0123456789ABC"
 
+#############################################################################
 #Network/Firewall
 
 #Default gateway (ruter ip)
@@ -48,7 +50,7 @@ IP=$(ip route get 8.8.8.8 | sed -n '/src/{s/.*src *\([^ ]*\).*/\1/p;q}')
 #Host public IP
 PUBIP=$(curl ifconfig.me)
 
-
+#############################################################################
 #OS
 
 #OS version
@@ -80,7 +82,7 @@ PARAM[2]="PubkeyAuthentication"
 PARAM[3]="Port "
 PARAM[4]="PasswordAuthentication"
 
-
+#############################################################################
 #Color
 COLOR="\e[92m"
 ENDCOLOR="\e[0m"
