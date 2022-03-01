@@ -13,7 +13,7 @@
    - Install Samba
    - Install Plex media server
    - Install Docker, Docker-compose
-   - Run Portainer, Nginx Proxy Menager, OpenSpeedTest, Grafana, Prometheus, CrowdSec , Node Exporter, and Cadvisor
+   - Run Portainer, Homer, Nginx Proxy Menager, OpenSpeedTest, Watchtower, Grafana, Prometheus, CrowdSec , Node Exporter, and Cadvisor
    - Configure and run UFW (firewall)
    - Display basic info about server
 
@@ -25,14 +25,15 @@
    - CrowdSec
    - Docker
    - Docker-compose
-   - Nginx Proxy Menager
-   - Grafana
-   - Prometheus
-   - Cadvisor
-   - Node Exporter
    - Portainer
    - Homer
+   - Nginx Proxy Menager
    - OpenSpeedTest
+   - Watchtower
+   - Grafana
+   - Prometheus
+   - Node Exporter
+   - Cadvisor
 
 
 # Step one
