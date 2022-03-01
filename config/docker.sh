@@ -8,6 +8,8 @@ cp ./config/docker-compose.yml /home/$USER/docker/docker-compose.yml
 
 cat <<EOF > /home/$USER/docker/.env
 USER=${USER}
+TIMEZONE=${TIMEZONE}
+IP=${IP}
 DNSAPI=${DNSAPI}
 SITE=${SITE}
 ROOT_PASSWORD=${ROOT_PASSWORD}
