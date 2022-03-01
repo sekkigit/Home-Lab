@@ -67,7 +67,7 @@ SAMBA="fileserver"
 PLEX="plexmedia"
 
 #Automated tasks run time
-TASKRUN="30 20 * * *  "
+TASKRUN="30 05 * * *  "
 
 
 #Security (Lock_ssh)
