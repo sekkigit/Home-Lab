@@ -63,7 +63,7 @@ Edit .var variables, ENTER client SSH key that you created in step two
 
 # Step four
 
-Visit server dashboard (Homer):
+Visit the dashboard (Homer):
    - port:9055
 
 Cockpit
