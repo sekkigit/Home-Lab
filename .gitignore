@@ -1,2 +1,3 @@
 config/testing
 config/docker-config-example
+.gitignore
