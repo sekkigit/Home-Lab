@@ -28,7 +28,7 @@ cat <<EOF > log
 |        - Cockpit:   $IP:9090
 |        - Portainer: $IP:9000
 |        - Grafana:   $IP:4020
-|        - OpenVPN:   $IP:943
+|        - OpenVPN:   $IP:943/admin
 |        - Nginx:     $IP:81
 |        - SpeedTest: $IP:3005
 |        - Plex:      $IP:32400/web
