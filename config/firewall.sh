@@ -11,7 +11,7 @@ ufw allow 443/tcp  #HTTPS
 ufw allow 9055/tcp #Homr
 ufw allow 4020/tcp #Grafana
 ufw limit 9010 #Prometheus
-ufw allow 1194/udp #OpenVPN
+#ufw allow 1194/udp #OpenVPN
 #ufw allow 9000 #Portainer
 #ufw allow 3005 #SpeedTest
 #ufw allow 81   #Nginx
