@@ -10,4 +10,5 @@ apt install openvpn-as -y
 
 sudo sysctl net.ipv4.ip_forward=1
 iptables -t nat -A POSTROUTING -s 10.8.0.0/16 -o ens5 -j MASQUERADE
+iptables -t nat -I POSTROUTING -s 10.8.0.0/16 -d 192.168.1.0/16 -o ens5 -j MASQUERADE
 iptables-save
