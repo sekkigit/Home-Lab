@@ -200,7 +200,7 @@ openvpn(){
 openvpn
 
 echo
-echo -e "$COLOR         Plex is $(systemctl is-enabled openvpnas.service) and $(systemctl is-active openvpnas.service)$ENDCOLOR"
+echo -e "$COLOR         OpenVPN is $(systemctl is-enabled openvpnas.service) and $(systemctl is-active openvpnas.service)$ENDCOLOR"
 
 echo
 echo
