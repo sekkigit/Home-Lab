@@ -182,6 +182,29 @@ echo -e "$COLOR         Samba is $(systemctl is-enabled smbd) and $(systemctl is
 echo
 echo
 ##################################################################
+banner2 "     O P E N V P N  S E T U P"
+
+openvpn(){
+  echo ""
+  spin &
+  pid=$!
+
+  for i in $(bash ./config/openvpn.sh &> /dev/null)
+  do
+    sleep 0.1;
+  done
+
+  kill $pid
+  echo ""
+}
+openvpn
+
+echo
+echo -e "$COLOR         Plex is $(systemctl is-enabled openvpnas.service) and $(systemctl is-active openvpnas.service)$ENDCOLOR"
+
+echo
+echo
+##################################################################
 banner2 "     P L E X  S E T U P"
 
 plex(){

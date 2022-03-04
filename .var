@@ -26,6 +26,10 @@ SITE="website.com"
 #DDNS API key from CloudFlare
 DNSAPI="XXXXXXXXXX"
 
+#OpenVPN
+VPNUSER="openvpn"
+VPNPASS="$(echo | tail /usr/local/openvpn_as/init.log | awk '{printf "%s ",$9}' | awk '{print $2}')"
+
 #MYSQL_DB
 ROOT_PASSWORD="change_me_123456789ABC"
 MYSQL_DATABASE="changedbname"
