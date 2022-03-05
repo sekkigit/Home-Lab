@@ -67,7 +67,7 @@ links:
 # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
 services:
   - name: "Applications"
-    icon: "fas fa-cloud"
+    logo: "https://library.kissclipart.com/20180918/viq/kissclipart-cloud-connectivity-icon-clipart-cloud-computing-co-fd55e4bd857b0280.png"
     items:
       - name: "SpeedTest"
         logo: "https://play-lh.googleusercontent.com/xKUdbWyGGv4lbYH5Fzrz-USBEKk84Aw43IPmnl9VVq4jewz4y8JrwOivPsAYCtTbDbdt"
@@ -84,9 +84,14 @@ services:
         subtitle: "Console"
         url: "https://graf.sekiteh.xyz"
         target: "_blank"
+      - name: "OpenVPN"
+        logo: "https://cdn.iconscout.com/icon/free/png-256/openvpn-2752109-2284926.png"
+        subtitle: "VPN"
+        url: "https://vpn.sekiteh.xyz"
+        target: "_blank"
 
   - name: "Local applications"
-    icon: "fas fa-local"
+    logo: "https://cdn3.iconfinder.com/data/icons/real-estate-3-13/50/121-512.png"
     items:
       - name: "Nginx Proxy Menager"
         logo: "https://nginxproxymanager.com/icon.png"
