@@ -13,8 +13,8 @@ EOF
 
 sysctl net.ipv4.ip_forwarding=1
 sysctl net.ipv4.ip_forwarding
-iptables -t nat -A POSTROUTING -s $GATE4 -o $NETADAPT -j MASQUERADE
-iptables -t nat -I POSTROUTING -s $GATE4 -d $SUBNET -o $NETADAPT -j MASQUERADE
+iptables -t nat -A POSTROUTING -s "$GATE4" -o "$NETADAPT" -j MASQUERADE
+iptables -t nat -I POSTROUTING -s "$GATE4" -d "$SUBNET" -o "$NETADAPT" -j MASQUERADE
 iptables-save
 #ip route
 #sudo ip route del default via 192.168.0.1
