@@ -154,6 +154,7 @@ services:
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 21600
 
 networks:
   proxy:
