@@ -11,9 +11,9 @@ source .var
 spinner=(◢ ◣ ◤ ◥);
 
 spin(){
-  while [ 1 ]
+  while true
   do
-    for i in ${spinner[@]};
+    for i in "${spinner[@]}";
     do
       echo -ne "\r$i";
       sleep 0.2;
@@ -110,7 +110,7 @@ echo
 echo
 ##################################################################
 banner2 "     C R E A T E  U S E R"
-useradd -p $(openssl passwd $USERPASS) $USER -m -c "$USERROLL" -G sudo -s /bin/bash
+useradd -p "$(openssl passwd "$USERPASS")" $USER -m -c "$USERROLL" -G sudo -s /bin/bash
 echo
 echo -e "$COLOR          NEW USER: $USER$ENDCOLOR"
 
@@ -131,7 +131,7 @@ echo
 banner2 "     S S H  K E Y"
 bash ./config/lock_ssh.sh &> /dev/null
 echo
-echo -e "$COLOR         SSH KEY FROM "$SSHUSER" ADDED$ENDCOLOR"
+echo -e "$COLOR         SSH KEY FROM ""$SSHUSER"" ADDED$ENDCOLOR"
 
 echo
 echo
@@ -253,7 +253,7 @@ echo
 ##################################################################
 banner2 "     R U N  C O N T A I N E R S"
 echo
-docker-compose -f /home/$USER/docker/docker-compose.yml --env-file /home/$USER/docker/.env up -d
+docker-compose -f /home/"$USER"/docker/docker-compose.yml --env-file /home/"$USER"/docker/.env up -d
 bash ./config/homer.sh &> /dev/null
 bash ./config/prometheus.sh &> /dev/null
 
@@ -304,5 +304,5 @@ echo
 ##################################################################
 banner2 "     I N F O"
 bash ./config/log.sh &> /dev/null
-cp log /home/$USER/log && cat log
+cp log /home/"$USER"/log && cat log
 banner "           R E A D Y ! ! !"
