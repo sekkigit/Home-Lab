@@ -5,7 +5,8 @@
 # Cockpit, Samba, Plex, Fail2Ban, Portainer, Docker, and Docker-compose #
 #########################################################################
 
-source .var
+shellcheck source=.var
+#source .var
 
 #Loading
 spinner=(◢ ◣ ◤ ◥);
