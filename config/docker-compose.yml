@@ -18,7 +18,7 @@ services:
 
   db:
     image: jc21/mariadb-aria:latest
-    container_name: db
+    container_name: mariadb
     env_file: .env
     environment:
       MYSQL_ROOT_PASSWORD: '${ROOT_PASSWORD}'
