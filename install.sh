@@ -41,7 +41,7 @@ banner2()
 
 bash ./config/timezone.sh &> /dev/null
 clear
-echo -e "$COLOR       OS TIME ZONE: $TIMEZONE$ENDCOLOR"
+echo -e "$COLOR       OS TIME ZONE: $TIMEZONE $ENDCOLOR"
 echo
 ##################################################################
 banner "              S T A R T "
@@ -254,7 +254,7 @@ echo
 ##################################################################
 banner2 "     R U N  C O N T A I N E R S"
 echo
-docker-compose -f /home/"$USER"/docker/docker-compose.yml --env-file /home/"$USER"/docker/.env up -d
+docker-compose -f /home/$USER/docker/docker-compose.yml --env-file /home/$USER/docker/.env up -d
 bash ./config/homer.sh &> /dev/null
 bash ./config/prometheus.sh &> /dev/null
 
