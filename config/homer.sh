@@ -70,8 +70,8 @@ services:
     logo: "https://library.kissclipart.com/20180918/viq/kissclipart-cloud-connectivity-icon-clipart-cloud-computing-co-fd55e4bd857b0280.png"
     items:
       - name: "SpeedTest"
-        logo: "https://play-lh.googleusercontent.com/xKUdbWyGGv4lbYH5Fzrz-USBEKk84Aw43IPmnl9VVq4jewz4y8JrwOivPsAYCtTbDbdt"
-        subtitle: "OpenSpeedTest"
+        logo: "https://raw.githubusercontent.com/librespeed/speedtest/master/.logo/logo3.png"
+        subtitle: "LibreSpeed"
         url: "https://speedtest.sekiteh.xyz/"
         target: "_blank"
       - name: "Plex"
@@ -83,11 +83,6 @@ services:
         logo: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Grafana_logo.png"
         subtitle: "Console"
         url: "https://graf.sekiteh.xyz"
-        target: "_blank"
-      - name: "OpenVPN"
-        logo: "https://cdn.iconscout.com/icon/free/png-256/openvpn-2752109-2284926.png"
-        subtitle: "VPN"
-        url: "https://vpn.sekiteh.xyz"
         target: "_blank"
 
   - name: "Local applications"

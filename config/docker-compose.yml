@@ -55,12 +55,26 @@ services:
     networks:
       - proxy
 
-  speedtest:
-    image: openspeedtest/latest:latest
-    container_name: openspeedtest
+  librespeed:
+    image: lscr.io/linuxserver/librespeed
+    container_name: librespeed
+    env_file: .env
+    environment:
+      - USER=${USER}
+      - GROUP=${USER}
+      - TZ=${TIMEZONE}
+      - PASSWORD=${MYSQL_PASSWORD}
+      - CUSTOM_RESULTS=false #optional
+      - DB_TYPE=sqlite #optional
+      - DB_NAME=DB_sptest #optional
+      - DB_HOSTNAME=${MYSQL_DATABASE} #optional
+      - DB_USERNAME=${MYSQL_USER} #optional
+      - DB_PASSWORD=${MYSQL_PASSWORD} #optional
+      - DB_PORT=3306 #optional
+    volumes:
+      - ./speedtest:/config
     ports:
-      - 3005:3000
-      - 3006:3001
+      - 3005:80
     restart: unless-stopped
     networks:
       - proxy
