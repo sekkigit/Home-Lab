@@ -14,6 +14,10 @@ USERROLL="admin"
 #Host group
 USERGROUP="usergr"
 
+#User ID
+PUID="$(id -u $USER)"
+PGID="$(id -g $USER)"
+
 #Client user name
 SSHUSER="my_linux_user"
 
