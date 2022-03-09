@@ -148,6 +148,27 @@ services:
     networks:
       - proxy
 
+  openvpn-as:
+    image: ghcr.io/linuxserver/openvpn-as
+    container_name: openvpn-as
+    env_file: .env
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=${TIMEZONE}
+      - INTERFACE=${NETADAPT} #optional
+    volumes:
+      - ./openvpn-data:/config
+    ports:
+      - 943:943
+      - 9443:9443
+      - 1194:1194/udp
+    restart: unless-stopped
+    networks:
+      - proxy
+
   watchtower:
     image: containrrr/watchtower
     container_name: watchtower
