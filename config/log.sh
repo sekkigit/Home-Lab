@@ -20,15 +20,12 @@ cat <<EOF > log
 |        - Subnet:    $SUBNET
 |        - Gateway:   $GATE4
 |        - Public IP: $PUBIP
-|        - VPN admin: $VPNUSER
-|        - VPN pass:  $VPNPASS
 |
 |     WEB:
 |
 |        - Cockpit:   $IP:9090
 |        - Portainer: $IP:9000
 |        - Grafana:   $IP:4020
-|        - OpenVPN:   $IP:943/admin
 |        - Nginx:     $IP:81
 |        - SpeedTest: $IP:3005
 |        - Plex:      $IP:32400/web
