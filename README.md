@@ -10,7 +10,6 @@
    - Menage users
    - Insert your client SSH key and lock SSH
    - Install Cockpit
-   - Install OpenVPN
    - Install Samba
    - Install Plex media server
    - Install Docker, Docker-compose
@@ -21,7 +20,6 @@
 # Script installs: 
 
    - Cockpit               > graphical interface to administer servers
-   - OpenVPN               > virtual private network (VPN) system that implements techniques to create secure point-to-point or site-to-site connections
    - Samba                 > enables Linux / Unix machines to communicate with Windows machines in a network.
    - Plex                  > find and access all the media 
    - CrowdSec              > analyze behaviors, respond to attacks & share signals across the community
