@@ -45,18 +45,28 @@ Download and install Ubuntu Server 20.04 LTS : https://ubuntu.com/download/serve
 # Step two
 
 Create SSH key on a client:
-   - ssh-keygen -b 4096
-   - cat ~/.ssh/id_rsa.pub
-   
+   ```
+    ssh-keygen -b 4096
+   ```
+   ```
+    cat ~/.ssh/id_rsa.pub
+   ```
+
 Connect to the new host using SSH
 
 
 # Step three
 
 Enter commands on host:
-   - sudo git clone https://github.com/sekkigit/Home-Lab.git init && cd init/
-   - sudo nano .var
-   - sudo bash install.sh
+   ```
+    sudo git clone https://github.com/sekkigit/Home-Lab.git init && cd init/
+   ```
+   ```
+    sudo nano .var
+   ```
+   ```
+    sudo bash install.sh
+   ```
 
 Edit .var variables, ENTER client SSH key that you created in step two
 
