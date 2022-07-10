@@ -3,7 +3,7 @@
 source .var
 
 # Create 1GiB swap partition
-sudo dd if=/dev/zero bs=1M count=${RAM} of=/mnt/1GiB.swap
+sudo dd if=/dev/zero bs=1M count="${RAM}" of=/mnt/1GiB.swap
 sudo chmod 600 /mnt/1GiB.swap
 sudo mkswap /mnt/1GiB.swap
 sudo swapon /mnt/1GiB.swap
