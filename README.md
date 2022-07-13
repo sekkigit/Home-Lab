@@ -1,5 +1,8 @@
 # Home Lab installation
 
+![alt text](https://sekkigit.github.io/porfolio.sekiteh/img/works/2.jpg)
+
+
 # This script will:
 
    - Turn off hibernate, sleep, and suspend (in case u use a laptop for your server)
