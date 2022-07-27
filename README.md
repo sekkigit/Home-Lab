@@ -1,7 +1,7 @@
 # Home Lab installation
 
 <p align="center">
-  <img width="500" height="500" src="https://sekkigit.github.io/porfolio.sekiteh/img/works/2.jpg">
+  <img width="500" height="500" src="https://github.com/sekkigit/porfolio.sekiteh/blob/gh-pages/img/works/2.jpg?raw=true">
 </p>
 
 # This script will:
